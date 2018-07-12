@@ -182,4 +182,24 @@ public interface RtPkcs11 extends Pkcs11 {
         NativeLong slotID,  /* ID of the token's slot */
         byte[]     password
     );
+
+    /* C_EX_GetVolumesInfo */
+    NativeLong C_EX_GetVolumesInfo
+    (
+        NativeLong                slotID,
+        CK_VOLUME_INFO_EXTENDED[] pInfo,
+        NativeLongByReference     pulInfoCount
+    );
+
+    /* C_EX_ChangeVolumeAttribute */
+    NativeLong C_EX_ChangeVolumeAttributes
+    (
+        NativeLong slotId,
+        NativeLong userType,
+        byte[]     pPin,
+        NativeLong upPinLen,
+        NativeLong idVolume,
+        NativeLong newAccessMode,
+        byte       bPermanent
+    );
 }

@@ -628,4 +628,10 @@ public interface Pkcs11Constants {
     NativeLong  CKF_EXCLUDE_CHALLENGE = new NativeLong(0x00000008);
     NativeLong  CKF_EXCLUDE_PIN = new NativeLong(0x00000010);
     NativeLong  CKF_USER_FRIENDLY_OTP = new NativeLong(0x00000020);
+
+    /* Access modes for TM2 */
+    NativeLong  ACCESS_MODE_HIDDEN = new NativeLong(0x00000000);
+    NativeLong  ACCESS_MODE_RO = new NativeLong(0x00000001);
+    NativeLong  ACCESS_MODE_RW = new NativeLong(0x00000003);
+    NativeLong  ACCESS_MODE_CD = new NativeLong(0x00000005);
 }
