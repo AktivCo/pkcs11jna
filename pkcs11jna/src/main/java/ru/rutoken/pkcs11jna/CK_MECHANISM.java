@@ -83,9 +83,8 @@ public class CK_MECHANISM extends Pkcs11Structure {
         ulParameterLen = ulParamLen;
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("mechanism",
-                "pParameter",
-                "ulParameterLen");
+        return Arrays.asList("mechanism", "pParameter", "ulParameterLen");
     }
 }

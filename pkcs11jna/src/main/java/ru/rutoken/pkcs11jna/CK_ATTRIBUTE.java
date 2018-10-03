@@ -128,9 +128,8 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
     /* ulValueLen went from CK_USHORT to CK_ULONG for v2.0 */
     public NativeLong ulValueLen; /* in bytes */
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("type",
-                "pValue",
-                "ulValueLen");
+        return Arrays.asList("type", "pValue", "ulValueLen");
     }
 }

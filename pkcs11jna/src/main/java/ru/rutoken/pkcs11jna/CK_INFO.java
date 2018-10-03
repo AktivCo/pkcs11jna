@@ -88,8 +88,10 @@ public class CK_INFO extends Pkcs11Structure {
         this.libraryVersion = libVer;
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("cryptokiVersion",
+        return Arrays.asList(
+                "cryptokiVersion",
                 "manufacturerID",
                 "flags",
                 "libraryDescription",

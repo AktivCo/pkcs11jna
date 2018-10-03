@@ -107,8 +107,10 @@ public class CK_TOKEN_INFO_EXTENDED extends Pkcs11Structure {
         this.ulBodyColor = ulBodyColor;
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("ulSizeofThisStructure",
+        return Arrays.asList(
+                "ulSizeofThisStructure",
                 "ulTokenType",
                 "ulProtocolNumber",
                 "ulMicrocodeNumber",

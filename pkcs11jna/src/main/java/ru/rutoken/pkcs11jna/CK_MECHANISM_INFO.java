@@ -80,9 +80,8 @@ public class CK_MECHANISM_INFO extends Pkcs11Structure {
         this.flags = flags;
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("ulMinKeySize",
-                "ulMaxKeySize",
-                "flags");
+        return Arrays.asList("ulMinKeySize", "ulMaxKeySize", "flags");
     }
 }

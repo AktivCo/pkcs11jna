@@ -141,8 +141,10 @@ public class CK_TOKEN_INFO extends Pkcs11Structure {
         this.utcTime = utcTime;
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("label",
+        return Arrays.asList(
+                "label",
                 "manufacturerID",
                 "model",
                 "serialNumber",

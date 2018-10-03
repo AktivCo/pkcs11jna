@@ -90,8 +90,10 @@ public class CK_SLOT_INFO extends Pkcs11Structure {
         this.firmwareVersion = fwVer;
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("slotDescription",
+        return Arrays.asList(
+                "slotDescription",
                 "manufacturerID",
                 "flags",
                 "hardwareVersion",

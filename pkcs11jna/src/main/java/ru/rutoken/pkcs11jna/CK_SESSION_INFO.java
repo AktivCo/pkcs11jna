@@ -85,11 +85,9 @@ public class CK_SESSION_INFO extends Pkcs11Structure {
         this.ulDeviceError = ulDeviceError;
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("slotID",
-                "state",
-                "flags",
-                "ulDeviceError");
+        return Arrays.asList("slotID", "state", "flags", "ulDeviceError");
     }
 
 }

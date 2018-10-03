@@ -33,8 +33,10 @@ public class CK_C_INITIALIZE_ARGS extends Pkcs11Structure {
     public NativeLong flags;
     public Pointer pReserved;
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("CreateMutex",
+        return Arrays.asList(
+                "CreateMutex",
                 "DestroyMutex",
                 "LockMutex",
                 "UnlockMutex",

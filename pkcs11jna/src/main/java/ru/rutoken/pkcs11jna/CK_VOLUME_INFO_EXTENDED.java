@@ -39,12 +39,8 @@ public class CK_VOLUME_INFO_EXTENDED extends Pkcs11Structure {
         this.flags = flags;
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("idVolume",
-                "volumeSize",
-                "accessMode",
-                "volumeOwner",
-                "flags"
-        );
+        return Arrays.asList("idVolume", "volumeSize", "accessMode", "volumeOwner", "flags");
     }
 }

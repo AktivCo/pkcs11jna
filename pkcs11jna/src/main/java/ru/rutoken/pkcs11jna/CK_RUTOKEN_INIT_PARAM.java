@@ -89,8 +89,10 @@ public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
         this.ulSmMode = ulSmMode;
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("ulSizeofThisStructure",
+        return Arrays.asList(
+                "ulSizeofThisStructure",
                 "UseRepairMode",
                 "pNewAdminPin",
                 "ulNewAdminPinLen",

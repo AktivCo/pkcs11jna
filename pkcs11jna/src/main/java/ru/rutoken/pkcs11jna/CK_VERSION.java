@@ -91,9 +91,9 @@ public class CK_VERSION extends Pkcs11Structure {
         return buffer.toString();
     }
 
+    @Override
     protected List<String> getFieldOrder() {
-        return Arrays.asList("major",
-                "minor");
+        return Arrays.asList("major", "minor");
     }
 
 }
