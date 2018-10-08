@@ -70,7 +70,7 @@ public interface Pkcs11 extends Library {
     /* C_GetSlotList obtains a list of slots in the system. */
     NativeLong C_GetSlotList
     (
-            boolean                tokenPresent,  /* only slots with tokens */
+            byte                   tokenPresent,  /* only slots with tokens */
             NativeLong[]           pSlotList,     /* receives array of slot IDs */
             NativeLongByReference  pulCount       /* receives number of slots */
     );
