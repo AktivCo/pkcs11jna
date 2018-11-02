@@ -28,10 +28,11 @@ public class CK_VOLUME_INFO_EXTENDED extends Pkcs11Structure {
     /* rest flags */
     public NativeLong flags;
 
-    public CK_VOLUME_INFO_EXTENDED() {}
+    public CK_VOLUME_INFO_EXTENDED() {
+    }
 
     public CK_VOLUME_INFO_EXTENDED(NativeLong idVolume, NativeLong volumeSize, NativeLong accessMode,
-            NativeLong volumeOwner, NativeLong flags) {
+                                   NativeLong volumeOwner, NativeLong flags) {
         this.idVolume = idVolume;
         this.volumeSize = volumeSize;
         this.accessMode = accessMode;

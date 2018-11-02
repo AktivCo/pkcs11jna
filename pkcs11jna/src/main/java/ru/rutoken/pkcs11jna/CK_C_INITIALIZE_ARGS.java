@@ -13,10 +13,18 @@ import java.util.List;
 
 
 public class CK_C_INITIALIZE_ARGS extends Pkcs11Structure {
-    public CK_C_INITIALIZE_ARGS() {}
+    public Pointer CreateMutex;
+    public Pointer DestroyMutex;
+    public Pointer LockMutex;
+    public Pointer UnlockMutex;
+    public NativeLong flags;
+    public Pointer pReserved;
+
+    public CK_C_INITIALIZE_ARGS() {
+    }
 
     public CK_C_INITIALIZE_ARGS(Pointer CreateMutex, Pointer DestroyMutex, Pointer LockMutex,
-            Pointer UnlockMutex, NativeLong flags, Pointer pReserved) {
+                                Pointer UnlockMutex, NativeLong flags, Pointer pReserved) {
         this.CreateMutex = CreateMutex;
         this.DestroyMutex = DestroyMutex;
         this.LockMutex = LockMutex;
@@ -25,13 +33,6 @@ public class CK_C_INITIALIZE_ARGS extends Pkcs11Structure {
         this.pReserved = pReserved;
 
     }
-
-    public Pointer CreateMutex;
-    public Pointer DestroyMutex;
-    public Pointer LockMutex;
-    public Pointer UnlockMutex;
-    public NativeLong flags;
-    public Pointer pReserved;
 
     @Override
     protected List<String> getFieldOrder() {

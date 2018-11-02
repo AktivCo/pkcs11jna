@@ -59,6 +59,7 @@ package ru.rutoken.pkcs11jna;
  */
 
 import com.sun.jna.NativeLong;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -75,10 +76,11 @@ public class CK_SESSION_INFO extends Pkcs11Structure {
      */
     public NativeLong ulDeviceError; /* device-dependent error code */
 
-    public CK_SESSION_INFO() {}
+    public CK_SESSION_INFO() {
+    }
 
     public CK_SESSION_INFO(NativeLong slotID, NativeLong state,
-            NativeLong flags, NativeLong ulDeviceError) {
+                           NativeLong flags, NativeLong ulDeviceError) {
         this.slotID = slotID;
         this.state = state;
         this.flags = flags;

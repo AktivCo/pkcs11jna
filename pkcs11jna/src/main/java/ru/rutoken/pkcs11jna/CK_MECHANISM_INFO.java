@@ -71,10 +71,11 @@ public class CK_MECHANISM_INFO extends Pkcs11Structure {
 
     public NativeLong flags;
 
-    public CK_MECHANISM_INFO() {}
+    public CK_MECHANISM_INFO() {
+    }
 
     public CK_MECHANISM_INFO(NativeLong minKeySize, NativeLong maxKeySize,
-            NativeLong flags) {
+                             NativeLong flags) {
         this.ulMinKeySize = minKeySize;
         this.ulMaxKeySize = maxKeySize;
         this.flags = flags;

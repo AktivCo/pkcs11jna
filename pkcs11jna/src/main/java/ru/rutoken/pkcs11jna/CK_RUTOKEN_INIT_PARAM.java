@@ -66,13 +66,14 @@ public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
     /* secure messaging mode*/
     public NativeLong ulSmMode;
 
-    public CK_RUTOKEN_INIT_PARAM() {}
+    public CK_RUTOKEN_INIT_PARAM() {
+    }
 
     public CK_RUTOKEN_INIT_PARAM(NativeLong ulSizeofThisStructure, NativeLong UseRepairMode, Pointer pNewAdminPin,
-            NativeLong ulNewAdminPinLen, Pointer pNewUserPin, NativeLong ulNewUserPinLen,
-            NativeLong ChangeUserPINPolicy, NativeLong ulMinAdminPinLen, NativeLong ulMinUserPinLen,
-            NativeLong ulMaxAdminRetryCount, NativeLong ulMaxUserRetryCount, Pointer pTokenLabel,
-            NativeLong ulLabelLen, NativeLong ulSmMode) {
+                                 NativeLong ulNewAdminPinLen, Pointer pNewUserPin, NativeLong ulNewUserPinLen,
+                                 NativeLong ChangeUserPINPolicy, NativeLong ulMinAdminPinLen, NativeLong ulMinUserPinLen,
+                                 NativeLong ulMaxAdminRetryCount, NativeLong ulMaxUserRetryCount, Pointer pTokenLabel,
+                                 NativeLong ulLabelLen, NativeLong ulSmMode) {
         this.ulSizeofThisStructure = ulSizeofThisStructure;
         this.UseRepairMode = UseRepairMode;
         this.pNewAdminPin = pNewAdminPin;

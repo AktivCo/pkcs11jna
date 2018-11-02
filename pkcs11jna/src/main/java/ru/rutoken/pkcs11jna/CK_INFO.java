@@ -77,10 +77,11 @@ public class CK_INFO extends Pkcs11Structure {
 
     public CK_VERSION libraryVersion;
 
-    public CK_INFO() {}
+    public CK_INFO() {
+    }
 
     public CK_INFO(CK_VERSION cryptoVer, byte[] vendor, NativeLong flags,
-            byte[] libDesc, CK_VERSION libVer) {
+                   byte[] libDesc, CK_VERSION libVer) {
         this.cryptokiVersion = cryptoVer;
         this.manufacturerID = vendor;
         this.flags = flags;

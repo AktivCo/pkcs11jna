@@ -27,10 +27,14 @@ public final class RtPkcs11Constants {
     /* Необходимые определения для работы с расширениями PKCS для ГОСТ */
     /*-----------------------------------------------------------------*/
 
+    public static final long NSSCK_VENDOR_PKCS11_RU_TEAM = (Pkcs11Constants.CKR_VENDOR_DEFINED | 0x54321000);
+    public static final long CK_VENDOR_PKCS11_RU_TEAM_TK26 = NSSCK_VENDOR_PKCS11_RU_TEAM;
+
     /* GOST KEY TYPES */
     public static final long CKK_GOSTR3410 = 0x00000030;
     public static final long CKK_GOSTR3411 = 0x00000031;
     public static final long CKK_GOST28147 = 0x00000032;
+    public static final long CKK_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x003);
 
     /* GOST OBJECT ATTRIBUTES */
     public static final long CKA_GOSTR3410_PARAMS = 0x00000250;
@@ -43,13 +47,25 @@ public final class RtPkcs11Constants {
     public static final long CKM_GOSTR3410_WITH_GOSTR3411 = 0x00001202;
     public static final long CKM_GOSTR3410_KEY_WRAP = 0x00001203;
     public static final long CKM_GOSTR3410_DERIVE = 0x00001204;
+    public static final long CKM_GOSTR3410_512_KEY_PAIR_GEN = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x005);
+    public static final long CKM_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x006);
+    public static final long CKM_GOSTR3410_12_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x007);
+    public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_256 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x008);
+    public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_512 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x009);
     public static final long CKM_GOSTR3411 = 0x00001210;
     public static final long CKM_GOSTR3411_HMAC = 0x00001211;
+    public static final long CKM_GOSTR3411_12_256 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x012);
+    public static final long CKM_GOSTR3411_12_512 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x013);
+    public static final long CKM_GOSTR3411_12_256_HMAC = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x014);
+    public static final long CKM_GOSTR3411_12_512_HMAC = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x015);
     public static final long CKM_GOST28147_KEY_GEN = 0x00001220;
     public static final long CKM_GOST28147_ECB = 0x00001221;
     public static final long CKM_GOST28147 = 0x00001222;
     public static final long CKM_GOST28147_MAC = 0x00001223;
     public static final long CKM_GOST28147_KEY_WRAP = 0x00001224;
+
+    public static final long CKM_KDF_4357 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 |0x025);
+    public static final long CKM_KDF_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 |0x026);
 
     public static final long CKD_CPDIVERSIFY_KDF = 0x00000009;
     public static final long CKP_PKCS5_PBKD2_HMAC_GOSTR3411 = 0x00000002;

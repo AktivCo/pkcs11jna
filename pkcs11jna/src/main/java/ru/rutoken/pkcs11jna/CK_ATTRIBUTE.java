@@ -58,14 +58,23 @@ package ru.rutoken.pkcs11jna;
  * @author Aktiv Co. <hotline@rutoken.ru>
  */
 
-import com.sun.jna.*;
+import com.sun.jna.Memory;
+import com.sun.jna.Native;
+import com.sun.jna.NativeLong;
+import com.sun.jna.Pointer;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class CK_ATTRIBUTE extends Pkcs11Structure {
 
-    public CK_ATTRIBUTE() {}
+    public NativeLong type;
+    public Pointer pValue;
+    /* ulValueLen went from CK_USHORT to CK_ULONG for v2.0 */
+    public NativeLong ulValueLen; /* in bytes */
+
+    public CK_ATTRIBUTE() {
+    }
 
     public CK_ATTRIBUTE(NativeLong type, Pointer pVal, NativeLong ulValLen) {
         setAttr(type, pVal, ulValLen);
@@ -110,7 +119,7 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
     public void setAttr(NativeLong type, boolean value) {
         this.type = type;
         pValue = new Memory(Native.getNativeSize(Byte.TYPE));
-        pValue.setByte(0, (byte)(value ? 1 : 0));
+        pValue.setByte(0, (byte) (value ? 1 : 0));
         ulValueLen = new NativeLong(Native.getNativeSize(Byte.TYPE));
     }
 
@@ -120,13 +129,6 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
         pValue.setString(0, value);
         ulValueLen = new NativeLong(value.length() + 1);
     }
-
-    public NativeLong type;
-
-    public Pointer pValue;
-
-    /* ulValueLen went from CK_USHORT to CK_ULONG for v2.0 */
-    public NativeLong ulValueLen; /* in bytes */
 
     @Override
     protected List<String> getFieldOrder() {

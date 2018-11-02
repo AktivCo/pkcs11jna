@@ -65,7 +65,8 @@ public class CK_VERSION extends Pkcs11Structure {
     public byte major; /* integer portion of version number */
     public byte minor; /* 1/100ths portion of version number */
 
-    public CK_VERSION() {}
+    public CK_VERSION() {
+    }
 
     public CK_VERSION(int major, int minor) {
         this.major = (byte) major;

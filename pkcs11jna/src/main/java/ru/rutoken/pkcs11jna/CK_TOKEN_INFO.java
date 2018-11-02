@@ -111,16 +111,17 @@ public class CK_TOKEN_INFO extends Pkcs11Structure {
 
     public byte[] utcTime = new byte[16]; /* time */
 
-    public CK_TOKEN_INFO() {}
+    public CK_TOKEN_INFO() {
+    }
 
     public CK_TOKEN_INFO(byte[] label, byte[] vendor, byte[] model,
-            byte[] serialNo, NativeLong flags,
-            NativeLong sessionMax, NativeLong session,
-            NativeLong rwSessionMax, NativeLong rwSession,
-            NativeLong pinLenMax, NativeLong pinLenMin,
-            NativeLong totalPubMem, NativeLong freePubMem,
-            NativeLong totalPrivMem, NativeLong freePrivMem,
-            CK_VERSION hwVer, CK_VERSION fwVer, byte[] utcTime) {
+                         byte[] serialNo, NativeLong flags,
+                         NativeLong sessionMax, NativeLong session,
+                         NativeLong rwSessionMax, NativeLong rwSession,
+                         NativeLong pinLenMax, NativeLong pinLenMin,
+                         NativeLong totalPubMem, NativeLong freePubMem,
+                         NativeLong totalPrivMem, NativeLong freePrivMem,
+                         CK_VERSION hwVer, CK_VERSION fwVer, byte[] utcTime) {
         this.label = label;
         this.manufacturerID = vendor;
         this.model = model;

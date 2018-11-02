@@ -79,10 +79,11 @@ public class CK_SLOT_INFO extends Pkcs11Structure {
 
     public CK_VERSION firmwareVersion;
 
-    public CK_SLOT_INFO() {}
+    public CK_SLOT_INFO() {
+    }
 
     public CK_SLOT_INFO(byte[] slotDesc, byte[] vendor,
-            NativeLong flags, CK_VERSION hwVer, CK_VERSION fwVer) {
+                        NativeLong flags, CK_VERSION hwVer, CK_VERSION fwVer) {
         this.slotDescription = slotDesc;
         this.manufacturerID = vendor;
         this.flags = flags;
