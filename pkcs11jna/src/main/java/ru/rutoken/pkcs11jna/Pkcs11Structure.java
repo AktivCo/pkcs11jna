@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2018, JSC Aktiv-Soft. See the LICENSES/Aktiv-Soft file at the top-level directory of this distribution.
+ * All Rights Reserved.
+ */
+
 package ru.rutoken.pkcs11jna;
 
 import com.sun.jna.Platform;
