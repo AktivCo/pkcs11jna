@@ -1,5 +1,9 @@
 apply plugin: 'java-library'
 
+version = '1.0.0'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'net.java.dev.jna:jna:4.5.1'
