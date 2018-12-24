@@ -1,1 +1,2 @@
-include ':pkcs11jna'
+rootProject.name = 'pkcs11jna'
+
