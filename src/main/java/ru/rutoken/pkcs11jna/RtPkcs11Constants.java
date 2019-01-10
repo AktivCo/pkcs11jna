@@ -64,8 +64,8 @@ public final class RtPkcs11Constants {
     public static final long CKM_GOST28147_MAC = 0x00001223;
     public static final long CKM_GOST28147_KEY_WRAP = 0x00001224;
 
-    public static final long CKM_KDF_4357 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 |0x025);
-    public static final long CKM_KDF_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 |0x026);
+    public static final long CKM_KDF_4357 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x025);
+    public static final long CKM_KDF_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x026);
 
     public static final long CKD_CPDIVERSIFY_KDF = 0x00000009;
     public static final long CKP_PKCS5_PBKD2_HMAC_GOSTR3411 = 0x00000002;
@@ -106,6 +106,10 @@ public final class RtPkcs11Constants {
     public static final long TOKEN_TYPE_RUTOKEN_LITE_SC_JC = 0x42;
     public static final long TOKEN_TYPE_RUTOKEN_ECP_SD = 0x81;
     public static final long TOKEN_TYPE_RUTOKEN_LITE_SD = 0x82;
+    public static final long TOKEN_TYPE_RUTOKEN_MIKRON = 0x05;
+    public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SC = 0x45;
+    public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL = 0x4D;
+    public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL_NFC = 0xCD;
 
     /* TOKEN_FLAGS_SUPPORT_FKN - if it is set, that
      * means that token support CryptoPro FKN
