@@ -58,6 +58,8 @@ package ru.rutoken.pkcs11jna;
  * @author Aktiv Co. <hotline@rutoken.ru>
  */
 
+import com.sun.jna.Structure;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -97,4 +99,6 @@ public class CK_VERSION extends Pkcs11Structure {
         return Arrays.asList("major", "minor");
     }
 
+    public static class ByReference extends CK_VERSION implements Structure.ByReference {
+    }
 }

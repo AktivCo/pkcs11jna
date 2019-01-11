@@ -12,10 +12,10 @@ package ru.rutoken.pkcs11jna;
 
  * License is also granted to make and use derivative works provided that
  * such works are identified as "derived from the RSA Security Inc. PKCS #11
- * Cryptographic Token Interface (Cryptoki)" in all material mentioning or 
+ * Cryptographic Token Interface (Cryptoki)" in all material mentioning or
  * referencing the derived work.
 
- * RSA Security Inc. makes no representations concerning either the 
+ * RSA Security Inc. makes no representations concerning either the
  * merchantability of this software or the suitability of this software for
  * any particular purpose. It is provided "as is" without express or implied
  * warranty of any kind.
@@ -61,8 +61,8 @@ public interface Pkcs11 extends Library {
     /* C_GetFunctionList returns the function list. */
     NativeLong C_GetFunctionList
     (
-            Pointer[] ppFunctionList  /* receives pointer to
-                                       * function list */
+            CK_FUNCTION_LIST ppFunctionList  /* receives pointer to
+                                              * function list */
     );
 
 /* Slot and token management */
@@ -404,7 +404,7 @@ public interface Pkcs11 extends Library {
             NativeLongByReference pulSignatureLen  /* gets signature length */
     );
     /* C_SignUpdate continues a multiple-part signature operation,
-     * where the signature is (will be) an appendix to the data, 
+     * where the signature is (will be) an appendix to the data,
      * and plaintext cannot be recovered from the signature. */
     NativeLong C_SignUpdate
     (
@@ -412,7 +412,7 @@ public interface Pkcs11 extends Library {
             byte[]     pPart,     /* the data to sign */
             NativeLong ulPartLen  /* count of bytes to sign */
     );
-    /* C_SignFinal finishes a multiple-part signature operation, 
+    /* C_SignFinal finishes a multiple-part signature operation,
      * returning the signature. */
     NativeLong C_SignFinal
     (
@@ -450,7 +450,7 @@ public interface Pkcs11 extends Library {
             CK_MECHANISM pMechanism,  /* the verification mechanism */
             NativeLong   hKey         /* verification key */
     );
-    /* C_Verify verifies a signature in a single-part operation, 
+    /* C_Verify verifies a signature in a single-part operation,
      * where the signature is an appendix to the data, and plaintext
      * cannot be recovered from the signature. */
     NativeLong C_Verify
@@ -462,7 +462,7 @@ public interface Pkcs11 extends Library {
             NativeLong ulSignatureLen  /* signature length*/
     );
     /* C_VerifyUpdate continues a multiple-part verification
-     * operation, where the signature is an appendix to the data, 
+     * operation, where the signature is an appendix to the data,
      * and plaintext cannot be recovered from the signature. */
     NativeLong C_VerifyUpdate
     (
@@ -552,7 +552,7 @@ public interface Pkcs11 extends Library {
             NativeLong               ulCount,     /* # of attrs in template */
             NativeLongByReference    phKey        /* gets handle of new key */
     );
-    /* C_GenerateKeyPair generates a public-key/private-key pair, 
+    /* C_GenerateKeyPair generates a public-key/private-key pair,
      * creating new key objects. */
     NativeLong C_GenerateKeyPair
     (
