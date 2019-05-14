@@ -6,6 +6,7 @@
 package ru.rutoken.pkcs11jna;
 
 import com.sun.jna.Platform;
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
 /**
@@ -14,6 +15,14 @@ import com.sun.jna.Structure;
 
 public abstract class Pkcs11Structure extends Structure {
     public Pkcs11Structure() {
-        super(Platform.isWindows() ? Structure.ALIGN_NONE : Structure.ALIGN_DEFAULT);
+        super(getAlign());
+    }
+
+    public Pkcs11Structure(Pointer pointer) {
+        super(pointer, getAlign());
+    }
+
+    private static int getAlign() {
+        return Platform.isWindows() ? Structure.ALIGN_NONE : Structure.ALIGN_DEFAULT;
     }
 }
