@@ -13,6 +13,7 @@ package ru.rutoken.pkcs11jna;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.NativeLongByReference;
+import com.sun.jna.ptr.PointerByReference;
 
 public interface RtPkcs11 extends Pkcs11 {
 
@@ -114,6 +115,30 @@ public interface RtPkcs11 extends Pkcs11 {
         NativeLong[]          phCertificates,
         NativeLong            ulCertificatesLen,
         NativeLong            flags
+    );
+
+    /* C_EX_PKCS7VerifyInit initializes pkcs7 verify operation
+     */
+    NativeLong C_EX_PKCS7VerifyInit
+    (
+        NativeLong            hSession,
+        Pointer               pCms, // CK_BYTE_PTR
+        NativeLong            ulCmsLen,
+        CK_VENDOR_X509_STORE  pStore, // CK_VENDOR_X509_STORE_PTR
+        NativeLong            ckMode,
+        NativeLong            flags
+    );
+
+    /* C_EX_PKCS7Verify finishes pkcs7 verify operation and return
+     * signed data and signer certificates
+     */
+    NativeLong C_EX_PKCS7Verify
+    (
+        NativeLong            hSession,
+        PointerByReference    ppData, // CK_BYTE_PTR_PTR
+        NativeLongByReference pulDataLen,
+        PointerByReference    ppSignerCertificates, // CK_VENDOR_BUFFER_PTR_PTR
+        NativeLongByReference pulSignerCertificatesCount
     );
 
 

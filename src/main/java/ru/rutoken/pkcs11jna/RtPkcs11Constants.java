@@ -22,6 +22,7 @@ public final class RtPkcs11Constants {
     public static final long CKR_RTPKCS11_RSF_DATA_CORRUPTED = Pkcs11Constants.CKR_VENDOR_DEFINED + 5L;
     public static final long CKR_SM_PASSWORD_INVALID = Pkcs11Constants.CKR_VENDOR_DEFINED + 6L;
     public static final long CKR_LICENSE_READ_ONLY = Pkcs11Constants.CKR_VENDOR_DEFINED + 7L;
+    public static final long CKR_CERT_CHAIN_NOT_VERIFIED = Pkcs11Constants.CKR_VENDOR_DEFINED + 9L;
 
     /*-----------------------------------------------------------------*/
     /* Необходимые определения для работы с расширениями PKCS для ГОСТ */
@@ -131,6 +132,15 @@ public final class RtPkcs11Constants {
     public static final long ACCESS_MODE_RO = 0x00000001L;
     public static final long ACCESS_MODE_RW = 0x00000003L;
     public static final long ACCESS_MODE_CD = 0x00000005L;
+
+    /* PKCS7 constants */
+    public static final long CKF_VENDOR_DO_NOT_USE_INTERNAL_CMS_CERTS = 0x00000001L;
+    public static final long CKF_VENDOR_ALLOW_PARTIAL_CHAINS = 0x00000002L;
+
+    public static final long OPTIONAL_CRL_CHECK = 0x00000000L;
+    public static final long LEAF_CRL_CHECK = 0x00000001L;
+    public static final long ALL_CRL_CHECK = 0x00000002L;
+
 
     private RtPkcs11Constants() {
     }
