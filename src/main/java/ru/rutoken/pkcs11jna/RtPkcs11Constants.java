@@ -4,6 +4,9 @@
  */
 
 package ru.rutoken.pkcs11jna;
+
+import com.sun.jna.NativeLong;
+
 /* Derived from rtpkcs11t.h include file for PKCS #11. */
 
 /*
@@ -11,6 +14,15 @@ package ru.rutoken.pkcs11jna;
  */
 
 public final class RtPkcs11Constants {
+
+    /**
+     * Функция для сравнения констант с возвращаемым из pkcs значением
+     */
+    public static boolean equalsPkcsRV(long l, NativeLong pkcsRV) {
+        return NativeComparator.isRawUnsignedNativeLongEqualsLong(pkcsRV, l);
+    }
+
+
     /*-----------------------------------------------------------------*/
     /* Расширенные коды ошибок                                         */
     /*-----------------------------------------------------------------*/

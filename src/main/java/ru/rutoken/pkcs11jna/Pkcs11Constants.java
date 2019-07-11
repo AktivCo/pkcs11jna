@@ -25,7 +25,18 @@ package ru.rutoken.pkcs11jna;
  */
 
 
+import com.sun.jna.NativeLong;
+
 public final class Pkcs11Constants {
+
+    /**
+     * Функция для сравнения констант с возвращаемым из pkcs значением
+     */
+    public static boolean equalsPkcsRV(long l, NativeLong pkcsRV) {
+        return NativeComparator.isRawUnsignedNativeLongEqualsLong(pkcsRV, l);
+    }
+
+
     public static final long CRYPTOKI_VERSION_MAJOR = 2L;
     public static final long CRYPTOKI_VERSION_MINOR = 20L;
     public static final long CRYPTOKI_VERSION_AMENDMENT = 3L;
