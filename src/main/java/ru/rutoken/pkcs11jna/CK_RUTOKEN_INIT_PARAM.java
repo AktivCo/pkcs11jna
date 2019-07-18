@@ -11,12 +11,13 @@ package ru.rutoken.pkcs11jna;
 
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
-
-import java.util.Arrays;
-import java.util.List;
+import com.sun.jna.Structure;
 
 /* CK_RUTOKEN_INIT_PARAM uses in C_EX_InitToken - extended function
    for token formatting (C_InitToken will format only PKCS#11-objects) */
+@Structure.FieldOrder({ "ulSizeofThisStructure", "UseRepairMode", "pNewAdminPin", "ulNewAdminPinLen",
+        "pNewUserPin", "ulNewUserPinLen", "ChangeUserPINPolicy", "ulMinAdminPinLen", "ulMinUserPinLen",
+        "ulMaxAdminRetryCount", "ulMaxUserRetryCount", "pTokenLabel", "ulLabelLen", "ulSmMode" })
 public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
 
     /*
@@ -89,24 +90,4 @@ public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
         this.ulLabelLen = ulLabelLen;
         this.ulSmMode = ulSmMode;
     }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList(
-                "ulSizeofThisStructure",
-                "UseRepairMode",
-                "pNewAdminPin",
-                "ulNewAdminPinLen",
-                "pNewUserPin",
-                "ulNewUserPinLen",
-                "ChangeUserPINPolicy",
-                "ulMinAdminPinLen",
-                "ulMinUserPinLen",
-                "ulMaxAdminRetryCount",
-                "ulMaxUserRetryCount",
-                "pTokenLabel",
-                "ulLabelLen",
-                "ulSmMode");
-    }
-
 }

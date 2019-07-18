@@ -62,10 +62,9 @@ import com.sun.jna.Memory;
 import com.sun.jna.Native;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "type", "pValue", "ulValueLen" })
 public class CK_ATTRIBUTE extends Pkcs11Structure {
 
     public NativeLong type;
@@ -128,10 +127,5 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
         pValue = new Memory(value.length() + 1);
         pValue.setString(0, value);
         ulValueLen = new NativeLong(value.length() + 1);
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList("type", "pValue", "ulValueLen");
     }
 }

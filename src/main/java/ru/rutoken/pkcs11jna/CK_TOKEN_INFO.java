@@ -59,10 +59,12 @@ package ru.rutoken.pkcs11jna;
  */
 
 import com.sun.jna.NativeLong;
+import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "label", "manufacturerID", "model", "serialNumber", "flags", "ulMaxSessionCount",
+        "ulSessionCount", "ulMaxRwSessionCount", "ulRwSessionCount", "ulMaxPinLen", "ulMinPinLen",
+        "ulTotalPublicMemory", "ulFreePublicMemory", "ulTotalPrivateMemory", "ulFreePrivateMemory",
+        "hardwareVersion", "firmwareVersion", "utcTime" })
 public class CK_TOKEN_INFO extends Pkcs11Structure {
 
     /*
@@ -140,28 +142,5 @@ public class CK_TOKEN_INFO extends Pkcs11Structure {
         this.hardwareVersion = hwVer;
         this.firmwareVersion = fwVer;
         this.utcTime = utcTime;
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList(
-                "label",
-                "manufacturerID",
-                "model",
-                "serialNumber",
-                "flags",
-                "ulMaxSessionCount",
-                "ulSessionCount",
-                "ulMaxRwSessionCount",
-                "ulRwSessionCount",
-                "ulMaxPinLen",
-                "ulMinPinLen",
-                "ulTotalPublicMemory",
-                "ulFreePublicMemory",
-                "ulTotalPrivateMemory",
-                "ulFreePrivateMemory",
-                "hardwareVersion",
-                "firmwareVersion",
-                "utcTime");
     }
 }

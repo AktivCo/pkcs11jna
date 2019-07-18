@@ -59,10 +59,9 @@ package ru.rutoken.pkcs11jna;
  */
 
 import com.sun.jna.NativeLong;
+import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "slotDescription", "manufacturerID", "flags", "hardwareVersion", "firmwareVersion" })
 public class CK_SLOT_INFO extends Pkcs11Structure {
 
     /*
@@ -89,15 +88,5 @@ public class CK_SLOT_INFO extends Pkcs11Structure {
         this.flags = flags;
         this.hardwareVersion = hwVer;
         this.firmwareVersion = fwVer;
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList(
-                "slotDescription",
-                "manufacturerID",
-                "flags",
-                "hardwareVersion",
-                "firmwareVersion");
     }
 }

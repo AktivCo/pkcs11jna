@@ -60,10 +60,9 @@ package ru.rutoken.pkcs11jna;
 
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "mechanism", "pParameter", "ulParameterLen" })
 public class CK_MECHANISM extends Pkcs11Structure {
 
     public NativeLong mechanism;
@@ -82,10 +81,5 @@ public class CK_MECHANISM extends Pkcs11Structure {
         mechanism = mech;
         pParameter = pParam;
         ulParameterLen = ulParamLen;
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList("mechanism", "pParameter", "ulParameterLen");
     }
 }

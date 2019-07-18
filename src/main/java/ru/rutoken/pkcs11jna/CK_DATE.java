@@ -7,10 +7,9 @@
 package ru.rutoken.pkcs11jna;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "year", "month", "day" })
 public class CK_DATE extends Pkcs11Structure {
     public byte[] year = new byte[4];
 
@@ -30,10 +29,5 @@ public class CK_DATE extends Pkcs11Structure {
         this.year = year;
         this.month = month;
         this.day = day;
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList("year", "month", "day");
     }
 }

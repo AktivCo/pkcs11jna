@@ -59,10 +59,9 @@ package ru.rutoken.pkcs11jna;
  */
 
 import com.sun.jna.NativeLong;
+import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "ulMinKeySize", "ulMaxKeySize", "flags" })
 public class CK_MECHANISM_INFO extends Pkcs11Structure {
 
     public NativeLong ulMinKeySize;
@@ -79,10 +78,5 @@ public class CK_MECHANISM_INFO extends Pkcs11Structure {
         this.ulMinKeySize = minKeySize;
         this.ulMaxKeySize = maxKeySize;
         this.flags = flags;
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList("ulMinKeySize", "ulMaxKeySize", "flags");
     }
 }

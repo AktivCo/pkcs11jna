@@ -59,10 +59,9 @@ package ru.rutoken.pkcs11jna;
  */
 
 import com.sun.jna.NativeLong;
+import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "slotID", "state", "flags", "ulDeviceError" })
 public class CK_SESSION_INFO extends Pkcs11Structure {
 
     public NativeLong slotID;
@@ -86,10 +85,4 @@ public class CK_SESSION_INFO extends Pkcs11Structure {
         this.flags = flags;
         this.ulDeviceError = ulDeviceError;
     }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList("slotID", "state", "flags", "ulDeviceError");
-    }
-
 }

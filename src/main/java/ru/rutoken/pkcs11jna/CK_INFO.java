@@ -59,10 +59,9 @@ package ru.rutoken.pkcs11jna;
  */
 
 import com.sun.jna.NativeLong;
+import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "cryptokiVersion", "manufacturerID", "flags", "libraryDescription", "libraryVersion" })
 public class CK_INFO extends Pkcs11Structure {
 
     public CK_VERSION cryptokiVersion;
@@ -88,15 +87,4 @@ public class CK_INFO extends Pkcs11Structure {
         this.libraryDescription = libDesc;
         this.libraryVersion = libVer;
     }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList(
-                "cryptokiVersion",
-                "manufacturerID",
-                "flags",
-                "libraryDescription",
-                "libraryVersion");
-    }
-
 }

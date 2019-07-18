@@ -10,11 +10,10 @@ package ru.rutoken.pkcs11jna;
  */
 
 import com.sun.jna.NativeLong;
-
-import java.util.Arrays;
-import java.util.List;
+import com.sun.jna.Structure;
 
 /* CK_VOLUME_INFO_EXTENDED provides extended information about a TM2 token */
+@Structure.FieldOrder({ "idVolume", "volumeSize", "accessMode", "volumeOwner", "flags" })
 public class CK_VOLUME_INFO_EXTENDED extends Pkcs11Structure {
 
     /* volume identifier */
@@ -38,10 +37,5 @@ public class CK_VOLUME_INFO_EXTENDED extends Pkcs11Structure {
         this.accessMode = accessMode;
         this.volumeOwner = volumeOwner;
         this.flags = flags;
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList("idVolume", "volumeSize", "accessMode", "volumeOwner", "flags");
     }
 }

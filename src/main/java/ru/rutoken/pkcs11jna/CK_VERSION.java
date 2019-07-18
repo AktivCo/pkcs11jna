@@ -60,9 +60,7 @@ package ru.rutoken.pkcs11jna;
 
 import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "major", "minor" })
 public class CK_VERSION extends Pkcs11Structure {
     public byte major; /* integer portion of version number */
     public byte minor; /* 1/100ths portion of version number */
@@ -92,11 +90,6 @@ public class CK_VERSION extends Pkcs11Structure {
         buffer.append(m);
 
         return buffer.toString();
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList("major", "minor");
     }
 
     public static class ByReference extends CK_VERSION implements Structure.ByReference {

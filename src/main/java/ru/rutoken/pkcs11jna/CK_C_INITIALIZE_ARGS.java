@@ -7,11 +7,9 @@ package ru.rutoken.pkcs11jna;
 
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
-
+@Structure.FieldOrder({ "CreateMutex", "DestroyMutex", "LockMutex", "UnlockMutex", "flags", "pReserved" })
 public class CK_C_INITIALIZE_ARGS extends Pkcs11Structure {
     public Pointer CreateMutex;
     public Pointer DestroyMutex;
@@ -32,16 +30,5 @@ public class CK_C_INITIALIZE_ARGS extends Pkcs11Structure {
         this.flags = flags;
         this.pReserved = pReserved;
 
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList(
-                "CreateMutex",
-                "DestroyMutex",
-                "LockMutex",
-                "UnlockMutex",
-                "flags",
-                "pReserved");
     }
 }

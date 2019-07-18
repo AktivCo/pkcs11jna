@@ -11,5 +11,5 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.java.dev.jna:jna:4.5.1'
+    implementation 'net.java.dev.jna:jna:5.4.0'
 }

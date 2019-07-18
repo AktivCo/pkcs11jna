@@ -5,9 +5,7 @@ import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-import java.util.Arrays;
-import java.util.List;
-
+@Structure.FieldOrder({ "pData", "ulSize" })
 public class CK_VENDOR_BUFFER extends Pkcs11Structure {
 
     public Pointer pData; //CK_BYTE_PTR
@@ -29,13 +27,6 @@ public class CK_VENDOR_BUFFER extends Pkcs11Structure {
         } else {
             ulSize = new NativeLong(0);
         }
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList(
-                "pData",
-                "ulSize");
     }
 
     public static class ByReference extends CK_VENDOR_BUFFER implements Structure.ByReference {

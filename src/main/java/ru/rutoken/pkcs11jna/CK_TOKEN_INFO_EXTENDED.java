@@ -10,11 +10,14 @@ package ru.rutoken.pkcs11jna;
  */
 
 import com.sun.jna.NativeLong;
-
-import java.util.Arrays;
-import java.util.List;
+import com.sun.jna.Structure;
 
 /* CK_TOKEN_INFO_EXTENDED provides extended information about a token */
+@Structure.FieldOrder({ "ulSizeofThisStructure", "ulTokenType", "ulProtocolNumber", "ulMicrocodeNumber",
+        "ulOrderNumber", "flags", "ulMaxAdminPinLen", "ulMinAdminPinLen", "ulMaxUserPinLen",
+        "ulMinUserPinLen", "ulMaxAdminRetryCount", "ulAdminRetryCountLeft", "ulMaxUserRetryCount",
+        "ulUserRetryCountLeft", "serialNumber", "ulTotalMemory", "ulFreeMemory", "ATR", "ulATRLen",
+        "ulTokenClass", "ulBatteryVoltage", "ulBodyColor" })
 public class CK_TOKEN_INFO_EXTENDED extends Pkcs11Structure {
 
     /*
@@ -106,32 +109,5 @@ public class CK_TOKEN_INFO_EXTENDED extends Pkcs11Structure {
         this.ulTokenClass = ulTokenClass;
         this.ulBatteryVoltage = ulBatteryVoltage;
         this.ulBodyColor = ulBodyColor;
-    }
-
-    @Override
-    protected List<String> getFieldOrder() {
-        return Arrays.asList(
-                "ulSizeofThisStructure",
-                "ulTokenType",
-                "ulProtocolNumber",
-                "ulMicrocodeNumber",
-                "ulOrderNumber",
-                "flags",
-                "ulMaxAdminPinLen",
-                "ulMinAdminPinLen",
-                "ulMaxUserPinLen",
-                "ulMinUserPinLen",
-                "ulMaxAdminRetryCount",
-                "ulAdminRetryCountLeft",
-                "ulMaxUserRetryCount",
-                "ulUserRetryCountLeft",
-                "serialNumber",
-                "ulTotalMemory",
-                "ulFreeMemory",
-                "ATR",
-                "ulATRLen",
-                "ulTokenClass",
-                "ulBatteryVoltage",
-                "ulBodyColor");
     }
 }
