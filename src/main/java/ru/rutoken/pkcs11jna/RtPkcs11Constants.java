@@ -110,19 +110,22 @@ public final class RtPkcs11Constants {
     public static final long TOKEN_TYPE_RUTOKEN_ECP = 0x01L;
     public static final long TOKEN_TYPE_RUTOKEN_LITE = 0x02L;
     public static final long TOKEN_TYPE_RUTOKEN = 0x03L;
-    public static final long TOKEN_TYPE_RUTOKEN_PINPAD_FAMILY = 0x04L;
     public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_USB = 0x09L;
     public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_BT = 0x69L;
     public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_UART = 0xA9L;
-    public static final long TOKEN_TYPE_RUTOKEN_WEB = 0x23L;
     public static final long TOKEN_TYPE_RUTOKEN_SC_JC = 0x41L;
+    public static final long TOKEN_TYPE_RUTOKEN_SCDUAL = 0x49L;
+    public static final long TOKEN_TYPE_RUTOKEN_SCDUAL_NFC = 0xC9L;
     public static final long TOKEN_TYPE_RUTOKEN_LITE_SC_JC = 0x42L;
-    public static final long TOKEN_TYPE_RUTOKEN_ECP_SD = 0x81L;
-    public static final long TOKEN_TYPE_RUTOKEN_LITE_SD = 0x82L;
     public static final long TOKEN_TYPE_RUTOKEN_MIKRON = 0x05L;
     public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SC = 0x45L;
     public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL = 0x4DL;
     public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL_NFC = 0xCDL;
+    /* Deprecated */
+    public static final long TOKEN_TYPE_RUTOKEN_PINPAD_FAMILY = 0x04L;
+    public static final long TOKEN_TYPE_RUTOKEN_WEB = 0x23L;
+    public static final long TOKEN_TYPE_RUTOKEN_ECP_SD = 0x81L;
+    public static final long TOKEN_TYPE_RUTOKEN_LITE_SD = 0x82L;
 
     /* TOKEN_FLAGS_SUPPORT_FKN - if it is set, that
      * means that token support CryptoPro FKN
