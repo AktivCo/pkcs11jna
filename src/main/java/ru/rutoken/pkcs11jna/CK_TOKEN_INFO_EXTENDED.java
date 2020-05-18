@@ -25,7 +25,10 @@ public class CK_TOKEN_INFO_EXTENDED extends Pkcs11Structure {
      * of filled structure
      */
     public NativeLong ulSizeofThisStructure;
-    /* type of token: */
+    /*
+     * This field is deprecated in Rutoken PKCS11 library version 2.0.5.0 and above.
+     * If you need to check current token connection type you should use hardware feature instead.
+     */
     public NativeLong ulTokenType; /* see below */
     /* exchange protocol number */
     public NativeLong ulProtocolNumber;

@@ -105,7 +105,10 @@ public final class RtPkcs11Constants {
      */
     public static final long TOKEN_FLAGS_USER_PIN_NOT_DEFAULT = 0x00000008L;
 
-    /* Token types (field "ulTokenType") */
+    /*
+     * Token types (CK_TOKEN_INFO_EXTENDED field "ulTokenType")
+     * CK_TOKEN_INFO_EXTENDED's field ulTokenType is deprecated.
+     */
     public static final long TOKEN_TYPE_UNKNOWN = 0xFFL;
     public static final long TOKEN_TYPE_RUTOKEN_ECP = 0x01L;
     public static final long TOKEN_TYPE_RUTOKEN_LITE = 0x02L;
@@ -114,6 +117,8 @@ public final class RtPkcs11Constants {
     public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_BT = 0x69L;
     public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_UART = 0xA9L;
     public static final long TOKEN_TYPE_RUTOKEN_SC_JC = 0x41L;
+    public static final long TOKEN_TYPE_RUTOKEN_ECP_SC = TOKEN_TYPE_RUTOKEN_SC_JC;
+    public static final long TOKEN_TYPE_RUTOKEN_ECP_NFC = 0xC1L;
     public static final long TOKEN_TYPE_RUTOKEN_SCDUAL = 0x49L;
     public static final long TOKEN_TYPE_RUTOKEN_SCDUAL_NFC = 0xC9L;
     public static final long TOKEN_TYPE_RUTOKEN_LITE_SC_JC = 0x42L;
@@ -121,11 +126,24 @@ public final class RtPkcs11Constants {
     public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SC = 0x45L;
     public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL = 0x4DL;
     public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL_NFC = 0xCDL;
-    /* Deprecated */
     public static final long TOKEN_TYPE_RUTOKEN_PINPAD_FAMILY = 0x04L;
     public static final long TOKEN_TYPE_RUTOKEN_WEB = 0x23L;
     public static final long TOKEN_TYPE_RUTOKEN_ECP_SD = 0x81L;
     public static final long TOKEN_TYPE_RUTOKEN_LITE_SD = 0x82L;
+
+    /*
+     * Token class (CK_TOKEN_INFO_EXTENDED field "ulTokenClass")
+     */
+    public static final long TOKEN_CLASS_UNKNOWN = 0xFFFFFFFFL;
+    public static final long TOKEN_CLASS_S = 0x00L;
+    public static final long TOKEN_CLASS_ECP = 0x01L;
+    public static final long TOKEN_CLASS_LITE = 0x02L;
+    public static final long TOKEN_CLASS_ECP_BT = 0x09L;
+    /* Deprecated */
+    public static final long TOKEN_CLASS_WEB = 0x03L;
+    public static final long TOKEN_CLASS_PINPAD = 0x04L;
+    public static final long TOKEN_CLASS_ECPDUAL = TOKEN_CLASS_ECP_BT;
+
 
     /* TOKEN_FLAGS_SUPPORT_FKN - if it is set, that
      * means that token support CryptoPro FKN
