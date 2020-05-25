@@ -105,6 +105,66 @@ public final class RtPkcs11Constants {
      */
     public static final long TOKEN_FLAGS_USER_PIN_NOT_DEFAULT = 0x00000008L;
 
+    /* TOKEN_FLAGS_SUPPORT_FKN - if it is set, that
+     * means that token support CryptoPro FKN
+     */
+    public static final long TOKEN_FLAGS_SUPPORT_FKN = 0x00000010L;
+
+    /* TOKEN_FLAGS_SUPPORT_SM - if it is set, that
+     * means that token supports Secure Messaging.
+     * DEPRECATED: use TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING instead.
+     */
+    public static final long TOKEN_FLAGS_SUPPORT_SM = 0x00000040L;
+
+    /* TOKEN_FLAGS_HAS_FLASH_DRIVE - if it is set, that means
+     * that token has Flash Drive
+     */
+    public static final long TOKEN_FLAGS_HAS_FLASH_DRIVE = 0x00000080L;
+
+    /* TOKEN_FLAGS_CAN_CHANGE_SM_MODE - if it is set, that means
+     * that token can be formatted to support SM. This flag
+     * is deprecated, use TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING
+     * instead.
+     */
+    public static final long TOKEN_FLAGS_CAN_CHANGE_SM_MODE = 0x00000100L;
+
+    /* TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING - if it is set, that
+     * means that token supports Secure Messaging
+     */
+    public static final long TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING = 0x00000100L;
+
+    /* TOKEN_FLAGS_HAS_BUTTON - if it is set, that means
+     * that token is Rutoken Touch
+     */
+    public static final long TOKEN_FLAGS_HAS_BUTTON = 0x00000200L;
+
+    /* TOKEN_FLAGS_SUPPORT_JOURNAL - if it is set, that means
+     * that token supports journal
+     */
+    public static final long TOKEN_FLAGS_SUPPORT_JOURNAL = 0x00000400L;
+
+    /* TOKEN_FLAGS_USER_PIN_UTF8 - if it is set, that means
+     * that user PIN in UTF-8
+     */
+    public static final long TOKEN_FLAGS_USER_PIN_UTF8 = 0x00000800L;
+
+    /* TOKEN_FLAGS_ADMIN_PIN_UTF8 - if it is set, that means
+     * that admin PIN in UTF-8
+     */
+    public static final long TOKEN_FLAGS_ADMIN_PIN_UTF8 = 0x00001000L;
+
+    /* TOKEN_FLAGS_FW_CHECKSUM_UNAVAILIBLE - if it is set, that
+     * means Token does not support firmware checksum request
+     * and 'ulFirmwareChecksum' can not be used
+     */
+    public static final long TOKEN_FLAGS_FW_CHECKSUM_UNAVAILIBLE = 0x40000000L;
+
+    /* TOKEN_FLAGS_FW_CHECKSUM_INVALID - if it is set, that
+     * means that 'ulFirmwareChecksum' field contains different
+     * from the reference (stored at Token) firmware checksum
+     */
+    public static final long TOKEN_FLAGS_FW_CHECKSUM_INVALID = 0x80000000L;
+
     /*
      * Token types (CK_TOKEN_INFO_EXTENDED field "ulTokenType")
      * CK_TOKEN_INFO_EXTENDED's field ulTokenType is deprecated.
@@ -143,17 +203,6 @@ public final class RtPkcs11Constants {
     public static final long TOKEN_CLASS_WEB = 0x03L;
     public static final long TOKEN_CLASS_PINPAD = 0x04L;
     public static final long TOKEN_CLASS_ECPDUAL = TOKEN_CLASS_ECP_BT;
-
-
-    /* TOKEN_FLAGS_SUPPORT_FKN - if it is set, that
-     * means that token support CryptoPro FKN
-     */
-    public static final long TOKEN_FLAGS_SUPPORT_FKN = 0x00000010L;
-
-    /* TOKEN_FLAGS_SUPPORT_SM - if it is set, that
-     * means that token supports Secure Messaging
-     */
-    public static final long TOKEN_FLAGS_SUPPORT_SM = 0x00000040L;
 
     /* Body color of the token */
     public static final long TOKEN_BODY_COLOR_UNKNOWN = 0L;
