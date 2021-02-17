@@ -41,44 +41,71 @@ public final class RtPkcs11Constants {
     /*-----------------------------------------------------------------*/
 
     public static final long NSSCK_VENDOR_PKCS11_RU_TEAM = (Pkcs11Constants.CKR_VENDOR_DEFINED | 0x54321000L);
+    @Deprecated
     public static final long CK_VENDOR_PKCS11_RU_TEAM_TK26 = NSSCK_VENDOR_PKCS11_RU_TEAM;
+    public static final long CK_VENDOR_PKCS11_RU_TEAM_TC26 = NSSCK_VENDOR_PKCS11_RU_TEAM;
 
     /* GOST KEY TYPES */
     public static final long CKK_GOSTR3410 = 0x00000030L;
+    public static final long CKK_GOSTR3410_256 = CKK_GOSTR3410;
+    public static final long CKK_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x003L);
     public static final long CKK_GOSTR3411 = 0x00000031L;
     public static final long CKK_GOST28147 = 0x00000032L;
-    public static final long CKK_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x003L);
 
     /* GOST OBJECT ATTRIBUTES */
     public static final long CKA_GOSTR3410_PARAMS = 0x00000250L;
+    public static final long CKA_GOSTR3410_256PARAMS = CKA_GOSTR3410_PARAMS;
     public static final long CKA_GOSTR3411_PARAMS = 0x00000251L;
     public static final long CKA_GOST28147_PARAMS = 0x00000252L;
 
+    /* PKCS #5 PRF Functions */
+    public static final long CKP_PKCS5_PBKD2_HMAC_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x003);
+
     /* GOST MECHANISMS */
     public static final long CKM_GOSTR3410_KEY_PAIR_GEN = 0x00001200L;
+    public static final long CKM_GOSTR3410_256_KEY_PAIR_GEN = CKM_GOSTR3410_KEY_PAIR_GEN;
     public static final long CKM_GOSTR3410 = 0x00001201L;
     public static final long CKM_GOSTR3410_WITH_GOSTR3411 = 0x00001202L;
+    public static final long CKM_GOSTR3410_WITH_GOSTR3411_94 = CKM_GOSTR3410_WITH_GOSTR3411;
     public static final long CKM_GOSTR3410_KEY_WRAP = 0x00001203L;
     public static final long CKM_GOSTR3410_DERIVE = 0x00001204L;
-    public static final long CKM_GOSTR3410_512_KEY_PAIR_GEN = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x005L);
-    public static final long CKM_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x006L);
-    public static final long CKM_GOSTR3410_12_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x007L);
-    public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_256 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x008L);
-    public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_512 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x009L);
+    public static final long CKM_GOSTR3410_512_KEY_PAIR_GEN = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x005L);
+    public static final long CKM_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x006L);
+    public static final long CKM_GOSTR3410_2012_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x007L);
+    public static final long CKM_GOSTR3410_12_DERIVE = CKM_GOSTR3410_2012_DERIVE;
+    public static final long CKM_GOSTR3410_WITH_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x008L);
+    public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_256 = CKM_GOSTR3410_WITH_GOSTR3411_2012_256;
+    public static final long CKM_GOSTR3410_WITH_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x009L);
+    public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_512 = CKM_GOSTR3410_WITH_GOSTR3411_2012_512;
+    public static final long CKM_GOSTR3410_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x00A);
+    public static final long CKM_GOSTR3410_512_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x00B);
+
     public static final long CKM_GOSTR3411 = 0x00001210L;
+    public static final long CKM_GOSTR3411_94 = CKM_GOSTR3411;
     public static final long CKM_GOSTR3411_HMAC = 0x00001211L;
-    public static final long CKM_GOSTR3411_12_256 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x012L);
-    public static final long CKM_GOSTR3411_12_512 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x013L);
-    public static final long CKM_GOSTR3411_12_256_HMAC = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x014L);
-    public static final long CKM_GOSTR3411_12_512_HMAC = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x015L);
+    public static final long CKM_GOSTR3411_94_HMAC = CKM_GOSTR3411_HMAC;
+    public static final long CKM_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x012L);
+    public static final long CKM_GOSTR3411_12_256 = CKM_GOSTR3411_2012_256;
+    public static final long CKM_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x013L);
+    public static final long CKM_GOSTR3411_12_512 = CKM_GOSTR3411_2012_512;
+    public static final long CKM_GOSTR3411_2012_256_HMAC = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x014L);
+    public static final long CKM_GOSTR3411_12_256_HMAC = CKM_GOSTR3411_2012_256_HMAC;
+    public static final long CKM_GOSTR3411_2012_512_HMAC = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x015L);
+    public static final long CKM_GOSTR3411_12_512_HMAC = CKM_GOSTR3411_2012_512_HMAC;
+
     public static final long CKM_GOST28147_KEY_GEN = 0x00001220L;
     public static final long CKM_GOST28147_ECB = 0x00001221L;
     public static final long CKM_GOST28147 = 0x00001222L;
     public static final long CKM_GOST28147_MAC = 0x00001223L;
     public static final long CKM_GOST28147_KEY_WRAP = 0x00001224L;
 
-    public static final long CKM_KDF_4357 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x025L);
-    public static final long CKM_KDF_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TK26 | 0x026L);
+    public static final long CKM_TLS_GOST_PRF_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x016);
+    public static final long CKM_TLS_GOST_PRF_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x017);
+    public static final long CKM_TLS_GOST_PRE_MASTER_KEY_GEN = CKM_GOST28147_KEY_GEN;
+    public static final long CKM_TLS_GOST_MASTER_KEY_DERIVE_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x018);
+
+    public static final long CKM_KDF_4357 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x025L);
+    public static final long CKM_KDF_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x026L);
 
     public static final long CKD_CPDIVERSIFY_KDF = 0x00000009L;
     public static final long CKP_PKCS5_PBKD2_HMAC_GOSTR3411 = 0x00000002L;
