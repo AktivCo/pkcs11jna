@@ -32,7 +32,10 @@ public final class RtPkcs11Constants {
     public static final long CKR_RTPKCS11_RSF_DATA_CORRUPTED = Pkcs11Constants.CKR_VENDOR_DEFINED + 5L;
     public static final long CKR_SM_PASSWORD_INVALID = Pkcs11Constants.CKR_VENDOR_DEFINED + 6L;
     public static final long CKR_LICENSE_READ_ONLY = Pkcs11Constants.CKR_VENDOR_DEFINED + 7L;
+    public static final long CKR_VENDOR_EMITENT_KEY_BLOCKED = Pkcs11Constants.CKR_VENDOR_DEFINED + 8L;
     public static final long CKR_CERT_CHAIN_NOT_VERIFIED = Pkcs11Constants.CKR_VENDOR_DEFINED + 9L;
+    public static final long CKR_INAPPROPRIATE_PIN = Pkcs11Constants.CKR_VENDOR_DEFINED + 10L;
+    public static final long CKR_PIN_IN_HISTORY = Pkcs11Constants.CKR_VENDOR_DEFINED + 11L;
 
     /* Необходимые определения для работы с расширениями PKCS для ГОСТ */
     public static final long NSSCK_VENDOR_PKCS11_RU_TEAM = (Pkcs11Constants.CKR_VENDOR_DEFINED | 0x54321000L);
