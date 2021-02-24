@@ -7,6 +7,7 @@
 package ru.rutoken.pkcs11jna;
 
 import com.sun.jna.NativeLong;
+
 import java.util.Objects;
 
 public class NativeComparator {

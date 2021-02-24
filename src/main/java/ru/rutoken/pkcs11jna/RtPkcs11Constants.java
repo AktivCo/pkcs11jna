@@ -5,8 +5,6 @@
 
 package ru.rutoken.pkcs11jna;
 
-import com.sun.jna.NativeLong;
-
 import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKM_VENDOR_DEFINED;
 
 /* Derived from rtpkcs11t.h include file for PKCS #11. */
@@ -16,15 +14,7 @@ import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKM_VENDOR_DEFINED;
  */
 
 public final class RtPkcs11Constants {
-
-    /**
-     * Функция для сравнения констант с возвращаемым из pkcs значением
-     */
-    public static boolean equalsPkcsRV(long l, NativeLong pkcsRV) {
-        return NativeComparator.isRawUnsignedNativeLongEqualsLong(pkcsRV, l);
-    }
-
-    /* Расширенные коды ошибок */
+    /* Extended error codes */
     public static final long CKR_CORRUPTED_MAPFILE = Pkcs11Constants.CKR_VENDOR_DEFINED + 1L;
     public static final long CKR_WRONG_VERSION_FIELD = Pkcs11Constants.CKR_VENDOR_DEFINED + 2L;
     public static final long CKR_WRONG_PKCS1_ENCODING = Pkcs11Constants.CKR_VENDOR_DEFINED + 3L;
@@ -83,8 +73,8 @@ public final class RtPkcs11Constants {
     public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_256 = CKM_GOSTR3410_WITH_GOSTR3411_2012_256;
     public static final long CKM_GOSTR3410_WITH_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x009L);
     public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_512 = CKM_GOSTR3410_WITH_GOSTR3411_2012_512;
-    public static final long CKM_GOSTR3410_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x00A);
-    public static final long CKM_GOSTR3410_512_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x00B);
+    public static final long CKM_GOSTR3410_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x00A);
+    public static final long CKM_GOSTR3410_512_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x00B);
 
     public static final long CKM_GOSTR3411 = 0x00001210L;
     public static final long CKM_GOSTR3411_94 = CKM_GOSTR3411;
@@ -105,10 +95,10 @@ public final class RtPkcs11Constants {
     public static final long CKM_GOST28147_MAC = 0x00001223L;
     public static final long CKM_GOST28147_KEY_WRAP = 0x00001224L;
 
-    public static final long CKM_TLS_GOST_PRF_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x016);
-    public static final long CKM_TLS_GOST_PRF_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x017);
+    public static final long CKM_TLS_GOST_PRF_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x016);
+    public static final long CKM_TLS_GOST_PRF_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x017);
     public static final long CKM_TLS_GOST_PRE_MASTER_KEY_GEN = CKM_GOST28147_KEY_GEN;
-    public static final long CKM_TLS_GOST_MASTER_KEY_DERIVE_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 |0x018);
+    public static final long CKM_TLS_GOST_MASTER_KEY_DERIVE_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x018);
 
     public static final long CKM_KDF_4357 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x025L);
     public static final long CKM_KDF_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x026L);
@@ -186,7 +176,8 @@ public final class RtPkcs11Constants {
     /**
      * TOKEN_FLAGS_SUPPORT_SM - if it is set, that
      * means that token supports Secure Messaging.
-     * DEPRECATED: use TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING instead.
+     *
+     * @deprecated use TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING instead.
      */
     @Deprecated
     public static final long TOKEN_FLAGS_SUPPORT_SM = 0x00000040L;
@@ -199,9 +190,9 @@ public final class RtPkcs11Constants {
 
     /**
      * TOKEN_FLAGS_CAN_CHANGE_SM_MODE - if it is set, that means
-     * that token can be formatted to support SM. This flag
-     * is deprecated, use TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING
-     * instead.
+     * that token can be formatted to support SM.
+     *
+     * @deprecated use TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING instead.
      */
     @Deprecated
     public static final long TOKEN_FLAGS_CAN_CHANGE_SM_MODE = 0x00000100L;
@@ -276,9 +267,7 @@ public final class RtPkcs11Constants {
     public static final long TOKEN_TYPE_RUTOKEN_ECP_SD = 0x81L;
     public static final long TOKEN_TYPE_RUTOKEN_LITE_SD = 0x82L;
 
-    /*
-     * Token class (CK_TOKEN_INFO_EXTENDED field "ulTokenClass")
-     */
+    /* Token class (CK_TOKEN_INFO_EXTENDED field "ulTokenClass") */
     public static final long TOKEN_CLASS_UNKNOWN = 0xFFFFFFFFL;
     public static final long TOKEN_CLASS_S = 0x00L;
     public static final long TOKEN_CLASS_ECP = 0x01L;
@@ -288,6 +277,7 @@ public final class RtPkcs11Constants {
     public static final long TOKEN_CLASS_WEB = 0x03L;
     @Deprecated
     public static final long TOKEN_CLASS_PINPAD = 0x04L;
+    @Deprecated
     public static final long TOKEN_CLASS_ECPDUAL = TOKEN_CLASS_ECP_BT;
 
     /* Body color of the token */

@@ -52,7 +52,7 @@
 
 package ru.rutoken.pkcs11jna;
 
-/**
+/*
  * @author Karl Scheibelhofer <Karl.Scheibelhofer@iaik.at>
  * @author Martin Schlaeffer <schlaeff@sbox.tugraz.at>
  * @author Aktiv Co. <hotline@rutoken.ru>
@@ -61,19 +61,15 @@ package ru.rutoken.pkcs11jna;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 
-@Structure.FieldOrder({ "slotID", "state", "flags", "ulDeviceError" })
+@Structure.FieldOrder({"slotID", "state", "flags", "ulDeviceError"})
 public class CK_SESSION_INFO extends Pkcs11Structure {
-
     public NativeLong slotID;
-
     public NativeLong state;
-
-    public NativeLong flags; /* see below */
-
-    /*
-     * ulDeviceError was changed from CK_USHORT to CK_ULONG for v2.0
+    public NativeLong flags;
+    /**
+     * Device-dependent error code
      */
-    public NativeLong ulDeviceError; /* device-dependent error code */
+    public NativeLong ulDeviceError;
 
     public CK_SESSION_INFO() {
     }

@@ -12,19 +12,30 @@ package ru.rutoken.pkcs11jna;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 
-/* CK_VOLUME_INFO_EXTENDED provides extended information about a TM2 token */
-@Structure.FieldOrder({ "idVolume", "volumeSize", "accessMode", "volumeOwner", "flags" })
+/**
+ * Provides extended information about Rutoken ECP Flash partitions
+ */
+@Structure.FieldOrder({"idVolume", "volumeSize", "accessMode", "volumeOwner", "flags"})
 public class CK_VOLUME_INFO_EXTENDED extends Pkcs11Structure {
-
-    /* volume identifier */
+    /**
+     * Volume identifier
+     */
     public NativeLong idVolume;
-    /* volume size, Mb, not bigger than the whole disk size */
+    /**
+     * Volume size, Mb, not bigger than the whole disk size
+     */
     public NativeLong volumeSize;
-    /* access flags */
+    /**
+     * Access flags
+     */
     public NativeLong accessMode;
-    /* owner of a volume (who can change access flags) */
+    /**
+     * Owner of a volume (who can change access flags)
+     */
     public NativeLong volumeOwner;
-    /* rest flags */
+    /**
+     * Rest flags
+     */
     public NativeLong flags;
 
     public CK_VOLUME_INFO_EXTENDED() {

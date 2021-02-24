@@ -8,7 +8,7 @@ package ru.rutoken.pkcs11jna;
 import com.sun.jna.Function;
 import com.sun.jna.Structure;
 
-@Structure.FieldOrder({ "version", "C_Initialize", "C_Finalize", "C_GetInfo", "C_GetFunctionList", "C_GetSlotList",
+@Structure.FieldOrder({"version", "C_Initialize", "C_Finalize", "C_GetInfo", "C_GetFunctionList", "C_GetSlotList",
         "C_GetSlotInfo", "C_GetTokenInfo", "C_GetMechanismList", "C_GetMechanismInfo", "C_InitToken", "C_InitPIN",
         "C_SetPIN", "C_OpenSession", "C_CloseSession", "C_CloseAllSessions", "C_GetSessionInfo", "C_GetOperationState",
         "C_SetOperationState", "C_Login", "C_Logout", "C_CreateObject", "C_CopyObject", "C_DestroyObject", "C_GetObjectSize",
@@ -19,7 +19,7 @@ import com.sun.jna.Structure;
         "C_VerifyUpdate", "C_VerifyFinal", "C_VerifyRecoverInit", "C_VerifyRecover", "C_DigestEncryptUpdate",
         "C_DecryptDigestUpdate", "C_SignEncryptUpdate", "C_DecryptVerifyUpdate", "C_GenerateKey", "C_GenerateKeyPair",
         "C_WrapKey", "C_UnwrapKey", "C_DeriveKey", "C_SeedRandom", "C_GenerateRandom", "C_GetFunctionStatus",
-        "C_CancelFunction", "C_WaitForSlotEvent" })
+        "C_CancelFunction", "C_WaitForSlotEvent"})
 public class CK_FUNCTION_LIST extends Pkcs11Structure {
     public CK_VERSION.ByReference version;
     public Function C_Initialize;

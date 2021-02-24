@@ -52,7 +52,7 @@
 
 package ru.rutoken.pkcs11jna;
 
-/**
+/*
  * @author Karl Scheibelhofer <Karl.Scheibelhofer@iaik.at>
  * @author Martin Schlaeffer <schlaeff@sbox.tugraz.at>
  * @author Aktiv Co. <hotline@rutoken.ru>
@@ -61,19 +61,12 @@ package ru.rutoken.pkcs11jna;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 
-@Structure.FieldOrder({ "cryptokiVersion", "manufacturerID", "flags", "libraryDescription", "libraryVersion" })
+@Structure.FieldOrder({"cryptokiVersion", "manufacturerID", "flags", "libraryDescription", "libraryVersion"})
 public class CK_INFO extends Pkcs11Structure {
-
     public CK_VERSION cryptokiVersion;
-
     public byte[] manufacturerID = new byte[32];
-
     public NativeLong flags;
-
-    /* libraryDescription and libraryVersion are new for v2.0 */
-
     public byte[] libraryDescription = new byte[32];
-
     public CK_VERSION libraryVersion;
 
     public CK_INFO() {

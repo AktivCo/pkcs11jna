@@ -31,7 +31,6 @@ public class CK_C_INITIALIZE_ARGS extends Pkcs11Structure {
         this.UnlockMutex = UnlockMutex;
         this.flags = flags;
         this.pReserved = pReserved;
-
     }
 
     public interface CreateMutexCallback extends Callback {

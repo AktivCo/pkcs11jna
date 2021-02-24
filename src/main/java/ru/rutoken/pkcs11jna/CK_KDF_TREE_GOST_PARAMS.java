@@ -13,8 +13,14 @@ import com.sun.jna.Structure;
 @Structure.FieldOrder({"ulLabelLength", "pLabel", "ulSeedLength", "pSeed", "ulR", "ulL", "ulOffset"})
 public class CK_KDF_TREE_GOST_PARAMS extends Pkcs11Structure {
     public NativeLong ulLabelLength;
+    /**
+     * CK_BYTE_PTR
+     */
     public Pointer pLabel;
     public NativeLong ulSeedLength;
+    /**
+     * CK_BYTE_PTR
+     */
     public Pointer pSeed;
     public NativeLong ulR;
     public NativeLong ulL;

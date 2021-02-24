@@ -20,23 +20,14 @@ package ru.rutoken.pkcs11jna;
  * any particular purpose. It is provided "as is" without express or implied
  * warranty of any kind.
  */
+
 /*
  * @author Aktiv Co. <hotline@rutoken.ru>
  */
 
-
 import com.sun.jna.NativeLong;
 
 public final class Pkcs11Constants {
-
-    /**
-     * Функция для сравнения констант с возвращаемым из pkcs значением
-     */
-    public static boolean equalsPkcsRV(long l, NativeLong pkcsRV) {
-        return NativeComparator.isRawUnsignedNativeLongEqualsLong(pkcsRV, l);
-    }
-
-
     public static final long CRYPTOKI_VERSION_MAJOR = 2L;
     public static final long CRYPTOKI_VERSION_MINOR = 20L;
     public static final long CRYPTOKI_VERSION_AMENDMENT = 3L;
@@ -71,87 +62,120 @@ public final class Pkcs11Constants {
     public static final long CKF_LOGIN_REQUIRED = 0x00000004L;  /* user must login */
     public static final long CKF_USER_PIN_INITIALIZED = 0x00000008L;  /* normal user's PIN is set */
 
-    /* CKF_RESTORE_KEY_NOT_NEEDED is new for v2.0. If it is set,
+    /**
+     * CKF_RESTORE_KEY_NOT_NEEDED is new for v2.0. If it is set,
      * that means that *every* time the state of cryptographic
      * operations of a session is successfully saved, all keys
-     * needed to continue those operations are stored in the state */
+     * needed to continue those operations are stored in the state
+     */
     public static final long CKF_RESTORE_KEY_NOT_NEEDED = 0x00000020L;
 
-    /* CKF_CLOCK_ON_TOKEN is new for v2.0. If it is set, that means
+    /**
+     * CKF_CLOCK_ON_TOKEN is new for v2.0. If it is set, that means
      * that the token has some sort of clock.  The time on that
-     * clock is returned in the token info structure */
+     * clock is returned in the token info structure
+     */
     public static final long CKF_CLOCK_ON_TOKEN = 0x00000040L;
 
-    /* CKF_PROTECTED_AUTHENTICATION_PATH is new for v2.0. If it is
+    /**
+     * CKF_PROTECTED_AUTHENTICATION_PATH is new for v2.0. If it is
      * set, that means that there is some way for the user to login
-     * without sending a PIN through the Cryptoki library itself */
+     * without sending a PIN through the Cryptoki library itself
+     */
     public static final long CKF_PROTECTED_AUTHENTICATION_PATH = 0x00000100L;
 
-    /* CKF_DUAL_CRYPTO_OPERATIONS is new for v2.0. If it is true,
+    /**
+     * CKF_DUAL_CRYPTO_OPERATIONS is new for v2.0. If it is true,
      * that means that a single session with the token can perform
      * dual simultaneous cryptographic operations (digest and
      * encrypt; decrypt and digest; sign and encrypt; and decrypt
-     * and sign) */
+     * and sign)
+     */
     public static final long CKF_DUAL_CRYPTO_OPERATIONS = 0x00000200L;
 
-    /* CKF_TOKEN_INITIALIZED is new for v2.10. If it is true, the
+    /**
+     * CKF_TOKEN_INITIALIZED is new for v2.10. If it is true, the
      * token has been initialized using C_InitializeToken or an
      * equivalent mechanism outside the scope of PKCS #11.
      * Calling C_InitializeToken when this flag is set will cause
-     * the token to be reinitialized. */
+     * the token to be reinitialized.
+     */
     public static final long CKF_TOKEN_INITIALIZED = 0x00000400L;
 
-    /* CKF_SECONDARY_AUTHENTICATION is new for v2.10. If it is
+    /**
+     * CKF_SECONDARY_AUTHENTICATION is new for v2.10. If it is
      * true, the token supports secondary authentication for
      * private key objects. This flag is deprecated in v2.11 and
-       onwards. */
+     * onwards.
+     */
     public static final long CKF_SECONDARY_AUTHENTICATION = 0x00000800L;
 
-    /* CKF_USER_PIN_COUNT_LOW is new for v2.10. If it is true, an
+    /**
+     * CKF_USER_PIN_COUNT_LOW is new for v2.10. If it is true, an
      * incorrect user login PIN has been entered at least once
-     * since the last successful authentication. */
+     * since the last successful authentication.
+     */
     public static final long CKF_USER_PIN_COUNT_LOW = 0x00010000L;
 
-    /* CKF_USER_PIN_FINAL_TRY is new for v2.10. If it is true,
-     * entering an incorrect user PIN will lock it. */
+    /**
+     * CKF_USER_PIN_FINAL_TRY is new for v2.10. If it is true,
+     * entering an incorrect user PIN will lock it.
+     */
     public static final long CKF_USER_PIN_FINAL_TRY = 0x00020000L;
 
-    /* CKF_USER_PIN_LOCKED is new for v2.10. If it is true, the
+    /**
+     * CKF_USER_PIN_LOCKED is new for v2.10. If it is true, the
      * user PIN has been locked. User login to the token is not
-     * possible. */
+     * possible.
+     */
     public static final long CKF_USER_PIN_LOCKED = 0x00040000L;
 
-    /* CKF_USER_PIN_TO_BE_CHANGED is new for v2.10. If it is true,
+    /**
+     * CKF_USER_PIN_TO_BE_CHANGED is new for v2.10. If it is true,
      * the user PIN value is the default value set by token
      * initialization or manufacturing, or the PIN has been
-     * expired by the card. */
+     * expired by the card.
+     */
     public static final long CKF_USER_PIN_TO_BE_CHANGED = 0x00080000L;
 
-    /* CKF_SO_PIN_COUNT_LOW is new for v2.10. If it is true, an
+    /**
+     * CKF_SO_PIN_COUNT_LOW is new for v2.10. If it is true, an
      * incorrect SO login PIN has been entered at least once since
-     * the last successful authentication. */
+     * the last successful authentication.
+     */
     public static final long CKF_SO_PIN_COUNT_LOW = 0x00100000L;
 
-    /* CKF_SO_PIN_FINAL_TRY is new for v2.10. If it is true,
-     * entering an incorrect SO PIN will lock it. */
+    /**
+     * CKF_SO_PIN_FINAL_TRY is new for v2.10. If it is true,
+     * entering an incorrect SO PIN will lock it.
+     */
     public static final long CKF_SO_PIN_FINAL_TRY = 0x00200000L;
 
-    /* CKF_SO_PIN_LOCKED is new for v2.10. If it is true, the SO
+    /**
+     * CKF_SO_PIN_LOCKED is new for v2.10. If it is true, the SO
      * PIN has been locked. SO login to the token is not possible.
      */
     public static final long CKF_SO_PIN_LOCKED = 0x00400000L;
 
-    /* CKF_SO_PIN_TO_BE_CHANGED is new for v2.10. If it is true,
+    /**
+     * CKF_SO_PIN_TO_BE_CHANGED is new for v2.10. If it is true,
      * the SO PIN value is the default value set by token
      * initialization or manufacturing, or the PIN has been
-     * expired by the card. */
+     * expired by the card.
+     */
     public static final long CKF_SO_PIN_TO_BE_CHANGED = 0x00800000L;
 
-    /* Security Officer */
+    /**
+     * Security Officer
+     */
     public static final long CKU_SO = 0L;
-    /* Normal user */
+    /**
+     * Normal user
+     */
     public static final long CKU_USER = 1L;
-    /* Context specific (added in v2.20) */
+    /**
+     * Context specific (added in v2.20)
+     */
     public static final long CKU_CONTEXT_SPECIFIC = 2L;
 
     public static final long CKS_RO_PUBLIC_SESSION = 0L;
@@ -163,8 +187,14 @@ public final class Pkcs11Constants {
     /* The flags are defined in the following table:
      *      Bit Flag                Mask        Meaning
      */
-    public static final long CKF_RW_SESSION = 0x00000002L;  /* session is r/w */
-    public static final long CKF_SERIAL_SESSION = 0x00000004L;  /* no parallel */
+    /**
+     * Session is r/w
+     */
+    public static final long CKF_RW_SESSION = 0x00000002L;
+    /**
+     * No parallel
+     */
+    public static final long CKF_SERIAL_SESSION = 0x00000004L;
 
     /* The following classes of objects are defined: */
     /* CKO_HW_FEATURE is new for v2.10 */
@@ -179,15 +209,17 @@ public final class Pkcs11Constants {
     public static final long CKO_DOMAIN_PARAMETERS = 0x00000006L;
     public static final long CKO_MECHANISM = 0x00000007L;
 
-    /* CKO_OTP_KEY is new for PKCS #11 v2.20 amendment 1 */
+    /**
+     * CKO_OTP_KEY is new for PKCS #11 v2.20 amendment 1
+     */
     public static final long CKO_OTP_KEY = 0x00000008L;
 
     public static final long CKO_VENDOR_DEFINED = 0x80000000L;
 
     /* The following hardware feature types are defined */
-    /* CKH_USER_INTERFACE is new for v2.20 */
     public static final long CKH_MONOTONIC_COUNTER = 0x00000001L;
     public static final long CKH_CLOCK = 0x00000002L;
+    /* CKH_USER_INTERFACE is new for v2.20 */
     public static final long CKH_USER_INTERFACE = 0x00000003L;
     public static final long CKH_VENDOR_DEFINED = 0x80000000L;
 
@@ -197,7 +229,10 @@ public final class Pkcs11Constants {
     public static final long CKK_DH = 0x00000002L;
 
     /* CKK_ECDSA and CKK_KEA are new for v2.0 */
-    /* CKK_ECDSA is deprecated in v2.11, CKK_EC is preferred. */
+    /**
+     * @deprecated in v2.11, CKK_EC is preferred.
+     */
+    @Deprecated
     public static final long CKK_ECDSA = 0x00000003L;
     public static final long CKK_EC = 0x00000003L;
     public static final long CKK_X9_42_DH = 0x00000004L;
@@ -213,7 +248,10 @@ public final class Pkcs11Constants {
     /* all these key types are new for v2.0 */
     public static final long CKK_CAST = 0x00000016L;
     public static final long CKK_CAST3 = 0x00000017L;
-    /* CKK_CAST5 is deprecated in v2.11, CKK_CAST128 is preferred. */
+    /**
+     * @deprecated in v2.11, CKK_CAST128 is preferred.
+     */
+    @Deprecated
     public static final long CKK_CAST5 = 0x00000018L;
     public static final long CKK_CAST128 = 0x00000018L;
     public static final long CKK_RC5 = 0x00000019L;
@@ -249,8 +287,10 @@ public final class Pkcs11Constants {
     public static final long CKC_WTLS = 0x00000002L;
     public static final long CKC_VENDOR_DEFINED = 0x80000000L;
 
-    /* The CKF_ARRAY_ATTRIBUTE flag identifies an attribute which
-       consists of an array of values. */
+    /**
+     * The CKF_ARRAY_ATTRIBUTE flag identifies an attribute which
+     * consists of an array of values.
+     */
     public static final long CKF_ARRAY_ATTRIBUTE = 0x40000000L;
 
     /* The following OTP-related defines are new for PKCS #11 v2.20 amendment 1
@@ -331,7 +371,6 @@ public final class Pkcs11Constants {
     public static final long CKA_PRIME_BITS = 0x00000133L;
     public static final long CKA_SUBPRIME_BITS = 0x00000134L;
     public static final long CKA_SUB_PRIME_BITS = CKA_SUBPRIME_BITS;
-    /* (To retain backwards-compatibility) */
 
     public static final long CKA_VALUE_BITS = 0x00000160L;
     public static final long CKA_VALUE_LEN = 0x00000161L;
@@ -384,7 +423,6 @@ public final class Pkcs11Constants {
     public static final long CKA_OTP_SERVICE_IDENTIFIER = 0x0000022BL;
     public static final long CKA_OTP_SERVICE_LOGO = 0x0000022CL;
     public static final long CKA_OTP_SERVICE_LOGO_TYPE = 0x0000022DL;
-
 
     /* CKA_HW_FEATURE_TYPE, CKA_RESET_ON_INIT, and CKA_HAS_RESET
      * are new for v2.10 */
@@ -819,8 +857,6 @@ public final class Pkcs11Constants {
     public static final long CKR_HOST_MEMORY = 0x00000002L;
     public static final long CKR_SLOT_ID_INVALID = 0x00000003L;
 
-    /* CKR_FLAGS_INVALID was removed for v2.0 */
-
     /* CKR_GENERAL_ERROR and CKR_FUNCTION_FAILED are new for v2.0 */
     public static final long CKR_GENERAL_ERROR = 0x00000005L;
     public static final long CKR_FUNCTION_FAILED = 0x00000006L;
@@ -851,8 +887,6 @@ public final class Pkcs11Constants {
 
     public static final long CKR_KEY_HANDLE_INVALID = 0x00000060L;
 
-    /* CKR_KEY_SENSITIVE was removed for v2.0 */
-
     public static final long CKR_KEY_SIZE_RANGE = 0x00000062L;
     public static final long CKR_KEY_TYPE_INCONSISTENT = 0x00000063L;
 
@@ -871,8 +905,6 @@ public final class Pkcs11Constants {
     public static final long CKR_MECHANISM_INVALID = 0x00000070L;
     public static final long CKR_MECHANISM_PARAM_INVALID = 0x00000071L;
 
-    /* CKR_OBJECT_CLASS_INCONSISTENT and CKR_OBJECT_CLASS_INVALID
-     * were removed for v2.0 */
     public static final long CKR_OBJECT_HANDLE_INVALID = 0x00000082L;
     public static final long CKR_OPERATION_ACTIVE = 0x00000090L;
     public static final long CKR_OPERATION_NOT_INITIALIZED = 0x00000091L;
@@ -957,7 +989,9 @@ public final class Pkcs11Constants {
     public static final long CKF_OS_LOCKING_OK = 0x00000002L;
 
 
-    /* CKF_DONT_BLOCK is for the function C_WaitForSlotEvent */
+    /**
+     * CKF_DONT_BLOCK is for the function C_WaitForSlotEvent
+     */
     public static final long CKF_DONT_BLOCK = 1L;
 
     /* The following MGFs are defined */
@@ -1007,5 +1041,12 @@ public final class Pkcs11Constants {
     public static final long CKF_USER_FRIENDLY_OTP = 0x00000020L;
 
     private Pkcs11Constants() {
+    }
+
+    /**
+     * Compares long value with pkcs11 call return value, which is native long and may be unsigned.
+     */
+    public static boolean equalsPkcsRV(long l, NativeLong pkcsRV) {
+        return NativeComparator.isRawUnsignedNativeLongEqualsLong(pkcsRV, l);
     }
 }

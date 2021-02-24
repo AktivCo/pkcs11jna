@@ -10,10 +10,12 @@ import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-@Structure.FieldOrder({ "pData", "ulSize" })
+@Structure.FieldOrder({"pData", "ulSize"})
 public class CK_VENDOR_BUFFER extends Pkcs11Structure {
-
-    public Pointer pData; //CK_BYTE_PTR
+    /**
+     * CK_BYTE_PTR
+     */
+    public Pointer pData;
     public NativeLong ulSize;
 
     public CK_VENDOR_BUFFER() {

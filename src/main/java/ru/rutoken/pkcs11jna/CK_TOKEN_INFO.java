@@ -52,7 +52,7 @@
 
 package ru.rutoken.pkcs11jna;
 
-/**
+/*
  * @author Karl Scheibelhofer <Karl.Scheibelhofer@iaik.at>
  * @author Martin Schlaeffer <schlaeff@sbox.tugraz.at>
  * @author Aktiv Co. <hotline@rutoken.ru>
@@ -61,57 +61,71 @@ package ru.rutoken.pkcs11jna;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 
-@Structure.FieldOrder({ "label", "manufacturerID", "model", "serialNumber", "flags", "ulMaxSessionCount",
+@Structure.FieldOrder({"label", "manufacturerID", "model", "serialNumber", "flags", "ulMaxSessionCount",
         "ulSessionCount", "ulMaxRwSessionCount", "ulRwSessionCount", "ulMaxPinLen", "ulMinPinLen",
         "ulTotalPublicMemory", "ulFreePublicMemory", "ulTotalPrivateMemory", "ulFreePrivateMemory",
-        "hardwareVersion", "firmwareVersion", "utcTime" })
+        "hardwareVersion", "firmwareVersion", "utcTime"})
 public class CK_TOKEN_INFO extends Pkcs11Structure {
-
-    /*
-     * label, manufacturerID, and model have been changed from CK_CHAR to CK_UTF8CHAR for v2.11.
+    /**
+     * Blank padded
      */
-    public byte[] label = new byte[32]; /* blank padded */// 32 bytes
-
-    public byte[] manufacturerID = new byte[32]; /* blank padded */
-
-    public byte[] model = new byte[16]; /* blank padded */
-
-    public byte[] serialNumber = new byte[16]; /* blank padded */
-
-    public NativeLong flags; /* see below */
-
-    /*
-     * ulMaxSessionCount, ulSessionCount, ulMaxRwSessionCount, ulRwSessionCount, ulMaxPinLen, and
-     * ulMinPinLen have all been changed from CK_USHORT to CK_ULONG for v2.0
+    public byte[] label = new byte[32];
+    /**
+     * Blank padded
      */
-    public NativeLong ulMaxSessionCount; /* max open sessions */
-
-    public NativeLong ulSessionCount; /* sess. now open */
-
-    public NativeLong ulMaxRwSessionCount; /* max R/W sessions */
-
-    public NativeLong ulRwSessionCount; /* R/W sess. now open */
-
-    public NativeLong ulMaxPinLen; /* in bytes */
-
-    public NativeLong ulMinPinLen; /* in bytes */
-
-    public NativeLong ulTotalPublicMemory; /* in bytes */
-
-    public NativeLong ulFreePublicMemory; /* in bytes */
-
-    public NativeLong ulTotalPrivateMemory; /* in bytes */
-
-    public NativeLong ulFreePrivateMemory; /* in bytes */
-
-    /*
-     * hardwareVersion, firmwareVersion, and time are new for v2.0
+    public byte[] manufacturerID = new byte[32];
+    /**
+     * Blank padded
      */
-    public CK_VERSION hardwareVersion; /* version of hardware */
-
-    public CK_VERSION firmwareVersion; /* version of firmware */
-
-    public byte[] utcTime = new byte[16]; /* time */
+    public byte[] model = new byte[16];
+    /**
+     * Blank padded
+     */
+    public byte[] serialNumber = new byte[16];
+    public NativeLong flags;
+    /**
+     * Max open sessions
+     */
+    public NativeLong ulMaxSessionCount;
+    /**
+     * Sessions now open
+     */
+    public NativeLong ulSessionCount;
+    /**
+     * Max R/W sessions
+     */
+    public NativeLong ulMaxRwSessionCount;
+    /**
+     * R/W sessions now open
+     */
+    public NativeLong ulRwSessionCount;
+    /**
+     * In bytes
+     */
+    public NativeLong ulMaxPinLen;
+    /**
+     * In bytes
+     */
+    public NativeLong ulMinPinLen;
+    /**
+     * In bytes
+     */
+    public NativeLong ulTotalPublicMemory;
+    /**
+     * In bytes
+     */
+    public NativeLong ulFreePublicMemory;
+    /**
+     * In bytes
+     */
+    public NativeLong ulTotalPrivateMemory;
+    /**
+     * In bytes
+     */
+    public NativeLong ulFreePrivateMemory;
+    public CK_VERSION hardwareVersion;
+    public CK_VERSION firmwareVersion;
+    public byte[] utcTime = new byte[16];
 
     public CK_TOKEN_INFO() {
     }

@@ -52,25 +52,22 @@
 
 package ru.rutoken.pkcs11jna;
 
-/**
+/*
  * @author Karl Scheibelhofer <Karl.Scheibelhofer@iaik.at>
  * @author Martin Schlaeffer <schlaeff@sbox.tugraz.at>
  * @author Aktiv Co. <hotline@rutoken.ru>
  */
 
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-import com.sun.jna.NativeLong;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
+import com.sun.jna.*;
 
-@Structure.FieldOrder({ "type", "pValue", "ulValueLen" })
+@Structure.FieldOrder({"type", "pValue", "ulValueLen"})
 public class CK_ATTRIBUTE extends Pkcs11Structure {
-
     public NativeLong type;
     public Pointer pValue;
-    /* ulValueLen went from CK_USHORT to CK_ULONG for v2.0 */
-    public NativeLong ulValueLen; /* in bytes */
+    /**
+     * In bytes
+     */
+    public NativeLong ulValueLen;
 
     public CK_ATTRIBUTE() {
     }

@@ -17,214 +17,228 @@ import com.sun.jna.ptr.PointerByReference;
 
 public interface RtPkcs11 extends Pkcs11 {
 
-    /* C_EX_GetFunctionListExtended returns the extended function list. */
-    NativeLong C_EX_GetFunctionListExtended
-    (
-        Pointer[]   ppFunctionList /* receives pointer to extended function list */
-    );
-
-    /* C_EX_InitToken initializes a token with full format. */
-    NativeLong C_EX_InitToken
-    (
-        NativeLong            slotID,    /* ID of the token's slot */
-        byte[]                pPin,      /* the SO's initial PIN */
-        NativeLong            ulPinLen,  /* length in bytes of the PIN */
-        CK_RUTOKEN_INIT_PARAM pInitInfo  /* init parameters */
-    );
-
-    /* C_EX_GetTokenInfoExtended obtains information about the particular
-    * token in the system. */
-    NativeLong C_EX_GetTokenInfoExtended
-    (
-        NativeLong              slotID,  /* ID of the token's slot */
-        CK_TOKEN_INFO_EXTENDED  pInfo    /* receives the token information */
-    );
-
-    /* C_EX_UnblockUserPIN unblocks the blocked User's PIN.
-     * C_EX_UnblockUserPIN requires same conditions as a
-     * C_InitPIN */
-    NativeLong C_EX_UnblockUserPIN
-    (
-        NativeLong hSession   /* the session's handle */
-    );
-
-
-    /* C_EX_SetTokenName modifies the token symbol name (label) if
-     * User is logged in. C_EX_SetTokenName can only be called in
-     * the "R/W User Functions" state.
+    /**
+     * Returns the extended function list.
+     *
+     * @param ppFunctionList receives pointer to extended function list
      */
-    NativeLong C_EX_SetTokenName
-    (
-        NativeLong hSession,  /* the session's handle */
-        byte[]     pLabel,    /* the new label */
-        NativeLong ulLabelLen /* length of the new label */
-    );
+    NativeLong C_EX_GetFunctionListExtended(Pointer[] ppFunctionList);
 
-    /* C_EX_SetLicense modifies the token license if User or SO
-     * is logged in. C_EX_SetLicense can only be called in the
-     * "R/W User Functions" state or "R/W SO Functions" state.
+    /**
+     * Initializes a token with full format.
+     *
+     * @param slotID    ID of the token's slot
+     * @param pPin      the SO's initial PIN
+     * @param ulPinLen  length in bytes of the PIN
+     * @param pInitInfo init parameters
      */
-    NativeLong C_EX_SetLicense
-    (
-        NativeLong hSession,     /* the session's handle */
-        NativeLong ulLicenseNum, /* the number of the new license, can only be 1 or 2 */
-        byte[]     pLicense,     /* byte buffer with the data of new license */
-        NativeLong ulLicenseLen  /* length of the new license, can only be 72 */
+    NativeLong C_EX_InitToken(
+            NativeLong slotID,
+            byte[] pPin,
+            NativeLong ulPinLen,
+            CK_RUTOKEN_INIT_PARAM pInitInfo
     );
 
-
-    /* C_EX_GetLicense reads the token license. C_EX_GetLicense
-     * can be called in any state.
-     * pulLicenseLen [in/out] - [in]- sets license length, can only be 72
-     *                          [out] - gets license length (if pLicense is null)
+    /**
+     * Obtains information about the particular token in the system.
+     *
+     * @param slotID ID of the token's slot
+     * @param pInfo  receives the token information
      */
-    NativeLong C_EX_GetLicense
-    (
-        NativeLong            hSession,     /* the session's handle */
-        NativeLong            ulLicenseNum, /* the number of the license, can only be 1 or 2 */
-        byte[]                pLicense,     /* receives the license */
-        NativeLongByReference pulLicenseLen /* length of the license */
-    );
+    NativeLong C_EX_GetTokenInfoExtended(NativeLong slotID, CK_TOKEN_INFO_EXTENDED pInfo);
 
-
-    /* C_EX_GetCertificateInfoText get text information about
-     * certificate. C_EX_GetCertificateInfoText can be called
-     * in any state.
+    /**
+     * Unblocks the blocked User's PIN.
+     * Requires same conditions as a C_InitPIN.
+     *
+     * @param hSession the session's handle
      */
-    NativeLong C_EX_GetCertificateInfoText
-    (
-        NativeLong            hSession,  /* the session's handle */
-        NativeLong            hCert,     /* the object's handle */
-        Pointer               pInfo,     /* returns address of allocated buffer with text information */
-        NativeLongByReference pulInfoLen /* length of the allocated buffer */
-    );
+    NativeLong C_EX_UnblockUserPIN(NativeLong hSession);
 
-    /* C_EX_PKCS7Sign signs data and packs it to PKCS#7 format
-     * certificate. C_EX_PKCS7Sign can only be called in the
-     * "R/W User Functions" or "R User Functions" state.
+    /**
+     * Modifies the token symbol name (label) if User is logged in.
+     * Can only be called in the "R/W User Functions" state.
+     *
+     * @param hSession   the session's handle
+     * @param pLabel     the new label
+     * @param ulLabelLen length of the new label
      */
-    NativeLong C_EX_PKCS7Sign
-    (
-        NativeLong            hSession,
-        byte[]                pData,
-        NativeLong            ulDataLen,
-        NativeLong            hCert,
-        Pointer               ppEnvelope,
-        NativeLongByReference pEnvelopeLen,
-        NativeLong            hPrivKey,
-        NativeLong[]          phCertificates,
-        NativeLong            ulCertificatesLen,
-        NativeLong            flags
-    );
+    NativeLong C_EX_SetTokenName(NativeLong hSession, byte[] pLabel, NativeLong ulLabelLen);
 
-    /* C_EX_PKCS7VerifyInit initializes pkcs7 verify operation
+    /**
+     * Modifies the token license if User or SO is logged in.
+     * Can only be called in the "R/W User Functions" state or "R/W SO Functions" state.
+     *
+     * @param hSession     the session's handle
+     * @param ulLicenseNum the number of the new license, can only be 1 or 2
+     * @param pLicense     byte buffer with the data of new license
+     * @param ulLicenseLen length of the new license, can only be 72
      */
-    NativeLong C_EX_PKCS7VerifyInit
-    (
-        NativeLong            hSession,
-        Pointer               pCms, // CK_BYTE_PTR
-        NativeLong            ulCmsLen,
-        CK_VENDOR_X509_STORE  pStore, // CK_VENDOR_X509_STORE_PTR
-        NativeLong            ckMode,
-        NativeLong            flags
+    NativeLong C_EX_SetLicense(
+            NativeLong hSession,
+            NativeLong ulLicenseNum,
+            byte[] pLicense,
+            NativeLong ulLicenseLen
     );
 
-    /* C_EX_PKCS7Verify finishes pkcs7 verify operation and return
-     * signed data and signer certificates
+
+    /**
+     * Reads the token license.
+     * Can be called in any state.
+     * pulLicenseLen [in/out] -
+     * [in]- sets license length, can only be 72
+     * [out] - gets license length (if pLicense is null)
+     *
+     * @param hSession      the session's handle
+     * @param ulLicenseNum  the number of the license, can only be 1 or 2
+     * @param pLicense      receives the license
+     * @param pulLicenseLen length of the license
      */
-    NativeLong C_EX_PKCS7Verify
-    (
-        NativeLong            hSession,
-        PointerByReference    ppData, // CK_BYTE_PTR_PTR
-        NativeLongByReference pulDataLen,
-        PointerByReference    ppSignerCertificates, // CK_VENDOR_BUFFER_PTR_PTR
-        NativeLongByReference pulSignerCertificatesCount
+    NativeLong C_EX_GetLicense(
+            NativeLong hSession,
+            NativeLong ulLicenseNum,
+            byte[] pLicense,
+            NativeLongByReference pulLicenseLen
     );
 
 
-    /* C_EX_CreateCSR creates a certification request and packs it in
-     * PKCS#10 format. C_EX_CreateCSR can only be called in the
-     * "R/W User Functions" or "R User Functions" state.
+    /**
+     * Gets text information about certificate.
+     * Can be called in any state.
+     *
+     * @param hSession   the session's handle
+     * @param hCert      the object's handle
+     * @param pInfo      returns address of allocated buffer with text information
+     * @param pulInfoLen length of the allocated buffer
      */
-    NativeLong C_EX_CreateCSR
-    (
-        NativeLong             hSession,
-        NativeLong             hPublicKey,
-        String[]               dn,
-        NativeLong             dnLength,
-        Pointer                pCsr,
-        NativeLongByReference  pulCsrLength,
-        NativeLong             hPrivKey,
-        NativeLong[]           pAttributes,
-        NativeLong             ulAttributesLength,
-        String[]               pExtensions,
-        NativeLong             ulExtensionsLength
+    NativeLong C_EX_GetCertificateInfoText(
+            NativeLong hSession,
+            NativeLong hCert,
+            Pointer pInfo,
+            NativeLongByReference pulInfoLen
     );
 
-
-    /* C_EX_FreeBuffer frees buffer, allocated in extended functions.
+    /**
+     * Signs data and packs it to PKCS#7 format.
+     * Can only be called in the "R/W User Functions" or "R User Functions" state.
      */
-    NativeLong C_EX_FreeBuffer
-    (
-        Pointer pBuffer /* pointer to the buffer */
+    NativeLong C_EX_PKCS7Sign(
+            NativeLong hSession,
+            byte[] pData,
+            NativeLong ulDataLen,
+            NativeLong hCert,
+            Pointer ppEnvelope,
+            NativeLongByReference pEnvelopeLen,
+            NativeLong hPrivKey,
+            NativeLong[] phCertificates,
+            NativeLong ulCertificatesLen,
+            NativeLong flags
     );
 
-
-    /* C_EX_GetTokenName returns the token symbol name (label).
+    /**
+     * Initializes PKCS#7 verify operation.
+     *
+     * @param pCms   CK_BYTE_PTR
+     * @param pStore CK_VENDOR_X509_STORE_PTR
      */
-    NativeLong C_EX_GetTokenName
-    (
-        NativeLong            hSession,   /* the session's handle */
-        byte[]                pLabel,     /* byte buffer for label */
-        NativeLongByReference pulLabelLen /* length of the label */
+    NativeLong C_EX_PKCS7VerifyInit(
+            NativeLong hSession,
+            Pointer pCms,
+            NativeLong ulCmsLen,
+            CK_VENDOR_X509_STORE pStore,
+            NativeLong ckMode,
+            NativeLong flags
     );
 
-
-    /* C_EX_SetLocalPIN modifies the local PIN for devices which supported it.
+    /**
+     * Finishes PKCS#7 verify operation and return signed data and signer certificates.
+     *
+     * @param ppData               CK_BYTE_PTR_PTR
+     * @param ppSignerCertificates CK_VENDOR_BUFFER_PTR_PTR
      */
-    NativeLong C_EX_SetLocalPIN
-    (
-        NativeLong slotID,           /* ID of the token's slot */
-        byte[]     pUserPin,         /* the current User PIN */
-        NativeLong ulUserPinLen,     /* length of current User PIN */
-        byte[]     pNewLocalPin,     /* the new local PIN */
-        NativeLong ulNewLocalPinLen, /* length of the new local PIN */
-        NativeLong ulLocalID         /* ID of the local PIN */
+    NativeLong C_EX_PKCS7Verify(
+            NativeLong hSession,
+            PointerByReference ppData,
+            NativeLongByReference pulDataLen,
+            PointerByReference ppSignerCertificates,
+            NativeLongByReference pulSignerCertificatesCount
     );
 
 
-    /* C_EX_LoadActivationKey */
-    NativeLong C_EX_LoadActivationKey
-    (
-        NativeLong hSession, /* the session's handle */
-        byte[]     key,
-        NativeLong keySize
+    /**
+     * Creates a certification request and packs it in PKCS#10 format.
+     * Can only be called in the "R/W User Functions" or "R User Functions" state.
+     */
+    NativeLong C_EX_CreateCSR(
+            NativeLong hSession,
+            NativeLong hPublicKey,
+            String[] dn,
+            NativeLong dnLength,
+            Pointer pCsr,
+            NativeLongByReference pulCsrLength,
+            NativeLong hPrivKey,
+            NativeLong[] pAttributes,
+            NativeLong ulAttributesLength,
+            String[] pExtensions,
+            NativeLong ulExtensionsLength
     );
 
-    /* C_EX_SetActivationPassword */
-    NativeLong C_EX_SetActivationPassword
-    (
-        NativeLong slotID,  /* ID of the token's slot */
-        byte[]     password
+    /**
+     * Frees buffer, allocated in extended functions.
+     *
+     * @param pBuffer pointer to the buffer
+     */
+    NativeLong C_EX_FreeBuffer(Pointer pBuffer);
+
+    /**
+     * Returns the token symbol name (label)
+     *
+     * @param hSession    the session's handle
+     * @param pLabel      byte buffer for label
+     * @param pulLabelLen length of the label
+     */
+    NativeLong C_EX_GetTokenName(
+            NativeLong hSession,
+            byte[] pLabel,
+            NativeLongByReference pulLabelLen
     );
 
-    /* C_EX_GetVolumesInfo */
-    NativeLong C_EX_GetVolumesInfo
-    (
-        NativeLong                slotID,
-        CK_VOLUME_INFO_EXTENDED[] pInfo,
-        NativeLongByReference     pulInfoCount
+    /**
+     * Modifies the local PIN for devices which supported it.
+     *
+     * @param slotID           ID of the token's slot
+     * @param pUserPin         the current User PIN
+     * @param ulUserPinLen     length of current User PIN
+     * @param pNewLocalPin     the new local PIN
+     * @param ulNewLocalPinLen length of the new local PIN
+     * @param ulLocalID        ID of the local PIN
+     */
+    NativeLong C_EX_SetLocalPIN(
+            NativeLong slotID,
+            byte[] pUserPin,
+            NativeLong ulUserPinLen,
+            byte[] pNewLocalPin,
+            NativeLong ulNewLocalPinLen,
+            NativeLong ulLocalID
     );
 
-    /* C_EX_ChangeVolumeAttribute */
-    NativeLong C_EX_ChangeVolumeAttributes
-    (
-        NativeLong slotId,
-        NativeLong userType,
-        byte[]     pPin,
-        NativeLong upPinLen,
-        NativeLong idVolume,
-        NativeLong newAccessMode,
-        byte       bPermanent
+    NativeLong C_EX_LoadActivationKey(NativeLong hSession, byte[] key, NativeLong keySize);
+
+    NativeLong C_EX_SetActivationPassword(NativeLong slotID, byte[] password);
+
+    NativeLong C_EX_GetVolumesInfo(
+            NativeLong slotID,
+            CK_VOLUME_INFO_EXTENDED[] pInfo,
+            NativeLongByReference pulInfoCount
+    );
+
+    NativeLong C_EX_ChangeVolumeAttributes(
+            NativeLong slotId,
+            NativeLong userType,
+            byte[] pPin,
+            NativeLong ulPinLen,
+            NativeLong idVolume,
+            NativeLong newAccessMode,
+            byte bPermanent
     );
 }

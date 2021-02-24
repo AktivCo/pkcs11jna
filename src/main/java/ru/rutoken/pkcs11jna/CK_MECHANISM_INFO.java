@@ -52,7 +52,7 @@
 
 package ru.rutoken.pkcs11jna;
 
-/**
+/*
  * @author Karl Scheibelhofer <Karl.Scheibelhofer@iaik.at>
  * @author Martin Schlaeffer <schlaeff@sbox.tugraz.at>
  * @author Aktiv Co. <hotline@rutoken.ru>
@@ -61,13 +61,10 @@ package ru.rutoken.pkcs11jna;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 
-@Structure.FieldOrder({ "ulMinKeySize", "ulMaxKeySize", "flags" })
+@Structure.FieldOrder({"ulMinKeySize", "ulMaxKeySize", "flags"})
 public class CK_MECHANISM_INFO extends Pkcs11Structure {
-
     public NativeLong ulMinKeySize;
-
     public NativeLong ulMaxKeySize;
-
     public NativeLong flags;
 
     public CK_MECHANISM_INFO() {

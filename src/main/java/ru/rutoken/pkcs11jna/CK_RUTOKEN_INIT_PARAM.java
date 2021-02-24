@@ -5,7 +5,7 @@
 
 package ru.rutoken.pkcs11jna;
 
-/**
+/*
  * @author Aktiv Co. <hotline@rutoken.ru>
  */
 
@@ -13,35 +13,35 @@ import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-/* CK_RUTOKEN_INIT_PARAM uses in C_EX_InitToken - extended function
-   for token formatting (C_InitToken will format only PKCS#11-objects) */
-@Structure.FieldOrder({ "ulSizeofThisStructure", "UseRepairMode", "pNewAdminPin", "ulNewAdminPinLen",
+/**
+ * Used in C_EX_InitToken - extended function
+ * for token formatting (C_InitToken will delete only PKCS#11-objects)
+ */
+@Structure.FieldOrder({"ulSizeofThisStructure", "UseRepairMode", "pNewAdminPin", "ulNewAdminPinLen",
         "pNewUserPin", "ulNewUserPinLen", "ChangeUserPINPolicy", "ulMinAdminPinLen", "ulMinUserPinLen",
-        "ulMaxAdminRetryCount", "ulMaxUserRetryCount", "pTokenLabel", "ulLabelLen", "ulSmMode" })
+        "ulMaxAdminRetryCount", "ulMaxUserRetryCount", "pTokenLabel", "ulLabelLen", "ulSmMode"})
 public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
-
-    /*
+    /**
      * init this field by size of this structure
      * [in] - size of input structure
-     * [out] - return size
-     * of filled structure
+     * [out] - return size of filled structure
      */
     public NativeLong ulSizeofThisStructure;
-    /*
-     * if field equals 0 - format procedure requires authentication as Administrator
+    /**
+     * If field equals 0 - format procedure requires authentication as Administrator
      * if field does not equal 0 - format procedure executes without authentication as Administrator
      */
     public NativeLong UseRepairMode;
-    /* pointer to byte array with new Administrator PIN */
+    /** Pointer to byte array with new Administrator PIN */
     public Pointer pNewAdminPin;
-    /* length of new Administrator PIN: minimum bMinAdminPinLength bytes, maximum 32 bytes */
+    /** Length of new Administrator PIN: minimum bMinAdminPinLength bytes, maximum 32 bytes */
     public NativeLong ulNewAdminPinLen;
-    /* pointer to byte array with new User PIN */
+    /** Pointer to byte array with new User PIN */
     public Pointer pNewUserPin;
-    /* length of new User PIN: minimum bMinUserPinLength bytes, maximum 32 bytes */
+    /** Length of new User PIN: minimum bMinUserPinLength bytes, maximum 32 bytes */
     public NativeLong ulNewUserPinLen;
-    /* policy of change User PIN */
-    /*
+    /**
+     * Policy of change User PIN
      * TOKEN_FLAGS_ADMIN_CHANGE_USER_PIN (0x1) - Administrator can change User PIN
      * TOKEN_FLAGS_USER_CHANGE_USER_PIN (0x2) - User can change User PIN
      * TOKEN_FLAGS_ADMIN_CHANGE_USER_PIN | TOKEN_FLAGS_USER_CHANGE_USER_PIN (0x3) - Administrator
@@ -49,22 +49,22 @@ public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
      * In other cases - error
      */
     public NativeLong ChangeUserPINPolicy;
-    /* minimal size of Administrator PIN minimum 1, maximum 31 bytes */
+    /** Minimal size of Administrator PIN minimum 1, maximum 31 bytes */
     public NativeLong ulMinAdminPinLen;
-    /* minimal size of User PIN minimum 1, maximum 31 bytes */
+    /** Minimal size of User PIN minimum 1, maximum 31 bytes */
     public NativeLong ulMinUserPinLen;
-    /* minimum 3, maximum 10 */
+    /** Minimum 3, maximum 10 */
     public NativeLong ulMaxAdminRetryCount;
-    /* minimum 1, maximum 10 */
+    /** Minimum 1, maximum 10 */
     public NativeLong ulMaxUserRetryCount;
-    /*
-     * pointer to byte array with new token symbol name, if pTokenLabel == null - token symbol name
+    /**
+     * Pointer to byte array with new token symbol name, if pTokenLabel == null - token symbol name
      * will not be set
      */
     public Pointer pTokenLabel;
-    /* length of new token symbol name */
+    /** Length of new token symbol name */
     public NativeLong ulLabelLen;
-    /* secure messaging mode*/
+    /** Secure messaging mode*/
     public NativeLong ulSmMode;
 
     public CK_RUTOKEN_INIT_PARAM() {

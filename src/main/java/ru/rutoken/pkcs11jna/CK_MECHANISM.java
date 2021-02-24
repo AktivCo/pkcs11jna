@@ -52,7 +52,7 @@
 
 package ru.rutoken.pkcs11jna;
 
-/**
+/*
  * @author Karl Scheibelhofer <Karl.Scheibelhofer@iaik.at>
  * @author Martin Schlaeffer <schlaeff@sbox.tugraz.at>
  * @author Aktiv Co. <hotline@rutoken.ru>
@@ -62,16 +62,10 @@ import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-@Structure.FieldOrder({ "mechanism", "pParameter", "ulParameterLen" })
+@Structure.FieldOrder({"mechanism", "pParameter", "ulParameterLen"})
 public class CK_MECHANISM extends Pkcs11Structure {
-
     public NativeLong mechanism;
-
     public Pointer pParameter;
-
-    /*
-     * ulParameterLen was changed from CK_USHORT to CK_ULONG for v2.0
-     */
     public NativeLong ulParameterLen;
 
     public CK_MECHANISM() {

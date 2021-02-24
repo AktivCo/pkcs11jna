@@ -52,7 +52,7 @@
 
 package ru.rutoken.pkcs11jna;
 
-/**
+/*
  * @author Karl Scheibelhofer <Karl.Scheibelhofer@iaik.at>
  * @author Martin Schlaeffer <schlaeff@sbox.tugraz.at>
  * @author Aktiv Co. <hotline@rutoken.ru>
@@ -61,21 +61,12 @@ package ru.rutoken.pkcs11jna;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 
-@Structure.FieldOrder({ "slotDescription", "manufacturerID", "flags", "hardwareVersion", "firmwareVersion" })
+@Structure.FieldOrder({"slotDescription", "manufacturerID", "flags", "hardwareVersion", "firmwareVersion"})
 public class CK_SLOT_INFO extends Pkcs11Structure {
-
-    /*
-     * slotDescription and manufacturerID have been changed from CK_CHAR to CK_UTF8CHAR for v2.11.
-     */
-
     public byte[] slotDescription = new byte[64];
-
     public byte[] manufacturerID = new byte[32];
-
     public NativeLong flags;
-
     public CK_VERSION hardwareVersion;
-
     public CK_VERSION firmwareVersion;
 
     public CK_SLOT_INFO() {

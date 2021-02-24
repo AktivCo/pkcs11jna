@@ -5,13 +5,14 @@
 
 package ru.rutoken.pkcs11jna;
 
+/*
+ * @author Aktiv Co. <hotline@rutoken.ru>
+ */
+
 import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-/**
- * @author Aktiv Co. <hotline@rutoken.ru>
- */
 
 public abstract class Pkcs11Structure extends Structure {
     public Pkcs11Structure() {
