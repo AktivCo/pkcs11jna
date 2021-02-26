@@ -34,7 +34,7 @@ public class CK_VOLUME_INFO_EXTENDED extends Pkcs11Structure {
      */
     public NativeLong volumeOwner;
     /**
-     * Rest flags
+     * Other flags
      */
     public NativeLong flags;
 
