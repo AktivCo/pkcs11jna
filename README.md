@@ -7,8 +7,9 @@ This product includes software developed by IAIK of Graz University of Technolog
 
 ## How to build
 
-Project can be build using IntelliJ IDEA or from console.
-To build from console:
+Project can be build using IntelliJ IDEA or from a console.
+
+To build from a console:
 
     cd <project-root>
     ./gradlew build

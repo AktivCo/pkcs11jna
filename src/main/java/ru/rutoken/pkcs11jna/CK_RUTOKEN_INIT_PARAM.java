@@ -32,13 +32,21 @@ public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
      * if field does not equal 0 - format procedure executes without authentication as Administrator
      */
     public NativeLong UseRepairMode;
-    /** Pointer to byte array with new Administrator PIN */
+    /**
+     * Pointer to byte array with new Administrator PIN
+     */
     public Pointer pNewAdminPin;
-    /** Length of new Administrator PIN: minimum bMinAdminPinLength bytes, maximum 32 bytes */
+    /**
+     * Length of new Administrator PIN: minimum bMinAdminPinLength bytes, maximum 32 bytes
+     */
     public NativeLong ulNewAdminPinLen;
-    /** Pointer to byte array with new User PIN */
+    /**
+     * Pointer to byte array with new User PIN
+     */
     public Pointer pNewUserPin;
-    /** Length of new User PIN: minimum bMinUserPinLength bytes, maximum 32 bytes */
+    /**
+     * Length of new User PIN: minimum bMinUserPinLength bytes, maximum 32 bytes
+     */
     public NativeLong ulNewUserPinLen;
     /**
      * Policy of change User PIN
@@ -49,22 +57,34 @@ public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
      * In other cases - error
      */
     public NativeLong ChangeUserPINPolicy;
-    /** Minimal size of Administrator PIN minimum 1, maximum 31 bytes */
+    /**
+     * Minimal size of Administrator PIN minimum 1, maximum 31 bytes
+     */
     public NativeLong ulMinAdminPinLen;
-    /** Minimal size of User PIN minimum 1, maximum 31 bytes */
+    /**
+     * Minimal size of User PIN minimum 1, maximum 31 bytes
+     */
     public NativeLong ulMinUserPinLen;
-    /** Minimum 3, maximum 10 */
+    /**
+     * Minimum 3, maximum 10
+     */
     public NativeLong ulMaxAdminRetryCount;
-    /** Minimum 1, maximum 10 */
+    /**
+     * Minimum 1, maximum 10
+     */
     public NativeLong ulMaxUserRetryCount;
     /**
      * Pointer to byte array with new token symbol name, if pTokenLabel == null - token symbol name
      * will not be set
      */
     public Pointer pTokenLabel;
-    /** Length of new token symbol name */
+    /**
+     * Length of new token symbol name
+     */
     public NativeLong ulLabelLen;
-    /** Secure messaging mode*/
+    /**
+     * Secure messaging mode
+     */
     public NativeLong ulSmMode;
 
     public CK_RUTOKEN_INIT_PARAM() {

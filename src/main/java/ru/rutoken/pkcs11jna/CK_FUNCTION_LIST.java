@@ -91,4 +91,3 @@ public class CK_FUNCTION_LIST extends Pkcs11Structure {
     public Function C_CancelFunction;
     public Function C_WaitForSlotEvent;
 }
-
