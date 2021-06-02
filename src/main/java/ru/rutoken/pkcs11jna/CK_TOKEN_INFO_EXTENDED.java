@@ -19,7 +19,7 @@ import com.sun.jna.Structure;
         "ulOrderNumber", "flags", "ulMaxAdminPinLen", "ulMinAdminPinLen", "ulMaxUserPinLen",
         "ulMinUserPinLen", "ulMaxAdminRetryCount", "ulAdminRetryCountLeft", "ulMaxUserRetryCount",
         "ulUserRetryCountLeft", "serialNumber", "ulTotalMemory", "ulFreeMemory", "ATR", "ulATRLen",
-        "ulTokenClass", "ulBatteryVoltage", "ulBodyColor"})
+        "ulTokenClass", "ulBatteryVoltage", "ulBodyColor", "ulFirmwareChecksum", "ulBatteryPercentage", "ulBatteryFlags"})
 public class CK_TOKEN_INFO_EXTENDED extends Pkcs11Structure {
     /**
      * Init this field by size of this structure
@@ -101,6 +101,12 @@ public class CK_TOKEN_INFO_EXTENDED extends Pkcs11Structure {
 
     public NativeLong ulBodyColor;
 
+    public NativeLong ulFirmwareChecksum;
+
+    public NativeLong ulBatteryPercentage;
+
+    public NativeLong ulBatteryFlags;
+
     public CK_TOKEN_INFO_EXTENDED() {
     }
 
@@ -109,7 +115,8 @@ public class CK_TOKEN_INFO_EXTENDED extends Pkcs11Structure {
                                   NativeLong ulMinAdminPinLen, NativeLong ulMaxUserPinLen, NativeLong ulMinUserPinLen,
                                   NativeLong ulMaxAdminRetryCount, NativeLong ulAdminRetryCountLeft, NativeLong ulMaxUserRetryCount,
                                   NativeLong ulUserRetryCountLeft, byte[] serialNumber, NativeLong ulTotalMemory, NativeLong ulFreeMemory,
-                                  byte[] ATR, NativeLong ulATRLen, NativeLong ulTokenClass, NativeLong ulBatteryVoltage, NativeLong ulBodyColor) {
+                                  byte[] ATR, NativeLong ulATRLen, NativeLong ulTokenClass, NativeLong ulBatteryVoltage, NativeLong ulBodyColor,
+                                  NativeLong ulFirmwareChecksum, NativeLong ulBatteryPercentage, NativeLong ulBatteryFlags) {
         this.ulSizeofThisStructure = ulSizeofThisStructure;
         this.ulTokenType = ulTokenType;
         this.ulProtocolNumber = ulProtocolNumber;
@@ -132,5 +139,8 @@ public class CK_TOKEN_INFO_EXTENDED extends Pkcs11Structure {
         this.ulTokenClass = ulTokenClass;
         this.ulBatteryVoltage = ulBatteryVoltage;
         this.ulBodyColor = ulBodyColor;
+        this.ulFirmwareChecksum = ulFirmwareChecksum;
+        this.ulBatteryPercentage = ulBatteryPercentage;
+        this.ulBatteryFlags = ulBatteryFlags;
     }
 }
