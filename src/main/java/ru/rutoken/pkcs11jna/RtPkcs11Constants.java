@@ -292,8 +292,19 @@ public final class RtPkcs11Constants {
     public static final long ACCESS_MODE_CD = 0x00000005L;
 
     /* PKCS7 constants */
+    /**
+     * Flags for C_EX_PKCS7Sign
+     */
+    public static final long PKCS7_DETACHED_SIGNATURE = 0x00000001L;
+    public static final long USE_HARDWARE_HASH = 0x00000002L;
+
+    /**
+     * Flags for C_EX_PKCS7VerifyInit
+     */
     public static final long CKF_VENDOR_DO_NOT_USE_INTERNAL_CMS_CERTS = 0x00000001L;
     public static final long CKF_VENDOR_ALLOW_PARTIAL_CHAINS = 0x00000002L;
+    public static final long CKF_VENDOR_CHECK_SIGNATURE_ONLY = 0x00000004L;
+    public static final long CKF_VENDOR_USE_TRUSTED_CERTS_FROM_TOKEN = 0x00000008L;
 
     public static final long OPTIONAL_CRL_CHECK = 0x00000000L;
     public static final long LEAF_CRL_CHECK = 0x00000001L;
