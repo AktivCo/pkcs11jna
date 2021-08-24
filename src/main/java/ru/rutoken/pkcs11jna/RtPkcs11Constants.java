@@ -131,6 +131,9 @@ public final class RtPkcs11Constants {
     public static final long CKM_VENDOR_VKO_GOSTR3410_2012_512 = (CKM_VENDOR_DEFINED + 4);
     public static final long CKM_VENDOR_GOST_KEG = (CKM_VENDOR_DEFINED + 5);
 
+    public static final long CKM_VKO_GOSTR3410_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x038);
+    public static final long CKM_GOST_KEG = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x039);
+
     /* GOST DIVERSIFICATION TYPES */
     public static final long CKD_CPDIVERSIFY_KDF = 0x00000009L;
     public static final long CKD_KDF_4357 = CKM_KDF_4357;
