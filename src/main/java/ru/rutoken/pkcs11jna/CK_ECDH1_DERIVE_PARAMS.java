@@ -38,8 +38,8 @@ public class CK_ECDH1_DERIVE_PARAMS extends Pkcs11Structure {
             pSharedData = new Memory(sharedData.length);
             pSharedData.write(0, sharedData, 0, sharedData.length);
         } else {
-            pSharedData = Pointer.NULL;
             ulSharedDataLen = new NativeLong(0);
+            pSharedData = Pointer.NULL;
         }
     }
 }

@@ -5,6 +5,8 @@
 
 package ru.rutoken.pkcs11jna;
 
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKA_VENDOR_DEFINED;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKH_VENDOR_DEFINED;
 import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKM_VENDOR_DEFINED;
 
 /* Derived from rtpkcs11t.h include file for PKCS #11. */
@@ -52,6 +54,12 @@ public final class RtPkcs11Constants {
     public static final long CKA_GOSTR3410_256PARAMS = CKA_GOSTR3410_PARAMS;
     public static final long CKA_GOSTR3411_PARAMS = 0x00000251L;
     public static final long CKA_GOST28147_PARAMS = 0x00000252L;
+
+    /* KTI attributes */
+    public static final long CKA_VENDOR_CHECKSUM = (CKA_VENDOR_DEFINED | 0x3100);
+    public static final long CKA_VENDOR_HMAC_VALUE = (CKA_VENDOR_DEFINED | 0x3101);
+    public static final long CKA_VENDOR_INTERNAL_TRUSTED_CERT = (CKA_VENDOR_DEFINED | 0x3102);
+    public static final long CKA_VENDOR_IV = (CKA_VENDOR_DEFINED | 0x3103);
 
     /* PKCS #5 PRF Functions */
     public static final long CKP_PKCS5_PBKD2_HMAC_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x003);
@@ -128,6 +136,7 @@ public final class RtPkcs11Constants {
     public static final long CKM_MAGMA_CTR_ACPKM = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x036);
     public static final long CKM_MAGMA_MAC = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x037);
 
+    public static final long CKM_VENDOR_SECURE_IMPORT = (CKM_VENDOR_DEFINED + 3);
     public static final long CKM_VENDOR_VKO_GOSTR3410_2012_512 = (CKM_VENDOR_DEFINED + 4);
     public static final long CKM_VENDOR_GOST_KEG = (CKM_VENDOR_DEFINED + 5);
 
@@ -312,6 +321,11 @@ public final class RtPkcs11Constants {
     public static final long OPTIONAL_CRL_CHECK = 0x00000000L;
     public static final long LEAF_CRL_CHECK = 0x00000001L;
     public static final long ALL_CRL_CHECK = 0x00000002L;
+
+    /* Hardware feature types */
+    public static final long CKH_VENDOR_EMITENT_KEY = (CKH_VENDOR_DEFINED + 0x02);
+    public static final long CKH_VENDOR_SECURE_COUNTER = (CKH_VENDOR_DEFINED + 0x03);
+    public static final long CKH_VENDOR_RNG = (CKH_VENDOR_DEFINED + 0x05);
 
     private RtPkcs11Constants() {
     }
