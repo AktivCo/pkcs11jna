@@ -108,39 +108,41 @@ public class CK_TOKEN_INFO_EXTENDED extends Pkcs11Structure {
     public NativeLong ulBatteryFlags;
 
     public CK_TOKEN_INFO_EXTENDED() {
+        ulSizeofThisStructure = new NativeLong(size());
     }
 
-    public CK_TOKEN_INFO_EXTENDED(NativeLong ulSizeofThisStructure, NativeLong ulTokenType, NativeLong ulProtocolNumber,
-                                  NativeLong ulMicrocodeNumber, NativeLong ulOrderNumber, NativeLong flags, NativeLong ulMaxAdminPinLen,
-                                  NativeLong ulMinAdminPinLen, NativeLong ulMaxUserPinLen, NativeLong ulMinUserPinLen,
-                                  NativeLong ulMaxAdminRetryCount, NativeLong ulAdminRetryCountLeft, NativeLong ulMaxUserRetryCount,
-                                  NativeLong ulUserRetryCountLeft, byte[] serialNumber, NativeLong ulTotalMemory, NativeLong ulFreeMemory,
-                                  byte[] ATR, NativeLong ulATRLen, NativeLong ulTokenClass, NativeLong ulBatteryVoltage, NativeLong ulBodyColor,
-                                  NativeLong ulFirmwareChecksum, NativeLong ulBatteryPercentage, NativeLong ulBatteryFlags) {
-        this.ulSizeofThisStructure = ulSizeofThisStructure;
-        this.ulTokenType = ulTokenType;
-        this.ulProtocolNumber = ulProtocolNumber;
-        this.ulMicrocodeNumber = ulMicrocodeNumber;
-        this.ulOrderNumber = ulOrderNumber;
+    public CK_TOKEN_INFO_EXTENDED(NativeLong tokenType, NativeLong protocolNumber, NativeLong microcodeNumber,
+                                  NativeLong orderNumber, NativeLong flags, NativeLong maxAdminPinLen,
+                                  NativeLong minAdminPinLen, NativeLong maxUserPinLen, NativeLong minUserPinLen,
+                                  NativeLong maxAdminRetryCount, NativeLong adminRetryCountLeft,
+                                  NativeLong maxUserRetryCount, NativeLong userRetryCountLeft, byte[] serialNumber,
+                                  NativeLong totalMemory, NativeLong freeMemory, byte[] atr, NativeLong atrLen,
+                                  NativeLong tokenClass, NativeLong batteryVoltage, NativeLong bodyColor,
+                                  NativeLong firmwareChecksum, NativeLong batteryPercentage, NativeLong batteryFlags) {
+        this();
+        ulTokenType = tokenType;
+        ulProtocolNumber = protocolNumber;
+        ulMicrocodeNumber = microcodeNumber;
+        ulOrderNumber = orderNumber;
         this.flags = flags;
-        this.ulMaxAdminPinLen = ulMaxAdminPinLen;
-        this.ulMinAdminPinLen = ulMinAdminPinLen;
-        this.ulMaxUserPinLen = ulMaxUserPinLen;
-        this.ulMinUserPinLen = ulMinUserPinLen;
-        this.ulMaxAdminRetryCount = ulMaxAdminRetryCount;
-        this.ulAdminRetryCountLeft = ulAdminRetryCountLeft;
-        this.ulMaxUserRetryCount = ulMaxUserRetryCount;
-        this.ulUserRetryCountLeft = ulUserRetryCountLeft;
+        ulMaxAdminPinLen = maxAdminPinLen;
+        ulMinAdminPinLen = minAdminPinLen;
+        ulMaxUserPinLen = maxUserPinLen;
+        ulMinUserPinLen = minUserPinLen;
+        ulMaxAdminRetryCount = maxAdminRetryCount;
+        ulAdminRetryCountLeft = adminRetryCountLeft;
+        ulMaxUserRetryCount = maxUserRetryCount;
+        ulUserRetryCountLeft = userRetryCountLeft;
         this.serialNumber = serialNumber;
-        this.ulTotalMemory = ulTotalMemory;
-        this.ulFreeMemory = ulFreeMemory;
-        this.ATR = ATR;
-        this.ulATRLen = ulATRLen;
-        this.ulTokenClass = ulTokenClass;
-        this.ulBatteryVoltage = ulBatteryVoltage;
-        this.ulBodyColor = ulBodyColor;
-        this.ulFirmwareChecksum = ulFirmwareChecksum;
-        this.ulBatteryPercentage = ulBatteryPercentage;
-        this.ulBatteryFlags = ulBatteryFlags;
+        ulTotalMemory = totalMemory;
+        ulFreeMemory = freeMemory;
+        ATR = atr;
+        ulATRLen = atrLen;
+        ulTokenClass = tokenClass;
+        ulBatteryVoltage = batteryVoltage;
+        ulBodyColor = bodyColor;
+        ulFirmwareChecksum = firmwareChecksum;
+        ulBatteryPercentage = batteryPercentage;
+        ulBatteryFlags = batteryFlags;
     }
 }

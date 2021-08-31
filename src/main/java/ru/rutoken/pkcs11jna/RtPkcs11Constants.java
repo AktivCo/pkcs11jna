@@ -377,6 +377,16 @@ public final class RtPkcs11Constants {
     public static final long CHANNEL_TYPE_USB = 0x00L;
     public static final long CHANNEL_TYPE_BLUETOOTH = 0x01L;
 
+    /* C_EX_SlotManage mode */
+    public static final long MODE_GET_LOCAL_PIN_INFO = 0x05L;
+    public static final long MODE_RESTORE_FACTORY_DEFAULTS = 0x06L;
+    public static final long MODE_GET_PIN_SET_TO_BE_CHANGED = 0x07L;
+
+    /* Local PIN flags (field "flags" from CK_LOCAL_PIN_INFO) */
+    public static final long LOCAL_PIN_FLAGS_NOT_DEFAULT = 0x00000001L;
+    public static final long LOCAL_PIN_FLAGS_FROM_SCREEN = 0x00000002L;
+    public static final long LOCAL_PIN_FLAGS_IS_UTF8 = 0x00000004L;
+
     private RtPkcs11Constants() {
     }
 }
