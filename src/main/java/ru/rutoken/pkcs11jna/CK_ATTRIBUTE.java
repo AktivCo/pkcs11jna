@@ -58,7 +58,13 @@ package ru.rutoken.pkcs11jna;
  * @author Aktiv Co. <hotline@rutoken.ru>
  */
 
-import com.sun.jna.*;
+import com.sun.jna.Memory;
+import com.sun.jna.Native;
+import com.sun.jna.NativeLong;
+import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
+
+import java.nio.charset.StandardCharsets;
 
 @Structure.FieldOrder({"type", "pValue", "ulValueLen"})
 public class CK_ATTRIBUTE extends Pkcs11Structure {
@@ -120,9 +126,6 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
     }
 
     public void setAttr(NativeLong type, String value) {
-        this.type = type;
-        pValue = new Memory(value.length() + 1);
-        pValue.setString(0, value);
-        ulValueLen = new NativeLong(value.length() + 1);
+        setAttr(type, value.getBytes(StandardCharsets.UTF_8));
     }
 }
