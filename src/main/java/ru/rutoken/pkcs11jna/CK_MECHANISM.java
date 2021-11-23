@@ -71,6 +71,10 @@ public class CK_MECHANISM extends Pkcs11Structure {
     public CK_MECHANISM() {
     }
 
+    public CK_MECHANISM(long mech, Pointer pParam, long ulParamLen) {
+        this(new NativeLong(mech), pParam, new NativeLong(ulParamLen));
+    }
+
     public CK_MECHANISM(NativeLong mech, Pointer pParam, NativeLong ulParamLen) {
         mechanism = mech;
         pParameter = pParam;

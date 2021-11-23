@@ -98,10 +98,18 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
         setAttr(type, value);
     }
 
+    public void setAttr(long type, Pointer pVal, long ulValLen) {
+        setAttr(new NativeLong(type), pVal, new NativeLong(ulValLen));
+    }
+
     public void setAttr(NativeLong type, Pointer pVal, NativeLong ulValLen) {
         this.type = type;
         this.pValue = pVal;
         this.ulValueLen = ulValLen;
+    }
+
+    public void setAttr(long type, long value) {
+        setAttr(new NativeLong(type), new NativeLong(value));
     }
 
     public void setAttr(NativeLong type, NativeLong value) {
@@ -111,6 +119,10 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
         ulValueLen = new NativeLong(NativeLong.SIZE);
     }
 
+    public void setAttr(long type, byte[] value) {
+        setAttr(new NativeLong(type), value);
+    }
+
     public void setAttr(NativeLong type, byte[] value) {
         this.type = type;
         pValue = new Memory(value.length);
@@ -118,11 +130,19 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
         ulValueLen = new NativeLong(value.length);
     }
 
+    public void setAttr(long type, boolean value) {
+        setAttr(new NativeLong(type), value);
+    }
+
     public void setAttr(NativeLong type, boolean value) {
         this.type = type;
         pValue = new Memory(Native.getNativeSize(Byte.TYPE));
         pValue.setByte(0, (byte) (value ? 1 : 0));
         ulValueLen = new NativeLong(Native.getNativeSize(Byte.TYPE));
+    }
+
+    public void setAttr(long type, String value) {
+        setAttr(new NativeLong(type), value);
     }
 
     public void setAttr(NativeLong type, String value) {
