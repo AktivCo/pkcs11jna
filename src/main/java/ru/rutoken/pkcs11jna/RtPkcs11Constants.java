@@ -5,9 +5,7 @@
 
 package ru.rutoken.pkcs11jna;
 
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKA_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKH_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKM_VENDOR_DEFINED;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.*;
 
 /* Derived from rtpkcs11t.h include file for PKCS #11. */
 
@@ -55,11 +53,57 @@ public final class RtPkcs11Constants {
     public static final long CKA_GOSTR3411_PARAMS = 0x00000251L;
     public static final long CKA_GOST28147_PARAMS = 0x00000252L;
 
+    /* Attributes for CKH_VENDOR_TOKEN_INFO hardware feature */
+    public static final long CKA_VENDOR_SECURE_MESSAGING_AVAILABLE = (CKA_VENDOR_DEFINED | 0x3000);
+    public static final long CKA_VENDOR_CURRENT_SECURE_MESSAGING_MODE = (CKA_VENDOR_DEFINED | 0x3001);
+    public static final long CKA_VENDOR_SUPPORTED_SECURE_MESSAGING_MODES = (CKA_VENDOR_DEFINED | 0x3002);
+
+    public static final long CKA_VENDOR_CURRENT_TOKEN_INTERFACE = (CKA_VENDOR_DEFINED | 0x3003);
+    public static final long CKA_VENDOR_SUPPORTED_TOKEN_INTERFACE = (CKA_VENDOR_DEFINED | 0x3004);
+
+    public static final long CKA_VENDOR_EXTERNAL_AUTHENTICATION = (CKA_VENDOR_DEFINED | 0x3005);
+    public static final long CKA_VENDOR_BIOMETRIC_AUTHENTICATION = (CKA_VENDOR_DEFINED | 0x3006);
+
+    public static final long CKA_VENDOR_SUPPORT_CUSTOM_PIN = (CKA_VENDOR_DEFINED | 0x3007);
+    public static final long CKA_VENDOR_CUSTOM_ADMIN_PIN = (CKA_VENDOR_DEFINED | 0x3008);
+    public static final long CKA_VENDOR_CUSTOM_USER_PIN = (CKA_VENDOR_DEFINED | 0x3009);
+
+    public static final long CKA_VENDOR_SUPPORT_INTERNAL_TRUSTED_CERTS = (CKA_VENDOR_DEFINED | 0x300A);
+    public static final long CKA_VENDOR_SUPPORT_FKC2 = (CKA_VENDOR_DEFINED | 0x300B);
+    public static final long CKA_VENDOR_SUPPORT_HW_RESULT_FOR_GOST28147_KEY_UNWRAP = (CKA_VENDOR_DEFINED | 0x300C);
+    public static final long CKA_VENDOR_SUPPORT_HW_KDF_TREE = (CKA_VENDOR_DEFINED | 0x300D);
+    public static final long CKA_VENDOR_SUPPORT_KIMP15 = (CKA_VENDOR_DEFINED | 0x300E);
+
     /* KTI attributes */
     public static final long CKA_VENDOR_CHECKSUM = (CKA_VENDOR_DEFINED | 0x3100);
     public static final long CKA_VENDOR_HMAC_VALUE = (CKA_VENDOR_DEFINED | 0x3101);
     public static final long CKA_VENDOR_INTERNAL_TRUSTED_CERT = (CKA_VENDOR_DEFINED | 0x3102);
     public static final long CKA_VENDOR_IV = (CKA_VENDOR_DEFINED | 0x3103);
+
+    /* Attributes for CKH_VENDOR_PIN_POLICY hardware feature */
+    /* PIN state */
+    public static final long CKA_VENDOR_PIN_POLICY_STATE = (CKA_VENDOR_DEFINED | 0x3200);
+    /* Pin policies will be removed during format */
+    public static final long CKA_VENDOR_PIN_POLICIES_DELETABLE = (CKA_VENDOR_DEFINED | 0x3201);
+    /* Get array of CK_ATTRIBUTE_TYPE of supported policies */
+    public static final long CKA_VENDOR_SUPPORTED_PIN_POLICIES = (CKA_VENDOR_DEFINED | CKF_ARRAY_ATTRIBUTE | 0x3202);
+    /* Minimal PIN length */
+    public static final long CKA_VENDOR_PIN_POLICY_MIN_LENGTH = (CKA_VENDOR_DEFINED | 0x3203);
+    /* Number of previous PINs remembered. New PINs cannot be set to those values */
+    public static final long CKA_VENDOR_PIN_POLICY_HISTORY_DEPTH = (CKA_VENDOR_DEFINED | 0x3204);
+    /* Permits operations with default PIN */
+    public static final long CKA_VENDOR_PIN_POLICY_ALLOW_DEFAULT_PIN_USAGE = (CKA_VENDOR_DEFINED | 0x3205);
+    /* PIN contains at least one digit */
+    public static final long CKA_VENDOR_PIN_POLICY_DIGIT_REQUIRED = (CKA_VENDOR_DEFINED | 0x3206);
+    /* PIN contains at least one upper case letter */
+    public static final long CKA_VENDOR_PIN_POLICY_UPPERCASE_REQUIRED = (CKA_VENDOR_DEFINED | 0x3207);
+    /* PIN contains at least one lower case letter */
+    public static final long CKA_VENDOR_PIN_POLICY_LOWERCASE_REQUIRED = (CKA_VENDOR_DEFINED | 0x3208);
+    /* PIN contains at least one special character */
+    public static final long CKA_VENDOR_PIN_POLICY_SPEC_CHAR_REQUIRED = (CKA_VENDOR_DEFINED | 0x3209);
+    /* PIN doesn't consist of one repeated character */
+    public static final long CKA_VENDOR_PIN_POLICY_DIFF_CHARS_REQUIRED = (CKA_VENDOR_DEFINED | 0x320a);
+    public static final long CKA_VENDOR_USER_TYPE = (CKA_VENDOR_DEFINED | 0x320b);
 
     /* PKCS #5 PRF Functions */
     public static final long CKP_PKCS5_PBKD2_HMAC_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x003);
@@ -323,9 +367,36 @@ public final class RtPkcs11Constants {
     public static final long ALL_CRL_CHECK = 0x00000002L;
 
     /* Hardware feature types */
+    public static final long CKH_VENDOR_TOKEN_INFO = (CKH_VENDOR_DEFINED + 0x01);
     public static final long CKH_VENDOR_EMITENT_KEY = (CKH_VENDOR_DEFINED + 0x02);
     public static final long CKH_VENDOR_SECURE_COUNTER = (CKH_VENDOR_DEFINED + 0x03);
+    public static final long CKH_VENDOR_NDEF_TAG = (CKH_VENDOR_DEFINED + 0x04);
     public static final long CKH_VENDOR_RNG = (CKH_VENDOR_DEFINED + 0x05);
+    public static final long CKH_VENDOR_PIN_POLICY = (CKH_VENDOR_DEFINED + 0x06);
+
+    /* Interfaces */
+    public static final long INTERFACE_TYPE_USB = 0x00000001L;
+    public static final long INTERFACE_TYPE_BT =  0x00000002L;
+    public static final long INTERFACE_TYPE_UART = 0x00000004L;
+    public static final long INTERFACE_TYPE_ISO = 0x00000008L;
+    public static final long INTERFACE_TYPE_NFC = 0x00000020L;
+    public static final long INTERFACE_TYPE_SPI = 0x00000040L;
+    public static final long INTERFACE_TYPE_UNKNOWN =  CK_UNAVAILABLE_INFORMATION;
+
+    /* Secure messaging types */
+    public static final long SECURE_MESSAGING_DEFAULT = 0x00L;
+    public static final long SECURE_MESSAGING_BUILT_IN = 0x01L;
+    public static final long SECURE_MESSAGING_GOST = 0x02L;
+    public static final long SECURE_MESSAGING_ENHANCED_GOST = 0x03L;
+    public static final long SECURE_MESSAGING_UNSUPPORTED = 0xffL;
+
+    /* Biometric types */
+    public static final long BIOMETRIC_AUTHENTICATION_NOT_SUPPORTED = 0x00000000L;
+
+    /* Values for CKA_VENDOR_PIN_POLICY_STATE */
+    public static final long PIN_POLICY_STATE_WELL_DEFINED = 0x00L;
+    public static final long PIN_POLICY_STATE_HAS_UNKNOWN_ATTRIBUTES = 0x01L;
+    public static final long PIN_POLICY_STATE_HAS_UNKNOWN_NONDEFAULT_ATTRIBUTES = 0x02L;
 
     private RtPkcs11Constants() {
     }
