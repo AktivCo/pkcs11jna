@@ -158,7 +158,8 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
         this.type = type;
         int nativeSize = NativeLong.SIZE * value.length;
         pValue = new Memory(nativeSize);
-        pValue.write(0, value, 0, value.length);
+        for (int i = 0; i < value.length; i++)
+            pValue.setNativeLong((long) i * NativeLong.SIZE, new NativeLong(value[i]));
         ulValueLen = new NativeLong(nativeSize);
     }
 
