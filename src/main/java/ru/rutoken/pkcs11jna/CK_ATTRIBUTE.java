@@ -142,10 +142,16 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
         ulValueLen = new NativeLong(nativeSize);
     }
 
+    /**
+     * Writes value in native memory without null-terminator
+     */
     public void setAttr(long type, String value) {
         setAttr(new NativeLong(type), value);
     }
 
+    /**
+     * Writes value in native memory without null-terminator
+     */
     public void setAttr(NativeLong type, String value) {
         setAttr(type, value.getBytes(StandardCharsets.UTF_8));
     }
