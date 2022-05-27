@@ -6,26 +6,23 @@
 package ru.rutoken.pkcs11jna;
 /* Derived from pkcs11f.h include file for PKCS #11. */
 
-/* License to copy and use this software is granted provided that it is
- * identified as "RSA Security Inc. PKCS #11 Cryptographic Token Interface
- * (Cryptoki)" in all material mentioning or referencing this software.
-
- * License is also granted to make and use derivative works provided that
- * such works are identified as "derived from the RSA Security Inc. PKCS #11
- * Cryptographic Token Interface (Cryptoki)" in all material mentioning or
- * referencing the derived work.
-
- * RSA Security Inc. makes no representations concerning either the
- * merchantability of this software or the suitability of this software for
- * any particular purpose. It is provided "as is" without express or implied
- * warranty of any kind.
+/* Copyright (c) OASIS Open 2016. All Rights Reserved./
+ * /Distributed under the terms of the OASIS IPR Policy,
+ * [http://www.oasis-open.org/policies-guidelines/ipr], AS-IS, WITHOUT ANY
+ * IMPLIED OR EXPRESS WARRANTY; there is no warranty of MERCHANTABILITY, FITNESS FOR A
+ * PARTICULAR PURPOSE or NONINFRINGEMENT of the rights of others.
  */
 
-/* This header file contains pretty much everything about all the */
-/* Cryptoki function prototypes.  Because this information is */
-/* used for more than just declaring function prototypes, the */
-/* order of the functions appearing herein is important, and */
-/* should not be altered. */
+/* Latest version of the specification:
+ * http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/pkcs11-base-v2.40.html
+ */
+
+/* This header file contains pretty much everything about all the
+ * Cryptoki function prototypes.  Because this information is
+ * used for more than just declaring function prototypes, the
+ * order of the functions appearing herein is important, and
+ * should not be altered.
+ */
 
 /*
  * @author Aktiv Co. <hotline@rutoken.ru>

@@ -15,30 +15,26 @@ import static ru.rutoken.pkcs11jna.Pkcs11Constants.*;
 
 public final class RtPkcs11Constants {
     /* Extended error codes */
-    public static final long CKR_CORRUPTED_MAPFILE = Pkcs11Constants.CKR_VENDOR_DEFINED + 1L;
-    public static final long CKR_WRONG_VERSION_FIELD = Pkcs11Constants.CKR_VENDOR_DEFINED + 2L;
-    public static final long CKR_WRONG_PKCS1_ENCODING = Pkcs11Constants.CKR_VENDOR_DEFINED + 3L;
-    public static final long CKR_RTPKCS11_DATA_CORRUPTED = Pkcs11Constants.CKR_VENDOR_DEFINED + 4L;
-    public static final long CKR_RTPKCS11_RSF_DATA_CORRUPTED = Pkcs11Constants.CKR_VENDOR_DEFINED + 5L;
-    public static final long CKR_SM_PASSWORD_INVALID = Pkcs11Constants.CKR_VENDOR_DEFINED + 6L;
-    public static final long CKR_LICENSE_READ_ONLY = Pkcs11Constants.CKR_VENDOR_DEFINED + 7L;
-    public static final long CKR_VENDOR_EMITENT_KEY_BLOCKED = Pkcs11Constants.CKR_VENDOR_DEFINED + 8L;
-    public static final long CKR_CERT_CHAIN_NOT_VERIFIED = Pkcs11Constants.CKR_VENDOR_DEFINED + 9L;
-    public static final long CKR_INAPPROPRIATE_PIN = Pkcs11Constants.CKR_VENDOR_DEFINED + 10L;
-    public static final long CKR_PIN_IN_HISTORY = Pkcs11Constants.CKR_VENDOR_DEFINED + 11L;
+    public static final long CKR_CORRUPTED_MAPFILE = CKR_VENDOR_DEFINED + 1L;
+    public static final long CKR_WRONG_VERSION_FIELD = CKR_VENDOR_DEFINED + 2L;
+    public static final long CKR_WRONG_PKCS1_ENCODING = CKR_VENDOR_DEFINED + 3L;
+    public static final long CKR_RTPKCS11_DATA_CORRUPTED = CKR_VENDOR_DEFINED + 4L;
+    public static final long CKR_RTPKCS11_RSF_DATA_CORRUPTED = CKR_VENDOR_DEFINED + 5L;
+    public static final long CKR_SM_PASSWORD_INVALID = CKR_VENDOR_DEFINED + 6L;
+    public static final long CKR_LICENSE_READ_ONLY = CKR_VENDOR_DEFINED + 7L;
+    public static final long CKR_VENDOR_EMITENT_KEY_BLOCKED = CKR_VENDOR_DEFINED + 8L;
+    public static final long CKR_CERT_CHAIN_NOT_VERIFIED = CKR_VENDOR_DEFINED + 9L;
+    public static final long CKR_INAPPROPRIATE_PIN = CKR_VENDOR_DEFINED + 10L;
+    public static final long CKR_PIN_IN_HISTORY = CKR_VENDOR_DEFINED + 11L;
 
     /* Необходимые определения для работы с расширениями PKCS для ГОСТ */
-    public static final long NSSCK_VENDOR_PKCS11_RU_TEAM = (Pkcs11Constants.CKR_VENDOR_DEFINED | 0x54321000L);
-    @Deprecated
+    public static final long NSSCK_VENDOR_PKCS11_RU_TEAM = 0xD4321000L; /*0x80000000 | 0x54321000*/
     public static final long CK_VENDOR_PKCS11_RU_TEAM_TK26 = NSSCK_VENDOR_PKCS11_RU_TEAM;
     public static final long CK_VENDOR_PKCS11_RU_TEAM_TC26 = NSSCK_VENDOR_PKCS11_RU_TEAM;
 
     /* GOST KEY TYPES */
-    public static final long CKK_GOSTR3410 = 0x00000030L;
     public static final long CKK_GOSTR3410_256 = CKK_GOSTR3410;
     public static final long CKK_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x003L);
-    public static final long CKK_GOSTR3411 = 0x00000031L;
-    public static final long CKK_GOST28147 = 0x00000032L;
 
     public static final long CKK_KUZNECHIK = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x004);
     public static final long CKK_KUZNYECHIK = CKK_KUZNECHIK;
@@ -48,10 +44,7 @@ public final class RtPkcs11Constants {
     public static final long CKK_MAGMA_TWIN_KEY = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x007);
 
     /* GOST OBJECT ATTRIBUTES */
-    public static final long CKA_GOSTR3410_PARAMS = 0x00000250L;
     public static final long CKA_GOSTR3410_256PARAMS = CKA_GOSTR3410_PARAMS;
-    public static final long CKA_GOSTR3411_PARAMS = 0x00000251L;
-    public static final long CKA_GOST28147_PARAMS = 0x00000252L;
 
     /* Attributes for CKH_VENDOR_TOKEN_INFO hardware feature */
     public static final long CKA_VENDOR_SECURE_MESSAGING_AVAILABLE = (CKA_VENDOR_DEFINED | 0x3000);
@@ -109,14 +102,9 @@ public final class RtPkcs11Constants {
     public static final long CKP_PKCS5_PBKD2_HMAC_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x003);
 
     /* GOST MECHANISMS */
-    public static final long CKM_GOSTR3410_KEY_PAIR_GEN = 0x00001200L;
     public static final long CKM_GOSTR3410_256_KEY_PAIR_GEN = CKM_GOSTR3410_KEY_PAIR_GEN;
-    public static final long CKM_GOSTR3410 = 0x00001201L;
     public static final long CKM_GOSTR3410_256 = CKM_GOSTR3410;
-    public static final long CKM_GOSTR3410_WITH_GOSTR3411 = 0x00001202L;
     public static final long CKM_GOSTR3410_WITH_GOSTR3411_94 = CKM_GOSTR3410_WITH_GOSTR3411;
-    public static final long CKM_GOSTR3410_KEY_WRAP = 0x00001203L;
-    public static final long CKM_GOSTR3410_DERIVE = 0x00001204L;
     public static final long CKM_GOSTR3410_512_KEY_PAIR_GEN = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x005L);
     public static final long CKM_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x006L);
     public static final long CKM_GOSTR3410_2012_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x007L);
@@ -128,9 +116,7 @@ public final class RtPkcs11Constants {
     public static final long CKM_GOSTR3410_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x00A);
     public static final long CKM_GOSTR3410_512_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x00B);
 
-    public static final long CKM_GOSTR3411 = 0x00001210L;
     public static final long CKM_GOSTR3411_94 = CKM_GOSTR3411;
-    public static final long CKM_GOSTR3411_HMAC = 0x00001211L;
     public static final long CKM_GOSTR3411_94_HMAC = CKM_GOSTR3411_HMAC;
     public static final long CKM_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x012L);
     public static final long CKM_GOSTR3411_12_256 = CKM_GOSTR3411_2012_256;
@@ -140,12 +126,6 @@ public final class RtPkcs11Constants {
     public static final long CKM_GOSTR3411_12_256_HMAC = CKM_GOSTR3411_2012_256_HMAC;
     public static final long CKM_GOSTR3411_2012_512_HMAC = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x015L);
     public static final long CKM_GOSTR3411_12_512_HMAC = CKM_GOSTR3411_2012_512_HMAC;
-
-    public static final long CKM_GOST28147_KEY_GEN = 0x00001220L;
-    public static final long CKM_GOST28147_ECB = 0x00001221L;
-    public static final long CKM_GOST28147 = 0x00001222L;
-    public static final long CKM_GOST28147_MAC = 0x00001223L;
-    public static final long CKM_GOST28147_KEY_WRAP = 0x00001224L;
 
     public static final long CKM_TLS_GOST_PRF_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x016);
     public static final long CKM_TLS_GOST_PRF_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x017);
@@ -188,7 +168,6 @@ public final class RtPkcs11Constants {
     public static final long CKM_GOST_KEG = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x039);
 
     /* GOST DIVERSIFICATION TYPES */
-    public static final long CKD_CPDIVERSIFY_KDF = 0x00000009L;
     public static final long CKD_KDF_4357 = CKM_KDF_4357;
     public static final long CKD_KDF_GOSTR3411_2012_256 = CKM_KDF_GOSTR3411_2012_256;
 
