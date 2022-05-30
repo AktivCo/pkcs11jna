@@ -5,7 +5,15 @@
 
 package ru.rutoken.pkcs11jna;
 
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.*;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKA_VENDOR_DEFINED;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKF_ARRAY_ATTRIBUTE;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKH_VENDOR_DEFINED;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKM_VENDOR_DEFINED;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKR_VENDOR_DEFINED;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.CK_UNAVAILABLE_INFORMATION;
+import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.CKM_KDF_4357;
+import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.CKM_KDF_GOSTR3411_2012_256;
+import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.NSSCK_VENDOR_PKCS11_RU_TEAM;
 
 /* Derived from rtpkcs11t.h include file for PKCS #11. */
 
@@ -14,37 +22,7 @@ import static ru.rutoken.pkcs11jna.Pkcs11Constants.*;
  */
 
 public final class RtPkcs11Constants {
-    /* Extended error codes */
-    public static final long CKR_CORRUPTED_MAPFILE = CKR_VENDOR_DEFINED + 1L;
-    public static final long CKR_WRONG_VERSION_FIELD = CKR_VENDOR_DEFINED + 2L;
-    public static final long CKR_WRONG_PKCS1_ENCODING = CKR_VENDOR_DEFINED + 3L;
-    public static final long CKR_RTPKCS11_DATA_CORRUPTED = CKR_VENDOR_DEFINED + 4L;
-    public static final long CKR_RTPKCS11_RSF_DATA_CORRUPTED = CKR_VENDOR_DEFINED + 5L;
-    public static final long CKR_SM_PASSWORD_INVALID = CKR_VENDOR_DEFINED + 6L;
-    public static final long CKR_LICENSE_READ_ONLY = CKR_VENDOR_DEFINED + 7L;
-    public static final long CKR_VENDOR_EMITENT_KEY_BLOCKED = CKR_VENDOR_DEFINED + 8L;
-    public static final long CKR_CERT_CHAIN_NOT_VERIFIED = CKR_VENDOR_DEFINED + 9L;
-    public static final long CKR_INAPPROPRIATE_PIN = CKR_VENDOR_DEFINED + 10L;
-    public static final long CKR_PIN_IN_HISTORY = CKR_VENDOR_DEFINED + 11L;
-
-    /* Необходимые определения для работы с расширениями PKCS для ГОСТ */
-    public static final long NSSCK_VENDOR_PKCS11_RU_TEAM = 0xD4321000L; /*0x80000000 | 0x54321000*/
     public static final long CK_VENDOR_PKCS11_RU_TEAM_TK26 = NSSCK_VENDOR_PKCS11_RU_TEAM;
-    public static final long CK_VENDOR_PKCS11_RU_TEAM_TC26 = NSSCK_VENDOR_PKCS11_RU_TEAM;
-
-    /* GOST KEY TYPES */
-    public static final long CKK_GOSTR3410_256 = CKK_GOSTR3410;
-    public static final long CKK_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x003L);
-
-    public static final long CKK_KUZNECHIK = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x004);
-    public static final long CKK_KUZNYECHIK = CKK_KUZNECHIK;
-    public static final long CKK_MAGMA = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x005);
-    public static final long CKK_KUZNECHIK_TWIN_KEY = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x006);
-    public static final long CKK_KUZNYECHIK_TWIN_KEY = CKK_KUZNECHIK_TWIN_KEY;
-    public static final long CKK_MAGMA_TWIN_KEY = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x007);
-
-    /* GOST OBJECT ATTRIBUTES */
-    public static final long CKA_GOSTR3410_256PARAMS = CKA_GOSTR3410_PARAMS;
 
     /* Attributes for CKH_VENDOR_TOKEN_INFO hardware feature */
     public static final long CKA_VENDOR_SECURE_MESSAGING_AVAILABLE = (CKA_VENDOR_DEFINED | 0x3000);
@@ -68,143 +46,136 @@ public final class RtPkcs11Constants {
     public static final long CKA_VENDOR_SUPPORT_KIMP15 = (CKA_VENDOR_DEFINED | 0x300E);
 
     /* KTI attributes */
+    /**
+     * Array of bytes containing the checksum of the object.
+     */
     public static final long CKA_VENDOR_CHECKSUM = (CKA_VENDOR_DEFINED | 0x3100);
+    /**
+     * Byte array containing the HMAC from the transmitted data.
+     */
     public static final long CKA_VENDOR_HMAC_VALUE = (CKA_VENDOR_DEFINED | 0x3101);
+    /**
+     * Certificate attribute - a trusted certificate enrolled using an issuer key.
+     */
     public static final long CKA_VENDOR_INTERNAL_TRUSTED_CERT = (CKA_VENDOR_DEFINED | 0x3102);
+    /**
+     * Attribute of the initialization vector used when entering data using the issuer key.
+     */
     public static final long CKA_VENDOR_IV = (CKA_VENDOR_DEFINED | 0x3103);
 
-    /* Attributes for CKH_VENDOR_PIN_POLICY hardware feature */
-    /* PIN state */
+    /**
+     * PIN state.
+     */
     public static final long CKA_VENDOR_PIN_POLICY_STATE = (CKA_VENDOR_DEFINED | 0x3200);
-    /* Pin policies will be removed during format */
+    /**
+     * Pin policies will be removed during format.
+     */
     public static final long CKA_VENDOR_PIN_POLICIES_DELETABLE = (CKA_VENDOR_DEFINED | 0x3201);
-    /* Get array of CK_ATTRIBUTE_TYPE of supported policies */
+    /**
+     * Get array of CK_ATTRIBUTE_TYPE of supported policies.
+     */
     public static final long CKA_VENDOR_SUPPORTED_PIN_POLICIES = (CKA_VENDOR_DEFINED | CKF_ARRAY_ATTRIBUTE | 0x3202);
-    /* Minimal PIN length */
+    /**
+     * Minimal PIN length.
+     */
     public static final long CKA_VENDOR_PIN_POLICY_MIN_LENGTH = (CKA_VENDOR_DEFINED | 0x3203);
-    /* Number of previous PINs remembered. New PINs cannot be set to those values */
+    /**
+     * Number of previous PINs remembered. New PINs cannot be set to those values.
+     */
     public static final long CKA_VENDOR_PIN_POLICY_HISTORY_DEPTH = (CKA_VENDOR_DEFINED | 0x3204);
-    /* Permits operations with default PIN */
+    /**
+     * Permits operations with default PIN.
+     */
     public static final long CKA_VENDOR_PIN_POLICY_ALLOW_DEFAULT_PIN_USAGE = (CKA_VENDOR_DEFINED | 0x3205);
-    /* PIN contains at least one digit */
+    /**
+     * PIN contains at least one digit.
+     */
     public static final long CKA_VENDOR_PIN_POLICY_DIGIT_REQUIRED = (CKA_VENDOR_DEFINED | 0x3206);
-    /* PIN contains at least one upper case letter */
+    /**
+     * PIN contains at least one upper case letter.
+     */
     public static final long CKA_VENDOR_PIN_POLICY_UPPERCASE_REQUIRED = (CKA_VENDOR_DEFINED | 0x3207);
-    /* PIN contains at least one lower case letter */
+    /**
+     * PIN contains at least one lower case letter.
+     */
     public static final long CKA_VENDOR_PIN_POLICY_LOWERCASE_REQUIRED = (CKA_VENDOR_DEFINED | 0x3208);
-    /* PIN contains at least one special character */
+    /**
+     * PIN contains at least one special character.
+     */
     public static final long CKA_VENDOR_PIN_POLICY_SPEC_CHAR_REQUIRED = (CKA_VENDOR_DEFINED | 0x3209);
-    /* PIN doesn't consist of one repeated character */
+    /**
+     * PIN doesn't consist of one repeated character.
+     */
     public static final long CKA_VENDOR_PIN_POLICY_DIFF_CHARS_REQUIRED = (CKA_VENDOR_DEFINED | 0x320a);
     public static final long CKA_VENDOR_USER_TYPE = (CKA_VENDOR_DEFINED | 0x320b);
-
-    /* PKCS #5 PRF Functions */
-    public static final long CKP_PKCS5_PBKD2_HMAC_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x003);
-
-    /* GOST MECHANISMS */
-    public static final long CKM_GOSTR3410_256_KEY_PAIR_GEN = CKM_GOSTR3410_KEY_PAIR_GEN;
-    public static final long CKM_GOSTR3410_256 = CKM_GOSTR3410;
-    public static final long CKM_GOSTR3410_WITH_GOSTR3411_94 = CKM_GOSTR3410_WITH_GOSTR3411;
-    public static final long CKM_GOSTR3410_512_KEY_PAIR_GEN = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x005L);
-    public static final long CKM_GOSTR3410_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x006L);
-    public static final long CKM_GOSTR3410_2012_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x007L);
-    public static final long CKM_GOSTR3410_12_DERIVE = CKM_GOSTR3410_2012_DERIVE;
-    public static final long CKM_GOSTR3410_WITH_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x008L);
-    public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_256 = CKM_GOSTR3410_WITH_GOSTR3411_2012_256;
-    public static final long CKM_GOSTR3410_WITH_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x009L);
-    public static final long CKM_GOSTR3410_WITH_GOSTR3411_12_512 = CKM_GOSTR3410_WITH_GOSTR3411_2012_512;
-    public static final long CKM_GOSTR3410_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x00A);
-    public static final long CKM_GOSTR3410_512_PUBLIC_KEY_DERIVE = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x00B);
-
-    public static final long CKM_GOSTR3411_94 = CKM_GOSTR3411;
-    public static final long CKM_GOSTR3411_94_HMAC = CKM_GOSTR3411_HMAC;
-    public static final long CKM_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x012L);
-    public static final long CKM_GOSTR3411_12_256 = CKM_GOSTR3411_2012_256;
-    public static final long CKM_GOSTR3411_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x013L);
-    public static final long CKM_GOSTR3411_12_512 = CKM_GOSTR3411_2012_512;
-    public static final long CKM_GOSTR3411_2012_256_HMAC = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x014L);
-    public static final long CKM_GOSTR3411_12_256_HMAC = CKM_GOSTR3411_2012_256_HMAC;
-    public static final long CKM_GOSTR3411_2012_512_HMAC = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x015L);
-    public static final long CKM_GOSTR3411_12_512_HMAC = CKM_GOSTR3411_2012_512_HMAC;
-
-    public static final long CKM_TLS_GOST_PRF_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x016);
-    public static final long CKM_TLS_GOST_PRF_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x017);
-    public static final long CKM_TLS_GOST_PRE_MASTER_KEY_GEN = CKM_GOST28147_KEY_GEN;
-    public static final long CKM_TLS_GOST_MASTER_KEY_DERIVE_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x018);
-
-    public static final long CKM_KDF_4357 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x025L);
-    public static final long CKM_KDF_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x026L);
-
-    public static final long CKM_KDF_HMAC3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x028);
-    public static final long KDF_TREE_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x02A);
-    public static final long CKM_KDF_TREE_GOSTR3411_2012_256 = KDF_TREE_GOSTR3411_2012_256;
-
-    public static final long CKM_KUZNECHIK_KEXP_15_WRAP = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x02B);
-    public static final long CKM_KUZNYECHIK_KEXP_15_WRAP = CKM_KUZNECHIK_KEXP_15_WRAP;
-    public static final long CKM_MAGMA_KEXP_15_WRAP = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x02C);
-    public static final long CKM_KUZNECHIK_MGM = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x02D);
-    public static final long CKM_KUZNYECHIK_MGM = CKM_KUZNECHIK_MGM;
-    public static final long CKM_MAGMA_MGM = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x02E);
-
-    public static final long CKM_KUZNECHIK_KEY_GEN = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x030);
-    public static final long CKM_KUZNYECHIK_KEY_GEN = CKM_KUZNECHIK_KEY_GEN;
-    public static final long CKM_KUZNECHIK_ECB = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x031);
-    public static final long CKM_KUZNYECHIK_ECB = CKM_KUZNECHIK_ECB;
-    public static final long CKM_KUZNECHIK_CTR_ACPKM = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x032);
-    public static final long CKM_KUZNYECHIK_CTR_ACPKM = CKM_KUZNECHIK_CTR_ACPKM;
-    public static final long CKM_KUZNECHIK_MAC = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x033);
-    public static final long CKM_KUZNYECHIK_MAC = CKM_KUZNECHIK_MAC;
-
-    public static final long CKM_MAGMA_KEY_GEN = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x034);
-    public static final long CKM_MAGMA_ECB = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x035);
-    public static final long CKM_MAGMA_CTR_ACPKM = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x036);
-    public static final long CKM_MAGMA_MAC = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x037);
-
-    public static final long CKM_VENDOR_SECURE_IMPORT = (CKM_VENDOR_DEFINED + 3);
-    public static final long CKM_VENDOR_VKO_GOSTR3410_2012_512 = (CKM_VENDOR_DEFINED + 4);
-    public static final long CKM_VENDOR_GOST_KEG = (CKM_VENDOR_DEFINED + 5);
-
-    public static final long CKM_VKO_GOSTR3410_2012_512 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x038);
-    public static final long CKM_GOST_KEG = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x039);
 
     /* GOST DIVERSIFICATION TYPES */
     public static final long CKD_KDF_4357 = CKM_KDF_4357;
     public static final long CKD_KDF_GOSTR3411_2012_256 = CKM_KDF_GOSTR3411_2012_256;
 
-    public static final long CKP_PKCS5_PBKD2_HMAC_GOSTR3411 = 0x00000002L;
-
-    /*
-     * Token flags (field "flags" from CK_TOKEN_INFO_EXTENDED +
-     * field "ChangeUserPINPolicy" from CK_RUTOKEN_INIT_PARAM)
+    /**
+     * Do not attach signed data to PKCS#7 signature.
      */
+    public static final long PKCS7_DETACHED_SIGNATURE = 0x00000001L;
+    /**
+     * Use hardware hash in operation, can be passed only to PKCS#7 signature operation.
+     */
+    public static final long USE_HARDWARE_HASH = 0x00000002L;
+
+    /* Token types (CK_TOKEN_INFO_EXTENDED field "ulTokenType")
+       CK_TOKEN_INFO_EXTENDED's field ulTokenType is deprecated. */
+    public static final long TOKEN_TYPE_UNKNOWN = 0xFFL;
+    public static final long TOKEN_TYPE_RUTOKEN_ECP = 0x01L;
+    public static final long TOKEN_TYPE_RUTOKEN_LITE = 0x02L;
+    public static final long TOKEN_TYPE_RUTOKEN = 0x03L;
+    public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_USB = 0x09L;
+    public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_BT = 0x69L;
+    public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_UART = 0xA9L;
+    public static final long TOKEN_TYPE_RUTOKEN_SC_JC = 0x41L;
+    public static final long TOKEN_TYPE_RUTOKEN_ECP_SC = TOKEN_TYPE_RUTOKEN_SC_JC;
+    public static final long TOKEN_TYPE_RUTOKEN_SCDUAL = 0x49L;
+    public static final long TOKEN_TYPE_RUTOKEN_SCDUAL_NFC = 0xC9L;
+    public static final long TOKEN_TYPE_RUTOKEN_LITE_SC_JC = 0x42L;
+    public static final long TOKEN_TYPE_RUTOKEN_MIKRON = 0x05L;
+    public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SC = 0x45L;
+    public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL = 0x4DL;
+    public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL_NFC = 0xCDL;
+    public static final long TOKEN_TYPE_RUTOKEN_ECP_NFC = 0xC1L;
+    public static final long TOKEN_TYPE_RUTOKEN_PINPAD_FAMILY = 0x04L;
+    public static final long TOKEN_TYPE_RUTOKEN_WEB = 0x23L;
+    public static final long TOKEN_TYPE_RUTOKEN_ECP_SD = 0x81L;
+    public static final long TOKEN_TYPE_RUTOKEN_LITE_SD = 0x82L;
+
+    /* Token flags (field "flags" from CK_TOKEN_INFO_EXTENDED +
+       field "ChangeUserPINPolicy" from CK_RUTOKEN_INIT_PARAM) */
 
     /**
      * TOKEN_FLAGS_ADMIN_CHANGE_USER_PIN - if it is set, that
-     * means that Administrator (SO) can change User PIN
+     * means that Administrator (SO) can change User PIN.
      */
     public static final long TOKEN_FLAGS_ADMIN_CHANGE_USER_PIN = 0x00000001L;
 
     /**
      * TOKEN_FLAGS_USER_CHANGE_USER_PIN - if it is set, that
-     * means that User can change User PIN
+     * means that User can change User PIN.
      */
     public static final long TOKEN_FLAGS_USER_CHANGE_USER_PIN = 0x00000002L;
 
     /**
      * TOKEN_FLAGS_ADMIN_PIN_NOT_DEFAULT - if it is set, that
-     * means that current Administrator (SO) PIN is not default
+     * means that current Administrator (SO) PIN is not default.
      */
     public static final long TOKEN_FLAGS_ADMIN_PIN_NOT_DEFAULT = 0x00000004L;
 
     /**
      * TOKEN_FLAGS_USER_PIN_NOT_DEFAULT - if it is set, that
-     * means that current User PIN is not default
+     * means that current User PIN is not default.
      */
     public static final long TOKEN_FLAGS_USER_PIN_NOT_DEFAULT = 0x00000008L;
 
     /**
      * TOKEN_FLAGS_SUPPORT_FKN - if it is set, that
-     * means that token support CryptoPro FKN
+     * means that token support CryptoPro FKN.
      */
     public static final long TOKEN_FLAGS_SUPPORT_FKN = 0x00000010L;
 
@@ -219,7 +190,7 @@ public final class RtPkcs11Constants {
 
     /**
      * TOKEN_FLAGS_HAS_FLASH_DRIVE - if it is set, that means
-     * that token has Flash Drive
+     * that token has Flash Drive.
      */
     public static final long TOKEN_FLAGS_HAS_FLASH_DRIVE = 0x00000080L;
 
@@ -234,73 +205,47 @@ public final class RtPkcs11Constants {
 
     /**
      * TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING - if it is set, that
-     * means that token supports Secure Messaging
+     * means that token supports Secure Messaging.
      */
     public static final long TOKEN_FLAGS_SUPPORT_SECURE_MESSAGING = 0x00000100L;
 
     /**
      * TOKEN_FLAGS_HAS_BUTTON - if it is set, that means
-     * that token is Rutoken Touch
+     * that token is Rutoken Touch.
      */
     public static final long TOKEN_FLAGS_HAS_BUTTON = 0x00000200L;
 
     /**
      * TOKEN_FLAGS_SUPPORT_JOURNAL - if it is set, that means
-     * that token supports journal
+     * that token supports journal.
      */
     public static final long TOKEN_FLAGS_SUPPORT_JOURNAL = 0x00000400L;
 
     /**
      * TOKEN_FLAGS_USER_PIN_UTF8 - if it is set, that means
-     * that user PIN in UTF-8
+     * that user PIN in UTF-8.
      */
     public static final long TOKEN_FLAGS_USER_PIN_UTF8 = 0x00000800L;
 
     /**
      * TOKEN_FLAGS_ADMIN_PIN_UTF8 - if it is set, that means
-     * that admin PIN in UTF-8
+     * that admin PIN in UTF-8.
      */
     public static final long TOKEN_FLAGS_ADMIN_PIN_UTF8 = 0x00001000L;
 
     /**
      * TOKEN_FLAGS_FW_CHECKSUM_UNAVAILIBLE - if it is set, that
      * means Token does not support firmware checksum request
-     * and 'ulFirmwareChecksum' can not be used
+     * and 'ulFirmwareChecksum' can not be used.
      */
     public static final long TOKEN_FLAGS_FW_CHECKSUM_UNAVAILIBLE = 0x40000000L;
 
     /**
      * TOKEN_FLAGS_FW_CHECKSUM_INVALID - if it is set, that
      * means that 'ulFirmwareChecksum' field contains different
-     * from the reference (stored at Token) firmware checksum
+     * from the reference (stored at Token) firmware checksum.
      */
     public static final long TOKEN_FLAGS_FW_CHECKSUM_INVALID = 0x80000000L;
-
-    /*
-     * Token types (CK_TOKEN_INFO_EXTENDED field "ulTokenType")
-     * CK_TOKEN_INFO_EXTENDED's field ulTokenType is deprecated.
-     */
-    public static final long TOKEN_TYPE_UNKNOWN = 0xFFL;
-    public static final long TOKEN_TYPE_RUTOKEN_ECP = 0x01L;
-    public static final long TOKEN_TYPE_RUTOKEN_LITE = 0x02L;
-    public static final long TOKEN_TYPE_RUTOKEN = 0x03L;
-    public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_USB = 0x09L;
-    public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_BT = 0x69L;
-    public static final long TOKEN_TYPE_RUTOKEN_ECPDUAL_UART = 0xA9L;
-    public static final long TOKEN_TYPE_RUTOKEN_SC_JC = 0x41L;
-    public static final long TOKEN_TYPE_RUTOKEN_ECP_SC = TOKEN_TYPE_RUTOKEN_SC_JC;
-    public static final long TOKEN_TYPE_RUTOKEN_ECP_NFC = 0xC1L;
-    public static final long TOKEN_TYPE_RUTOKEN_SCDUAL = 0x49L;
-    public static final long TOKEN_TYPE_RUTOKEN_SCDUAL_NFC = 0xC9L;
-    public static final long TOKEN_TYPE_RUTOKEN_LITE_SC_JC = 0x42L;
-    public static final long TOKEN_TYPE_RUTOKEN_MIKRON = 0x05L;
-    public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SC = 0x45L;
-    public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL = 0x4DL;
-    public static final long TOKEN_TYPE_RUTOKEN_MIKRON_SCDUAL_NFC = 0xCDL;
-    public static final long TOKEN_TYPE_RUTOKEN_PINPAD_FAMILY = 0x04L;
-    public static final long TOKEN_TYPE_RUTOKEN_WEB = 0x23L;
-    public static final long TOKEN_TYPE_RUTOKEN_ECP_SD = 0x81L;
-    public static final long TOKEN_TYPE_RUTOKEN_LITE_SD = 0x82L;
 
     /* Token class (CK_TOKEN_INFO_EXTENDED field "ulTokenClass") */
     public static final long TOKEN_CLASS_UNKNOWN = 0xFFFFFFFFL;
@@ -320,47 +265,78 @@ public final class RtPkcs11Constants {
     public static final long TOKEN_BODY_COLOR_WHITE = 1L;
     public static final long TOKEN_BODY_COLOR_BLACK = 2L;
 
+    /* Extended error codes */
+    public static final long CKR_CORRUPTED_MAPFILE = CKR_VENDOR_DEFINED + 1L;
+    public static final long CKR_WRONG_VERSION_FIELD = CKR_VENDOR_DEFINED + 2L;
+    public static final long CKR_WRONG_PKCS1_ENCODING = CKR_VENDOR_DEFINED + 3L;
+    public static final long CKR_RTPKCS11_DATA_CORRUPTED = CKR_VENDOR_DEFINED + 4L;
+    public static final long CKR_RTPKCS11_RSF_DATA_CORRUPTED = CKR_VENDOR_DEFINED + 5L;
+    public static final long CKR_SM_PASSWORD_INVALID = CKR_VENDOR_DEFINED + 6L;
+    public static final long CKR_LICENSE_READ_ONLY = CKR_VENDOR_DEFINED + 7L;
+    public static final long CKR_VENDOR_EMITENT_KEY_BLOCKED = CKR_VENDOR_DEFINED + 8L;
+    public static final long CKR_CERT_CHAIN_NOT_VERIFIED = CKR_VENDOR_DEFINED + 9L;
+    public static final long CKR_INAPPROPRIATE_PIN = CKR_VENDOR_DEFINED + 10L;
+    public static final long CKR_PIN_IN_HISTORY = CKR_VENDOR_DEFINED + 11L;
+
+    public static final long CKF_ENCRYPTION = 0x01000000L;
+
     /* Access modes for TM2 */
     public static final long ACCESS_MODE_HIDDEN = 0x00000000L;
     public static final long ACCESS_MODE_RO = 0x00000001L;
     public static final long ACCESS_MODE_RW = 0x00000003L;
     public static final long ACCESS_MODE_CD = 0x00000005L;
 
-    /* PKCS7 constants */
-    /**
-     * Flags for C_EX_PKCS7Sign
-     */
-    public static final long PKCS7_DETACHED_SIGNATURE = 0x00000001L;
-    public static final long USE_HARDWARE_HASH = 0x00000002L;
+    /* Rutoken S vendor defined constants */
+    public static final long CKM_GOST_KEY_GEN = (CKM_VENDOR_DEFINED + 1);
+    public static final long CKM_GOST = (CKM_VENDOR_DEFINED + 2);
+    public static final long CKM_VENDOR_SECURE_IMPORT = (CKM_VENDOR_DEFINED + 3);
 
+    /* Flags for C_EX_PKCS7VerifyInit */
     /**
-     * Flags for C_EX_PKCS7VerifyInit
+     * Do not search signer certificates in certificates attached to CMS.
      */
     public static final long CKF_VENDOR_DO_NOT_USE_INTERNAL_CMS_CERTS = 0x00000001L;
+    /**
+     * If this flag is set - chain verification will be successful
+     * if at least one CA certificate from chain is in trusted certificates list.
+     */
     public static final long CKF_VENDOR_ALLOW_PARTIAL_CHAINS = 0x00000002L;
+    /**
+     * If this flag is set - certificate verification is not made
+     * this flag is not compatible with CKF_VENDOR_DO_NOT_USE_INTERNAL_CMS_CERTS,
+     * CKF_VENDOR_ALLOW_PARTIAL_CHAINS and CKF_VENDOR_USE_TRUSTED_CERTS_FROM_TOKEN
+     * ckMode should be set to OPTIONAL_CRL_CHECK.
+     */
     public static final long CKF_VENDOR_CHECK_SIGNATURE_ONLY = 0x00000004L;
+    /**
+     * If this flag is set - trusted certificate store will be used
+     * to build a certificate chain. ulTrustedCertificateCount
+     * in certificate store should be set to 0.
+     */
     public static final long CKF_VENDOR_USE_TRUSTED_CERTS_FROM_TOKEN = 0x00000008L;
 
+    /* CRL checking modes, should be passed in ckMode to C_EX_PKCS7VerifyInit */
+    /**
+     * If we have no suitable CRL - it won't be an error.
+     */
     public static final long OPTIONAL_CRL_CHECK = 0x00000000L;
+    /**
+     * Signer's CA CRL should be passed.
+     */
     public static final long LEAF_CRL_CHECK = 0x00000001L;
+    /**
+     * CRLs of all CA from the chain should be passed.
+     */
     public static final long ALL_CRL_CHECK = 0x00000002L;
-
-    /* Hardware feature types */
-    public static final long CKH_VENDOR_TOKEN_INFO = (CKH_VENDOR_DEFINED + 0x01);
-    public static final long CKH_VENDOR_EMITENT_KEY = (CKH_VENDOR_DEFINED + 0x02);
-    public static final long CKH_VENDOR_SECURE_COUNTER = (CKH_VENDOR_DEFINED + 0x03);
-    public static final long CKH_VENDOR_NDEF_TAG = (CKH_VENDOR_DEFINED + 0x04);
-    public static final long CKH_VENDOR_RNG = (CKH_VENDOR_DEFINED + 0x05);
-    public static final long CKH_VENDOR_PIN_POLICY = (CKH_VENDOR_DEFINED + 0x06);
 
     /* Interfaces */
     public static final long INTERFACE_TYPE_USB = 0x00000001L;
-    public static final long INTERFACE_TYPE_BT =  0x00000002L;
+    public static final long INTERFACE_TYPE_BT = 0x00000002L;
     public static final long INTERFACE_TYPE_UART = 0x00000004L;
     public static final long INTERFACE_TYPE_ISO = 0x00000008L;
     public static final long INTERFACE_TYPE_NFC = 0x00000020L;
     public static final long INTERFACE_TYPE_SPI = 0x00000040L;
-    public static final long INTERFACE_TYPE_UNKNOWN =  CK_UNAVAILABLE_INFORMATION;
+    public static final long INTERFACE_TYPE_UNKNOWN = CK_UNAVAILABLE_INFORMATION;
 
     /* Secure messaging types */
     public static final long SECURE_MESSAGING_DEFAULT = 0x00L;
@@ -369,13 +345,21 @@ public final class RtPkcs11Constants {
     public static final long SECURE_MESSAGING_ENHANCED_GOST = 0x03L;
     public static final long SECURE_MESSAGING_UNSUPPORTED = 0xffL;
 
-    /* Biometric types */
-    public static final long BIOMETRIC_AUTHENTICATION_NOT_SUPPORTED = 0x00000000L;
-
     /* Values for CKA_VENDOR_PIN_POLICY_STATE */
     public static final long PIN_POLICY_STATE_WELL_DEFINED = 0x00L;
     public static final long PIN_POLICY_STATE_HAS_UNKNOWN_ATTRIBUTES = 0x01L;
     public static final long PIN_POLICY_STATE_HAS_UNKNOWN_NONDEFAULT_ATTRIBUTES = 0x02L;
+
+    /* Biometric types */
+    public static final long BIOMETRIC_AUTHENTICATION_NOT_SUPPORTED = 0x00000000L;
+
+    /* Hardware feature types */
+    public static final long CKH_VENDOR_TOKEN_INFO = (CKH_VENDOR_DEFINED + 0x01);
+    public static final long CKH_VENDOR_EMITENT_KEY = (CKH_VENDOR_DEFINED + 0x02);
+    public static final long CKH_VENDOR_SECURE_COUNTER = (CKH_VENDOR_DEFINED + 0x03);
+    public static final long CKH_VENDOR_NDEF_TAG = (CKH_VENDOR_DEFINED + 0x04);
+    public static final long CKH_VENDOR_RNG = (CKH_VENDOR_DEFINED + 0x05);
+    public static final long CKH_VENDOR_PIN_POLICY = (CKH_VENDOR_DEFINED + 0x06);
 
     private RtPkcs11Constants() {
     }
