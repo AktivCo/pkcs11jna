@@ -5,12 +5,7 @@
 
 package ru.rutoken.pkcs11jna;
 
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKA_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKF_ARRAY_ATTRIBUTE;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKH_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKM_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKR_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CK_UNAVAILABLE_INFORMATION;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.*;
 import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.CKM_KDF_4357;
 import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.CKM_KDF_GOSTR3411_2012_256;
 import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.NSSCK_VENDOR_PKCS11_RU_TEAM;
@@ -108,6 +103,19 @@ public final class RtPkcs11Constants {
      */
     public static final long CKA_VENDOR_PIN_POLICY_DIFF_CHARS_REQUIRED = (CKA_VENDOR_DEFINED | 0x320a);
     public static final long CKA_VENDOR_USER_TYPE = (CKA_VENDOR_DEFINED | 0x320b);
+
+    /**
+     * Chaincode value
+     */
+    public static final long CKA_VENDOR_BIP32_CHAINCODE = (CKA_VENDOR_DEFINED | 0x3300);
+    /**
+     * HASH160 from public key
+     */
+    public static final long CKA_VENDOR_BIP32_ID = (CKA_VENDOR_DEFINED | 0x3301);
+    /**
+     * First 32 bits of CKA_VENDOR_BIP32_ID
+     */
+    public static final long CKA_VENDOR_BIP32_FINGERPRINT = (CKA_VENDOR_DEFINED | 0x3302);
 
     /* GOST DIVERSIFICATION TYPES */
     public static final long CKD_KDF_4357 = CKM_KDF_4357;
@@ -290,6 +298,21 @@ public final class RtPkcs11Constants {
     public static final long CKM_GOST_KEY_GEN = (CKM_VENDOR_DEFINED + 1);
     public static final long CKM_GOST = (CKM_VENDOR_DEFINED + 2);
     public static final long CKM_VENDOR_SECURE_IMPORT = (CKM_VENDOR_DEFINED + 3);
+
+    /**
+     * BIP32 key pair generation mechanism
+     */
+    public static final long CKM_VENDOR_BIP32_KEY_PAIR_GEN = (CKM_VENDOR_DEFINED + 4);
+    /**
+     * A mechanism for creating a private key through diversification
+     */
+    public static final long CKM_VENDOR_BIP32_DERIVE_PRIVATE_FROM_PRIVATE = (CKM_VENDOR_DEFINED + 5);
+    /**
+     * A mechanism for creating a public key through diversification
+     */
+    public static final long CKM_VENDOR_BIP32_DERIVE_PUBLIC_FROM_PRIVATE = (CKM_VENDOR_DEFINED + 6);
+
+    public static final long CKK_VENDOR_BIP32 = (CKK_VENDOR_DEFINED + 2);
 
     /* Flags for C_EX_PKCS7VerifyInit */
     /**
