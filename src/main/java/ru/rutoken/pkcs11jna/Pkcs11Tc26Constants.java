@@ -79,8 +79,8 @@ public final class Pkcs11Tc26Constants {
     public static final long CKM_KDF_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x026L);
 
     public static final long CKM_KDF_HMAC3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x028L);
-    public static final long KDF_TREE_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x02AL);
-    public static final long CKM_KDF_TREE_GOSTR3411_2012_256 = KDF_TREE_GOSTR3411_2012_256;
+    public static final long CKM_KDF_TREE_GOSTR3411_2012_256 = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x02AL);
+    public static final long KDF_TREE_GOSTR3411_2012_256 = CKM_KDF_TREE_GOSTR3411_2012_256;
 
     public static final long CKM_KUZNECHIK_KEXP_15_WRAP = (CK_VENDOR_PKCS11_RU_TEAM_TC26 | 0x02BL);
     public static final long CKM_KUZNYECHIK_KEXP_15_WRAP = CKM_KUZNECHIK_KEXP_15_WRAP;
