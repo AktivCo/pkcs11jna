@@ -29,12 +29,21 @@ public class CK_VENDOR_VKO_GOSTR3410_2012_512_PARAMS extends Pkcs11Structure {
 
     public CK_VENDOR_VKO_GOSTR3410_2012_512_PARAMS(NativeLong kdf, byte[] publicData, byte[] ukm) {
         this.kdf = kdf;
-        ulPublicDataLen = new NativeLong(publicData.length);
-        pPublicData = new Memory(publicData.length);
-        pPublicData.write(0, publicData, 0, publicData.length);
 
-        ulUKMLen = new NativeLong(ukm.length);
-        pUKM = new Memory(ukm.length);
-        pUKM.write(0, ukm, 0, ukm.length);
+        if (publicData != null) {
+            ulPublicDataLen = new NativeLong(publicData.length);
+            pPublicData = new Memory(publicData.length);
+            pPublicData.write(0, publicData, 0, publicData.length);
+        } else {
+            ulPublicDataLen = new NativeLong(0);
+        }
+
+        if (ukm != null) {
+            ulUKMLen = new NativeLong(ukm.length);
+            pUKM = new Memory(ukm.length);
+            pUKM.write(0, ukm, 0, ukm.length);
+        } else {
+            ulUKMLen = new NativeLong(0);
+        }
     }
 }

@@ -125,9 +125,13 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
 
     public void setAttr(NativeLong type, byte[] value) {
         this.type = type;
-        pValue = new Memory(value.length);
-        pValue.write(0, value, 0, value.length);
-        ulValueLen = new NativeLong(value.length);
+        if (value != null) {
+            pValue = new Memory(value.length);
+            pValue.write(0, value, 0, value.length);
+            ulValueLen = new NativeLong(value.length);
+        } else {
+            ulValueLen = new NativeLong(0);
+        }
     }
 
     public void setAttr(long type, boolean value) {
@@ -153,6 +157,9 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
      * Writes value in native memory without null-terminator
      */
     public void setAttr(NativeLong type, String value) {
-        setAttr(type, value.getBytes(StandardCharsets.UTF_8));
+        if (value == null)
+            setAttr(type, (byte[]) null);
+        else
+            setAttr(type, value.getBytes(StandardCharsets.UTF_8));
     }
 }

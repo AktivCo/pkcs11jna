@@ -27,12 +27,20 @@ public class CK_VENDOR_GOST_KEG_PARAMS extends Pkcs11Structure {
     }
 
     public CK_VENDOR_GOST_KEG_PARAMS(byte[] publicData, byte[] ukm) {
-        ulPublicDataLen = new NativeLong(publicData.length);
-        pPublicData = new Memory(publicData.length);
-        pPublicData.write(0, publicData, 0, publicData.length);
+        if (publicData != null) {
+            ulPublicDataLen = new NativeLong(publicData.length);
+            pPublicData = new Memory(publicData.length);
+            pPublicData.write(0, publicData, 0, publicData.length);
+        } else {
+            ulPublicDataLen = new NativeLong(0);
+        }
 
-        ulUKMLen = new NativeLong(ukm.length);
-        pUKM = new Memory(ukm.length);
-        pUKM.write(0, ukm, 0, ukm.length);
+        if (ukm != null) {
+            ulUKMLen = new NativeLong(ukm.length);
+            pUKM = new Memory(ukm.length);
+            pUKM.write(0, ukm, 0, ukm.length);
+        } else {
+            ulUKMLen = new NativeLong(0);
+        }
     }
 }

@@ -29,9 +29,14 @@ public class CK_ECDH1_DERIVE_PARAMS extends Pkcs11Structure {
 
     public CK_ECDH1_DERIVE_PARAMS(NativeLong kdf, byte[] publicData, byte[] sharedData) {
         this.kdf = kdf;
-        ulPublicDataLen = new NativeLong(publicData.length);
-        pPublicData = new Memory(publicData.length);
-        pPublicData.write(0, publicData, 0, publicData.length);
+
+        if (publicData != null) {
+            ulPublicDataLen = new NativeLong(publicData.length);
+            pPublicData = new Memory(publicData.length);
+            pPublicData.write(0, publicData, 0, publicData.length);
+        } else {
+            ulPublicDataLen = new NativeLong(0);
+        }
 
         if (sharedData != null) {
             ulSharedDataLen = new NativeLong(sharedData.length);
@@ -39,7 +44,6 @@ public class CK_ECDH1_DERIVE_PARAMS extends Pkcs11Structure {
             pSharedData.write(0, sharedData, 0, sharedData.length);
         } else {
             ulSharedDataLen = new NativeLong(0);
-            pSharedData = Pointer.NULL;
         }
     }
 }
