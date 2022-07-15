@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'maven-publish'
+    id 'signing'
 }
 
 version '3.0.0'
@@ -8,6 +10,86 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+def isProduction = project.findProperty("production") == "true"
+
+publishing {
+    publications {
+        pkcs11jnaMaven(MavenPublication) {
+            groupId = 'ru.rutoken'
+            if (!isProduction) {
+                def commitHash = 'git rev-parse --verify --short HEAD'.execute().text.trim()
+                version = project.version + "-" + commitHash
+            }
+
+            pom {
+                name = groupId + ':' + project.name
+                description = 'A Java library to access PKCS#11 (also known as Cryptoki) modules using JNA'
+                url = 'https://github.com/AktivCo/pkcs11jna'
+
+                licenses {
+                    license {
+                        name = 'Aktiv-Soft license'
+                        url = 'https://github.com/AktivCo/pkcs11jna/blob/master/LICENSES/Aktiv-Soft'
+                    }
+                    license {
+                        name = 'IAIK PKCS#11 Wrapper License'
+                        url = 'https://github.com/AktivCo/pkcs11jna/blob/master/LICENSES/IAIK%20PKCS%20Wrapper'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'Aktiv-Soft JSC'
+                        email = 'developers@rutoken.ru'
+                        organization = 'Aktiv-Soft JSC'
+                        organizationUrl = 'https://www.aktiv-company.ru/'
+                    }
+                }
+
+                scm {
+                    url = 'http://github.com/AktivCo/pkcs11jna/tree/master'
+                }
+            }
+
+            from components.java
+        }
+    }
+
+    repositories {
+        if (isProduction) {
+            maven { // Publishing a production build to MavenCentral
+                name = 'Maven'
+                url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+
+                credentials {
+                    username = project.findProperty("mavenUser")
+                    password = project.findProperty("mavenPassword")
+                }
+            }
+        } else {
+            maven { // Publishing a usual build to internal Aktiv repo
+                name = 'Maven'
+                url = 'https://nexus.aktivco.ru/repository/maven-snapshots/'
+
+                credentials {
+                    username = project.findProperty("mavenUser")
+                    password = project.findProperty("mavenPassword")
+                }
+            }
+        }
+    }
+}
+
+signing {
+    if (isProduction) {
+        sign publishing.publications.pkcs11jnaMaven
+    }
 }
 
 dependencies {
