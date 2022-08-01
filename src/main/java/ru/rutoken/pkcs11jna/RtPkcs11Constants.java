@@ -302,15 +302,15 @@ public final class RtPkcs11Constants {
     /**
      * BIP32 key pair generation mechanism
      */
-    public static final long CKM_VENDOR_BIP32_KEY_PAIR_GEN = (CKM_VENDOR_DEFINED + 4);
+    public static final long CKM_VENDOR_BIP32_KEY_PAIR_GEN = (CKM_VENDOR_DEFINED + 6);
     /**
      * A mechanism for creating a private key through diversification
      */
-    public static final long CKM_VENDOR_BIP32_DERIVE_PRIVATE_FROM_PRIVATE = (CKM_VENDOR_DEFINED + 5);
+    public static final long CKM_VENDOR_BIP32_DERIVE_PRIVATE_FROM_PRIVATE = (CKM_VENDOR_DEFINED + 7);
     /**
      * A mechanism for creating a public key through diversification
      */
-    public static final long CKM_VENDOR_BIP32_DERIVE_PUBLIC_FROM_PRIVATE = (CKM_VENDOR_DEFINED + 6);
+    public static final long CKM_VENDOR_BIP32_DERIVE_PUBLIC_FROM_PRIVATE = (CKM_VENDOR_DEFINED + 8);
 
     public static final long CKK_VENDOR_BIP32 = (CKK_VENDOR_DEFINED + 2);
 
