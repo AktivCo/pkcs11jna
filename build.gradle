@@ -1,10 +1,10 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
     id 'signing'
 }
 
-version '3.2.0'
+version '3.3.0'
 
 sourceCompatibility = 1.8
 
@@ -32,6 +32,7 @@ publishing {
                 name = groupId + ':' + project.name
                 description = 'A Java library to access PKCS#11 (also known as Cryptoki) modules using JNA'
                 url = 'https://github.com/AktivCo/pkcs11jna'
+                packaging = 'jar'
 
                 licenses {
                     license {
@@ -93,5 +94,5 @@ signing {
 }
 
 dependencies {
-    implementation 'net.java.dev.jna:jna:5.9.0'
+    api 'net.java.dev.jna:jna:5.11.0'
 }
