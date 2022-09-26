@@ -33,6 +33,7 @@ import com.sun.jna.Library;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.NativeLongByReference;
+import com.sun.jna.ptr.PointerByReference;
 
 public interface Pkcs11 extends Library {
     /* General-purpose */
@@ -63,7 +64,7 @@ public interface Pkcs11 extends Library {
      *
      * @param ppFunctionList receives pointer to function list
      */
-    NativeLong C_GetFunctionList(CK_FUNCTION_LIST ppFunctionList);
+    NativeLong C_GetFunctionList(PointerByReference ppFunctionList);
 
     /* Slot and token management */
 

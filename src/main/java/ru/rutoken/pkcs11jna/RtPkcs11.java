@@ -24,9 +24,8 @@ public interface RtPkcs11 extends Pkcs11 {
      * Returns the extended function list.
      *
      * @param ppFunctionList receives pointer to extended function list
-     *                       TODO use structure instead of array
      */
-    NativeLong C_EX_GetFunctionListExtended(Pointer[] ppFunctionList);
+    NativeLong C_EX_GetFunctionListExtended(PointerByReference ppFunctionList);
 
     /**
      * Initializes a token with full format.
