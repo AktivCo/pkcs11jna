@@ -228,7 +228,9 @@ public interface RtPkcs11 extends Pkcs11 {
      * @param hSession the session's handle
      * @param key      activation key
      * @param keySize  size of the key in bytes
+     * @deprecated unsupported by rtpkcs11ecp 2.6.0.0+
      */
+    @Deprecated
     NativeLong C_EX_LoadActivationKey(NativeLong hSession, byte[] key, NativeLong keySize);
 
     /**
@@ -237,7 +239,9 @@ public interface RtPkcs11 extends Pkcs11 {
      *
      * @param slotID   ID of the token's slot
      * @param password null terminated C-string with the password
+     * @deprecated unsupported by rtpkcs11ecp 2.6.0.0+
      */
+    @Deprecated
     NativeLong C_EX_SetActivationPassword(NativeLong slotID, byte[] password);
 
     /**
@@ -319,7 +323,9 @@ public interface RtPkcs11 extends Pkcs11 {
      * @param pPassword              password buffer
      * @param pulPasswordSize        buffer size
      * @param ulPasswordCharacterSet allowed password character set
+     * @deprecated unsupported by rtpkcs11ecp 2.6.0.0+
      */
+    @Deprecated
     NativeLong C_EX_GenerateActivationPassword(
             NativeLong hSession,
             NativeLong ulPasswordNumber,
@@ -347,7 +353,7 @@ public interface RtPkcs11 extends Pkcs11 {
      * @param hSession   the session's handle
      * @param pMechanism the signature mechanism
      * @param hKey       handle of signature key
-     * @deprecated
+     * @deprecated unsupported by rtpkcs11ecp 2.0.3.0+
      */
     @Deprecated
     NativeLong C_EX_SignInvisibleInit(NativeLong hSession, CK_MECHANISM pMechanism, NativeLong hKey);
@@ -360,7 +366,7 @@ public interface RtPkcs11 extends Pkcs11 {
      * @param ulDataLen       count of bytes to sign
      * @param pSignature      gets the signature
      * @param pulSignatureLen gets signature length
-     * @deprecated
+     * @deprecated unsupported by rtpkcs11ecp 2.0.3.0+
      */
     @Deprecated
     NativeLong C_EX_SignInvisible(
@@ -394,7 +400,9 @@ public interface RtPkcs11 extends Pkcs11 {
      * @param pWrappedKey          encrypted CEK
      * @param pulWrappedKeyLen     encrypted CEK length
      * @param phKey                CEK handle
+     * @deprecated unsupported by rtpkcs11ecp 2.0.8.0+
      */
+    @Deprecated
     NativeLong C_EX_WrapKey(
             NativeLong hSession,
             CK_MECHANISM pGenerationMechanism,
@@ -421,7 +429,9 @@ public interface RtPkcs11 extends Pkcs11 {
      * @param pKeyTemplate         CEK template
      * @param ulKeyAttributeCount  CEK template attributes count
      * @param phKey                CEK handle
+     * @deprecated unsupported by rtpkcs11ecp 2.0.8.0+
      */
+    @Deprecated
     NativeLong C_EX_UnwrapKey(
             NativeLong hSession,
             CK_MECHANISM pDerivationMechanism,
