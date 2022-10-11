@@ -361,6 +361,22 @@ public final class RtPkcs11Constants {
     public static final long CKH_VENDOR_RNG = (CKH_VENDOR_DEFINED + 0x05);
     public static final long CKH_VENDOR_PIN_POLICY = (CKH_VENDOR_DEFINED + 0x06);
 
+    /* C_EX_TokenManage mode */
+    public static final long MODE_SET_BLUETOOTH_POWEROFF_TIMEOUT = 0x01L;
+    public static final long MODE_SET_CHANNEL_TYPE = 0x02L;
+    public static final long MODE_RESET_CUSTOM_PIN_TO_STANDARD = 0x03L;
+    public static final long MODE_RESET_PIN_TO_DEFAULT = 0x04L;
+    public static final long MODE_CHANGE_DEFAULT_PIN = 0x05L;
+    public static final long MODE_FORCE_USER_TO_CHANGE_PIN = 0x06L;
+
+    /* For MODE_SET_BLUETOOTH_POWEROFF_TIMEOUT */
+    public static final long BLUETOOTH_POWEROFF_TIMEOUT_DEFAULT = 0x00L;
+    public static final long BLUETOOTH_POWEROFF_TIMEOUT_MAX = 0x46L;
+
+    /* For MODE_SET_CHANNEL_TYPE */
+    public static final long CHANNEL_TYPE_USB = 0x00L;
+    public static final long CHANNEL_TYPE_BLUETOOTH = 0x01L;
+
     private RtPkcs11Constants() {
     }
 }
