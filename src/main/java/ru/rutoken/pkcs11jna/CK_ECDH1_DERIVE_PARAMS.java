@@ -5,10 +5,11 @@
 
 package ru.rutoken.pkcs11jna;
 
-import com.sun.jna.Memory;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+
+import static ru.rutoken.pkcs11jna.JnaPointerLenPair.makeJnaPointerLenPair;
 
 @Structure.FieldOrder({"kdf", "ulSharedDataLen", "pSharedData", "ulPublicDataLen", "pPublicData"})
 public class CK_ECDH1_DERIVE_PARAMS extends Pkcs11Structure {
@@ -30,20 +31,12 @@ public class CK_ECDH1_DERIVE_PARAMS extends Pkcs11Structure {
     public CK_ECDH1_DERIVE_PARAMS(NativeLong kdf, byte[] publicData, byte[] sharedData) {
         this.kdf = kdf;
 
-        if (publicData != null) {
-            ulPublicDataLen = new NativeLong(publicData.length);
-            pPublicData = new Memory(publicData.length);
-            pPublicData.write(0, publicData, 0, publicData.length);
-        } else {
-            ulPublicDataLen = new NativeLong(0);
-        }
+        JnaPointerLenPair publicDataPair = makeJnaPointerLenPair(publicData);
+        pPublicData = publicDataPair.getPointer();
+        ulPublicDataLen = publicDataPair.getLength();
 
-        if (sharedData != null) {
-            ulSharedDataLen = new NativeLong(sharedData.length);
-            pSharedData = new Memory(sharedData.length);
-            pSharedData.write(0, sharedData, 0, sharedData.length);
-        } else {
-            ulSharedDataLen = new NativeLong(0);
-        }
+        JnaPointerLenPair sharedDataPair = makeJnaPointerLenPair(sharedData);
+        pSharedData = sharedDataPair.getPointer();
+        ulSharedDataLen = sharedDataPair.getLength();
     }
 }

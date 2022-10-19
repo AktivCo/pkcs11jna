@@ -5,10 +5,11 @@
 
 package ru.rutoken.pkcs11jna;
 
-import com.sun.jna.Memory;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+
+import static ru.rutoken.pkcs11jna.JnaPointerLenPair.makeJnaPointerLenPair;
 
 @Structure.FieldOrder({"ulSizeofThisStructure", "pAdminPin", "ulAdminPinLen", "pInitParam", "pNewEmitentKey",
         "ulNewEmitentKeyLen", "ulNewEmitentKeyRetryCount"})
@@ -34,23 +35,16 @@ public class CK_VENDOR_RESTORE_FACTORY_DEFAULTS_PARAMS extends Pkcs11Structure {
     public CK_VENDOR_RESTORE_FACTORY_DEFAULTS_PARAMS(byte[] adminPin, CK_RUTOKEN_INIT_PARAM.ByReference initParam,
                                                      byte[] newEmitentKey, NativeLong newEmitentKeyRetryCount) {
         this();
-        if (adminPin != null) {
-            ulAdminPinLen = new NativeLong(adminPin.length);
-            pAdminPin = new Memory(adminPin.length);
-            pAdminPin.write(0, adminPin, 0, adminPin.length);
-        } else {
-            ulAdminPinLen = new NativeLong(0);
-        }
+
+        JnaPointerLenPair adminPinPair = makeJnaPointerLenPair(adminPin);
+        pAdminPin = adminPinPair.getPointer();
+        ulAdminPinLen = adminPinPair.getLength();
 
         pInitParam = initParam;
 
-        if (newEmitentKey != null) {
-            ulNewEmitentKeyLen = new NativeLong(newEmitentKey.length);
-            pNewEmitentKey = new Memory(newEmitentKey.length);
-            pNewEmitentKey.write(0, newEmitentKey, 0, newEmitentKey.length);
-        } else {
-            ulNewEmitentKeyLen = new NativeLong(0);
-        }
+        JnaPointerLenPair newEmitentKeyPair = makeJnaPointerLenPair(newEmitentKey);
+        pNewEmitentKey = newEmitentKeyPair.getPointer();
+        ulNewEmitentKeyLen = newEmitentKeyPair.getLength();
 
         ulNewEmitentKeyRetryCount = newEmitentKeyRetryCount;
     }

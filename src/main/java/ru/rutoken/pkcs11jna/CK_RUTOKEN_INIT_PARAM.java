@@ -9,10 +9,11 @@ package ru.rutoken.pkcs11jna;
  * @author Aktiv Co. <hotline@rutoken.ru>
  */
 
-import com.sun.jna.Memory;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+
+import static ru.rutoken.pkcs11jna.JnaPointerLenPair.makeJnaPointerLenPair;
 
 /**
  * Used in C_EX_InitToken - extended function
@@ -104,21 +105,13 @@ public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
         this();
         UseRepairMode = useRepairMode;
 
-        if (newAdminPin != null) {
-            ulNewAdminPinLen = new NativeLong(newAdminPin.length);
-            pNewAdminPin = new Memory(newAdminPin.length);
-            pNewAdminPin.write(0, newAdminPin, 0, newAdminPin.length);
-        } else {
-            ulNewAdminPinLen = new NativeLong(0);
-        }
+        JnaPointerLenPair newAdminPinPair = makeJnaPointerLenPair(newAdminPin);
+        pNewAdminPin = newAdminPinPair.getPointer();
+        ulNewAdminPinLen = newAdminPinPair.getLength();
 
-        if (newUserPin != null) {
-            ulNewUserPinLen = new NativeLong(newUserPin.length);
-            pNewUserPin = new Memory(newUserPin.length);
-            pNewUserPin.write(0, newUserPin, 0, newUserPin.length);
-        } else {
-            ulNewUserPinLen = new NativeLong(0);
-        }
+        JnaPointerLenPair newUserPinPair = makeJnaPointerLenPair(newUserPin);
+        pNewUserPin = newUserPinPair.getPointer();
+        ulNewUserPinLen = newUserPinPair.getLength();
 
         ChangeUserPINPolicy = changeUserPINPolicy;
         ulMinAdminPinLen = minAdminPinLen;
@@ -126,13 +119,9 @@ public class CK_RUTOKEN_INIT_PARAM extends Pkcs11Structure {
         ulMaxAdminRetryCount = maxAdminRetryCount;
         ulMaxUserRetryCount = maxUserRetryCount;
 
-        if (tokenLabel != null) {
-            ulLabelLen = new NativeLong(tokenLabel.length);
-            pTokenLabel = new Memory(tokenLabel.length);
-            pTokenLabel.write(0, tokenLabel, 0, tokenLabel.length);
-        } else {
-            ulLabelLen = new NativeLong(0);
-        }
+        JnaPointerLenPair tokenLabelPair = makeJnaPointerLenPair(tokenLabel);
+        pTokenLabel = tokenLabelPair.getPointer();
+        ulLabelLen = tokenLabelPair.getLength();
 
         ulSmMode = smMode;
     }

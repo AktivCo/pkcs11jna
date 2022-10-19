@@ -58,13 +58,13 @@ package ru.rutoken.pkcs11jna;
  * @author Aktiv Co. <hotline@rutoken.ru>
  */
 
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
 import java.nio.charset.StandardCharsets;
+
+import static ru.rutoken.pkcs11jna.JnaPointerLenPair.makeJnaPointerLenPair;
 
 @Structure.FieldOrder({"type", "pValue", "ulValueLen"})
 public class CK_ATTRIBUTE extends Pkcs11Structure {
@@ -114,9 +114,10 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
 
     public void setAttr(NativeLong type, NativeLong value) {
         this.type = type;
-        pValue = new Memory(NativeLong.SIZE);
-        pValue.setNativeLong(0, value);
-        ulValueLen = new NativeLong(NativeLong.SIZE);
+
+        JnaPointerLenPair valuePair = makeJnaPointerLenPair(value);
+        pValue = valuePair.getPointer();
+        ulValueLen = valuePair.getLength();
     }
 
     public void setAttr(long type, byte[] value) {
@@ -125,13 +126,10 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
 
     public void setAttr(NativeLong type, byte[] value) {
         this.type = type;
-        if (value != null) {
-            pValue = new Memory(value.length);
-            pValue.write(0, value, 0, value.length);
-            ulValueLen = new NativeLong(value.length);
-        } else {
-            ulValueLen = new NativeLong(0);
-        }
+
+        JnaPointerLenPair valuePair = makeJnaPointerLenPair(value);
+        pValue = valuePair.getPointer();
+        ulValueLen = valuePair.getLength();
     }
 
     public void setAttr(long type, boolean value) {
@@ -140,10 +138,10 @@ public class CK_ATTRIBUTE extends Pkcs11Structure {
 
     public void setAttr(NativeLong type, boolean value) {
         this.type = type;
-        int nativeSize = Native.getNativeSize(Byte.TYPE);
-        pValue = new Memory(nativeSize);
-        pValue.setByte(0, (byte) (value ? 1 : 0));
-        ulValueLen = new NativeLong(nativeSize);
+
+        JnaPointerLenPair valuePair = makeJnaPointerLenPair(value);
+        pValue = valuePair.getPointer();
+        ulValueLen = valuePair.getLength();
     }
 
     /**

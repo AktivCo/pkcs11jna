@@ -5,10 +5,11 @@
 
 package ru.rutoken.pkcs11jna;
 
-import com.sun.jna.Memory;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+
+import static ru.rutoken.pkcs11jna.JnaPointerLenPair.makeJnaPointerLenPair;
 
 @Structure.FieldOrder({"pData", "ulSize"})
 public class CK_VENDOR_BUFFER extends Pkcs11Structure {
@@ -27,13 +28,9 @@ public class CK_VENDOR_BUFFER extends Pkcs11Structure {
     }
 
     public CK_VENDOR_BUFFER(byte[] data) {
-        if (data != null && data.length != 0) {
-            pData = new Memory(data.length);
-            pData.write(0, data, 0, data.length);
-            ulSize = new NativeLong(data.length);
-        } else {
-            ulSize = new NativeLong(0);
-        }
+        JnaPointerLenPair dataPair = makeJnaPointerLenPair(data);
+        pData = dataPair.getPointer();
+        ulSize = dataPair.getLength();
     }
 
     public static class ByReference extends CK_VENDOR_BUFFER implements Structure.ByReference {

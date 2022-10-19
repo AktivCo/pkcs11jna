@@ -5,10 +5,11 @@
 
 package ru.rutoken.pkcs11jna;
 
-import com.sun.jna.Memory;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+
+import static ru.rutoken.pkcs11jna.JnaPointerLenPair.makeJnaPointerLenPair;
 
 @Structure.FieldOrder({"ulLabelLength", "pLabel", "ulSeedLength", "pSeed", "ulR", "ulL", "ulOffset"})
 public class CK_KDF_TREE_GOST_PARAMS extends Pkcs11Structure {
@@ -30,21 +31,13 @@ public class CK_KDF_TREE_GOST_PARAMS extends Pkcs11Structure {
     }
 
     public CK_KDF_TREE_GOST_PARAMS(byte[] label, byte[] seed, NativeLong ulR, NativeLong ulL, NativeLong ulOffset) {
-        if (label != null) {
-            ulLabelLength = new NativeLong(label.length);
-            pLabel = new Memory(label.length);
-            pLabel.write(0, label, 0, label.length);
-        } else {
-            ulLabelLength = new NativeLong(0);
-        }
+        JnaPointerLenPair labelPair = makeJnaPointerLenPair(label);
+        pLabel = labelPair.getPointer();
+        ulLabelLength = labelPair.getLength();
 
-        if (seed != null) {
-            ulSeedLength = new NativeLong(seed.length);
-            pSeed = new Memory(seed.length);
-            pSeed.write(0, seed, 0, seed.length);
-        } else {
-            ulSeedLength = new NativeLong(0);
-        }
+        JnaPointerLenPair seedPair = makeJnaPointerLenPair(seed);
+        pSeed = seedPair.getPointer();
+        ulSeedLength = seedPair.getLength();
 
         this.ulR = ulR;
         this.ulL = ulL;
