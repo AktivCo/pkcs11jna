@@ -15,13 +15,13 @@ public class CK_VENDOR_GOST_KEG_PARAMS extends Pkcs11Structure {
     /**
      * CK_BYTE_PTR
      */
-    Pointer pPublicData;
-    NativeLong ulPublicDataLen;
+    public Pointer pPublicData;
+    public NativeLong ulPublicDataLen;
     /**
      * CK_BYTE_PTR
      */
-    Pointer pUKM;
-    NativeLong ulUKMLen;
+    public Pointer pUKM;
+    public NativeLong ulUKMLen;
 
     public CK_VENDOR_GOST_KEG_PARAMS() {
     }
