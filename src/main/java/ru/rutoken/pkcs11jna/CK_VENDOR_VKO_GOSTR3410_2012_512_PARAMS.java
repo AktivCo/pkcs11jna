@@ -12,17 +12,17 @@ import com.sun.jna.Structure;
 
 @Structure.FieldOrder({"kdf", "pPublicData", "ulPublicDataLen", "pUKM", "ulUKMLen"})
 public class CK_VENDOR_VKO_GOSTR3410_2012_512_PARAMS extends Pkcs11Structure {
-    NativeLong kdf;
+    public NativeLong kdf;
     /**
      * CK_BYTE_PTR
      */
-    Pointer pPublicData;
-    NativeLong ulPublicDataLen;
+    public Pointer pPublicData;
+    public NativeLong ulPublicDataLen;
     /**
      * CK_BYTE_PTR
      */
-    Pointer pUKM;
-    NativeLong ulUKMLen;
+    public Pointer pUKM;
+    public NativeLong ulUKMLen;
 
     public CK_VENDOR_VKO_GOSTR3410_2012_512_PARAMS() {
     }
