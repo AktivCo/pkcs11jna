@@ -13,17 +13,17 @@ import static ru.rutoken.pkcs11jna.JnaPointerLenPair.makeJnaPointerLenPair;
 
 @Structure.FieldOrder({"kdf", "ulSharedDataLen", "pSharedData", "ulPublicDataLen", "pPublicData"})
 public class CK_ECDH1_DERIVE_PARAMS extends Pkcs11Structure {
-    NativeLong kdf;
-    NativeLong ulSharedDataLen;
+    public NativeLong kdf;
+    public NativeLong ulSharedDataLen;
     /**
      * CK_BYTE_PTR
      */
-    Pointer pSharedData;
-    NativeLong ulPublicDataLen;
+    public Pointer pSharedData;
+    public NativeLong ulPublicDataLen;
     /**
      * CK_BYTE_PTR
      */
-    Pointer pPublicData;
+    public Pointer pPublicData;
 
     public CK_ECDH1_DERIVE_PARAMS() {
     }
