@@ -6,6 +6,7 @@
 package ru.rutoken.pkcs11jna;
 
 import com.sun.jna.NativeLong;
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
 @Structure.FieldOrder({"ulPinID", "ulMinSize", "ulMaxSize", "ulMaxRetryCount", "ulCurrentRetryCount", "flags"})
@@ -18,6 +19,11 @@ public class CK_LOCAL_PIN_INFO extends Pkcs11Structure {
     public NativeLong flags;
 
     public CK_LOCAL_PIN_INFO() {
+    }
+
+    public CK_LOCAL_PIN_INFO(Pointer pStruct) {
+        super(pStruct);
+        read();
     }
 
     public CK_LOCAL_PIN_INFO(NativeLong pinID, NativeLong minSize, NativeLong maxSize, NativeLong maxRetryCount,
