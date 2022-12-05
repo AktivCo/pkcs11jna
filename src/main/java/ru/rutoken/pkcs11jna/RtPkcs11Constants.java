@@ -334,9 +334,12 @@ public final class RtPkcs11Constants {
     public static final long INTERFACE_TYPE_BT = 0x00000002L;
     public static final long INTERFACE_TYPE_UART = 0x00000004L;
     public static final long INTERFACE_TYPE_ISO = 0x00000008L;
-    public static final long INTERFACE_TYPE_NFC = 0x00000020L;
+    public static final long INTERFACE_TYPE_NFC_TYPE_B = 0x00000020L;
     public static final long INTERFACE_TYPE_SPI = 0x00000040L;
+    public static final long INTERFACE_TYPE_NFC_TYPE_A = 0x00000080L;
     public static final long INTERFACE_TYPE_UNKNOWN = CK_UNAVAILABLE_INFORMATION;
+    @Deprecated
+    public static final long INTERFACE_TYPE_NFC = INTERFACE_TYPE_NFC_TYPE_B;
 
     /* Secure messaging types */
     public static final long SECURE_MESSAGING_DEFAULT = 0x00L;
