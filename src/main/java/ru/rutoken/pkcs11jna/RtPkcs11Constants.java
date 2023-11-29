@@ -5,15 +5,8 @@
 
 package ru.rutoken.pkcs11jna;
 
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKA_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKF_ARRAY_ATTRIBUTE;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKH_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKM_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CKR_VENDOR_DEFINED;
-import static ru.rutoken.pkcs11jna.Pkcs11Constants.CK_UNAVAILABLE_INFORMATION;
-import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.CKM_KDF_4357;
-import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.CKM_KDF_GOSTR3411_2012_256;
-import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.NSSCK_VENDOR_PKCS11_RU_TEAM;
+import static ru.rutoken.pkcs11jna.Pkcs11Constants.*;
+import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.*;
 
 /* Derived from rtpkcs11t.h include file for PKCS #11. */
 
@@ -44,6 +37,11 @@ public final class RtPkcs11Constants {
     public static final long CKA_VENDOR_SUPPORT_HW_RESULT_FOR_GOST28147_KEY_UNWRAP = (CKA_VENDOR_DEFINED | 0x300C);
     public static final long CKA_VENDOR_SUPPORT_HW_KDF_TREE = (CKA_VENDOR_DEFINED | 0x300D);
     public static final long CKA_VENDOR_SUPPORT_KIMP15 = (CKA_VENDOR_DEFINED | 0x300E);
+
+    /**
+     * An UTF8-8 array, that contains symbolic token model name
+     */
+    public static final long CKA_VENDOR_MODEL_NAME = (CKA_VENDOR_DEFINED | 0x3010);
 
     /* KTI attributes */
     /**
