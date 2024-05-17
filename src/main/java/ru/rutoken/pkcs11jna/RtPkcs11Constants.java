@@ -107,15 +107,27 @@ public final class RtPkcs11Constants {
     /**
      * Chaincode value
      */
-    public static final long CKA_VENDOR_BIP32_CHAINCODE = (CKA_VENDOR_DEFINED | 0x3300);
+    public static final long CKA_VENDOR_BIP32_CHAINCODE = (CKA_VENDOR_DEFINED | 0x3400);
     /**
      * HASH160 from public key
      */
-    public static final long CKA_VENDOR_BIP32_ID = (CKA_VENDOR_DEFINED | 0x3301);
+    public static final long CKA_VENDOR_BIP32_ID = (CKA_VENDOR_DEFINED | 0x3401);
     /**
      * First 32 bits of CKA_VENDOR_BIP32_ID
      */
-    public static final long CKA_VENDOR_BIP32_FINGERPRINT = (CKA_VENDOR_DEFINED | 0x3302);
+    public static final long CKA_VENDOR_BIP32_FINGERPRINT = (CKA_VENDOR_DEFINED | 0x3402);
+    /**
+     * Master key was generated with BIP39 mnemonic code generation
+     */
+    public static final long CKA_VENDOR_BIP39_MNEMONIC_TRACE = (CKA_VENDOR_DEFINED | 0x3403);
+    /**
+     * Mnemonic sentence which was used for key generation
+     */
+    public static final long CKA_VENDOR_BIP39_MNEMONIC = (CKA_VENDOR_DEFINED | 0x3404);
+    /**
+     * Can mnemonic sentence be extracted
+     */
+    public static final long CKA_VENDOR_BIP39_MNEMONIC_IS_EXTRACTABLE = (CKA_VENDOR_DEFINED | 0x3405);
 
     /* GOST DIVERSIFICATION TYPES */
     public static final long CKD_KDF_4357 = CKM_KDF_4357;
@@ -311,6 +323,10 @@ public final class RtPkcs11Constants {
      * A mechanism for creating a public key through diversification
      */
     public static final long CKM_VENDOR_BIP32_DERIVE_PUBLIC_FROM_PRIVATE = (CKM_VENDOR_DEFINED + 8);
+    /**
+     * BIP32 key pair generation mechanism with BIP39 mnemonic code generation
+     */
+    public static final long CKM_VENDOR_BIP32_WITH_BIP39_KEY_PAIR_GEN = (CKM_VENDOR_DEFINED + 9);
 
     public static final long CKK_VENDOR_BIP32 = (CKK_VENDOR_DEFINED + 2);
 
