@@ -104,30 +104,32 @@ public final class RtPkcs11Constants {
     public static final long CKA_VENDOR_PIN_POLICY_DIFF_CHARS_REQUIRED = (CKA_VENDOR_DEFINED | 0x320a);
     public static final long CKA_VENDOR_USER_TYPE = (CKA_VENDOR_DEFINED | 0x320b);
 
+    /* BIP32 attributes */
+    public static final long BIP32 = (CKA_VENDOR_DEFINED | 0x5000);
     /**
      * Chaincode value
      */
-    public static final long CKA_VENDOR_BIP32_CHAINCODE = (CKA_VENDOR_DEFINED | 0x3400);
+    public static final long CKA_VENDOR_BIP32_CHAINCODE = BIP32;
     /**
      * HASH160 from public key
      */
-    public static final long CKA_VENDOR_BIP32_ID = (CKA_VENDOR_DEFINED | 0x3401);
+    public static final long CKA_VENDOR_BIP32_ID = (BIP32 | 0x01);
     /**
      * First 32 bits of CKA_VENDOR_BIP32_ID
      */
-    public static final long CKA_VENDOR_BIP32_FINGERPRINT = (CKA_VENDOR_DEFINED | 0x3402);
+    public static final long CKA_VENDOR_BIP32_FINGERPRINT = (BIP32 | 0x02);
     /**
      * Master key was generated with BIP39 mnemonic code generation
      */
-    public static final long CKA_VENDOR_BIP39_MNEMONIC_TRACE = (CKA_VENDOR_DEFINED | 0x3403);
+    public static final long CKA_VENDOR_BIP39_MNEMONIC_TRACE = (BIP32 | 0x03);
     /**
      * Mnemonic sentence which was used for key generation
      */
-    public static final long CKA_VENDOR_BIP39_MNEMONIC = (CKA_VENDOR_DEFINED | 0x3404);
+    public static final long CKA_VENDOR_BIP39_MNEMONIC = (BIP32 | 0x04);
     /**
      * Can mnemonic sentence be extracted
      */
-    public static final long CKA_VENDOR_BIP39_MNEMONIC_IS_EXTRACTABLE = (CKA_VENDOR_DEFINED | 0x3405);
+    public static final long CKA_VENDOR_BIP39_MNEMONIC_IS_EXTRACTABLE = (BIP32 | 0x05);
 
     /* GOST DIVERSIFICATION TYPES */
     public static final long CKD_KDF_4357 = CKM_KDF_4357;
@@ -402,6 +404,12 @@ public final class RtPkcs11Constants {
     public static final long CKH_VENDOR_NDEF_TAG = (CKH_VENDOR_DEFINED + 0x04);
     public static final long CKH_VENDOR_RNG = (CKH_VENDOR_DEFINED + 0x05);
     public static final long CKH_VENDOR_PIN_POLICY = (CKH_VENDOR_DEFINED + 0x06);
+
+    /* backported defines from pkcs3.0 header required for eddsa support */
+    public static final long CKM_EC_EDWARDS_KEY_PAIR_GEN = 0x00001055L;
+    public static final long CKF_EC_OID = 0x00800000L;
+    public static final long CKK_EC_EDWARDS = 0x00000040L;
+    public static final long CKM_EDDSA = 0x00001057L;
 
     private RtPkcs11Constants() {
     }
