@@ -66,7 +66,7 @@ publishing {
         if (isProduction) {
             maven { // Publishing a production build to MavenCentral
                 name = 'Maven'
-                url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+                url = 'https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/'
 
                 credentials {
                     username = project.findProperty("mavenUser")
