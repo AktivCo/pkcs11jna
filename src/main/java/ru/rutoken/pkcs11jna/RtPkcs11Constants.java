@@ -107,6 +107,33 @@ public final class RtPkcs11Constants {
     public static final long CKA_VENDOR_PIN_POLICY_DIFF_CHARS_REQUIRED = (CKA_VENDOR_DEFINED | 0x320a);
     public static final long CKA_VENDOR_USER_TYPE = (CKA_VENDOR_DEFINED | 0x320b);
 
+    /* BIP32 attributes */
+    public static final long BIP32 = (CKA_VENDOR_DEFINED | 0x5000);
+    /**
+     * Chaincode value
+     */
+    public static final long CKA_VENDOR_BIP32_CHAINCODE = BIP32;
+    /**
+     * HASH160 from public key
+     */
+    public static final long CKA_VENDOR_BIP32_ID = (BIP32 | 0x01);
+    /**
+     * First 32 bits of CKA_VENDOR_BIP32_ID
+     */
+    public static final long CKA_VENDOR_BIP32_FINGERPRINT = (BIP32 | 0x02);
+    /**
+     * Master key was generated with BIP39 mnemonic code generation
+     */
+    public static final long CKA_VENDOR_BIP39_MNEMONIC_TRACE = (BIP32 | 0x03);
+    /**
+     * Mnemonic sentence which was used for key generation
+     */
+    public static final long CKA_VENDOR_BIP39_MNEMONIC = (BIP32 | 0x04);
+    /**
+     * Can mnemonic sentence be extracted
+     */
+    public static final long CKA_VENDOR_BIP39_MNEMONIC_IS_EXTRACTABLE = (BIP32 | 0x05);
+
     /* GOST DIVERSIFICATION TYPES */
     public static final long CKD_KDF_4357 = CKM_KDF_4357;
     public static final long CKD_KDF_GOSTR3411_2012_256 = CKM_KDF_GOSTR3411_2012_256;
@@ -289,6 +316,25 @@ public final class RtPkcs11Constants {
     public static final long CKM_GOST = (CKM_VENDOR_DEFINED + 2);
     public static final long CKM_VENDOR_SECURE_IMPORT = (CKM_VENDOR_DEFINED + 3);
 
+    /**
+     * BIP32 key pair generation mechanism
+     */
+    public static final long CKM_VENDOR_BIP32_KEY_PAIR_GEN = (CKM_VENDOR_DEFINED + 6);
+    /**
+     * A mechanism for creating a private key through diversification
+     */
+    public static final long CKM_VENDOR_BIP32_DERIVE_PRIVATE_FROM_PRIVATE = (CKM_VENDOR_DEFINED + 7);
+    /**
+     * A mechanism for creating a public key through diversification
+     */
+    public static final long CKM_VENDOR_BIP32_DERIVE_PUBLIC_FROM_PRIVATE = (CKM_VENDOR_DEFINED + 8);
+    /**
+     * BIP32 key pair generation mechanism with BIP39 mnemonic code generation
+     */
+    public static final long CKM_VENDOR_BIP32_WITH_BIP39_KEY_PAIR_GEN = (CKM_VENDOR_DEFINED + 9);
+
+    public static final long CKK_VENDOR_BIP32 = (CKK_VENDOR_DEFINED + 2);
+
     /* Flags for C_EX_PKCS7VerifyInit */
     /**
      * Do not search signer certificates in certificates attached to CMS.
@@ -387,6 +433,12 @@ public final class RtPkcs11Constants {
     public static final long LOCAL_PIN_FLAGS_NOT_DEFAULT = 0x00000001L;
     public static final long LOCAL_PIN_FLAGS_FROM_SCREEN = 0x00000002L;
     public static final long LOCAL_PIN_FLAGS_IS_UTF8 = 0x00000004L;
+
+    /* backported defines from pkcs3.0 header required for eddsa support */
+    public static final long CKM_EC_EDWARDS_KEY_PAIR_GEN = 0x00001055L;
+    public static final long CKF_EC_OID = 0x00800000L;
+    public static final long CKK_EC_EDWARDS = 0x00000040L;
+    public static final long CKM_EDDSA = 0x00001057L;
 
     private RtPkcs11Constants() {
     }
