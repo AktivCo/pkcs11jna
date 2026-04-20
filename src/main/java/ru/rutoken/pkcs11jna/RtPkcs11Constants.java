@@ -17,6 +17,10 @@ import static ru.rutoken.pkcs11jna.Pkcs11Tc26Constants.*;
 public final class RtPkcs11Constants {
     public static final long CK_VENDOR_PKCS11_RU_TEAM_TK26 = NSSCK_VENDOR_PKCS11_RU_TEAM;
 
+    /* Extended attributes for private keys for Rutoken Touch */
+    /* Signing should be confirmed by button press - CK_BBOOL type */
+    public static final long CKA_VENDOR_CONFIRM_BY_TOUCH = (CKA_VENDOR_DEFINED | 0x2003L);
+
     /* Attributes for CKH_VENDOR_TOKEN_INFO hardware feature */
     public static final long CKA_VENDOR_SECURE_MESSAGING_AVAILABLE = (CKA_VENDOR_DEFINED | 0x3000);
     public static final long CKA_VENDOR_CURRENT_SECURE_MESSAGING_MODE = (CKA_VENDOR_DEFINED | 0x3001);
@@ -106,6 +110,11 @@ public final class RtPkcs11Constants {
      */
     public static final long CKA_VENDOR_PIN_POLICY_DIFF_CHARS_REQUIRED = (CKA_VENDOR_DEFINED | 0x320a);
     public static final long CKA_VENDOR_USER_TYPE = (CKA_VENDOR_DEFINED | 0x320b);
+
+    /* Touch attributes */
+    public static final long CKA_VENDOR_TOUCH_MODE = (CKA_VENDOR_DEFINED | 0x3400);
+    public static final long CKA_VENDOR_USER_PRESENT_TIME_LIMIT = (CKA_VENDOR_DEFINED | 0x3401);
+    public static final long CKA_VENDOR_USER_ACTION_TIMEOUT = (CKA_VENDOR_DEFINED | 0x3402);
 
     /* BIP32 attributes */
     public static final long BIP32 = (CKA_VENDOR_DEFINED | 0x5000);
@@ -397,6 +406,10 @@ public final class RtPkcs11Constants {
     public static final long PIN_POLICY_STATE_HAS_UNKNOWN_ATTRIBUTES = 0x01L;
     public static final long PIN_POLICY_STATE_HAS_UNKNOWN_NONDEFAULT_ATTRIBUTES = 0x02L;
 
+    /* Values for CKA_VENDOR_TOUCH_MODE */
+    public static final long TOUCH_MODE_DISCRETE = 0x00L;
+    public static final long TOUCH_MODE_CONTINUOUS = 0x01L;
+
     /* Biometric types */
     public static final long BIOMETRIC_AUTHENTICATION_NOT_SUPPORTED = 0x00000000L;
 
@@ -407,6 +420,7 @@ public final class RtPkcs11Constants {
     public static final long CKH_VENDOR_NDEF_TAG = (CKH_VENDOR_DEFINED + 0x04);
     public static final long CKH_VENDOR_RNG = (CKH_VENDOR_DEFINED + 0x05);
     public static final long CKH_VENDOR_PIN_POLICY = (CKH_VENDOR_DEFINED + 0x06);
+    public static final long CKH_VENDOR_TOUCH_INTERFACE = (CKH_VENDOR_DEFINED + 0x07);
 
     /* C_EX_TokenManage mode */
     public static final long MODE_SET_BLUETOOTH_POWEROFF_TIMEOUT = 0x01L;
